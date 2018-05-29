@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, allow_blank: true, confirmation: true, password_strong: true, on: :update
   validates :phone, allow_blank: true, phone_number: true
 
-  belongs_to :role
+  # belongs_to :role
   has_many :comments
   has_many :articles, through: :comments
   has_many :customers
