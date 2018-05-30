@@ -1,9 +1,59 @@
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password_digest %>
-</p>
+
+<%= form_with model: current_user, :html => {:class => 'regForm', novalidate: 'novalidate'}, local: true do |form| %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Profile Customer</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 mx-3 " align="center">
+          <% if current_user.avatar %>
+            <%= image_tag("#{current_user.avatar}", :alt => 'avatar', class: "img-circle profile_img") %> 
+          <% else %>  
+            <%= image_tag("#{image_path 'default-avatar.png'}", :alt => 'avatar', class: "img-circle profile_img") %>      
+          <% end %>
+         
+        </div>
+        <div class=" col-md-9 col-lg-9 "> 
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td>First name:</td>
+                <td><%= current_user.first_name %></td>
+              </tr>
+              <tr>
+                <td>Last name:</td>
+                <td><%= current_user.last_name %></td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><%= current_user.email %></td>
+              </tr>
+              <tr>
+                <td>Address:</td>
+                <td><%= current_user.address %></td>
+              </tr>
+
+              <tr>
+                <td>Phone:</td>
+                <td><%= current_user.phone %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+    <div class="panel-footer pull-right">
+        <%= link_to  "/users/#{current_user.id}/edit" do %>
+          <i class="glyphicon glyphicon-edit btn btn-lg btn-warning "></i>
+        <% end %>
+
+        
+    </div>
+  </div>
+  
+<% end %>

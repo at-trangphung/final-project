@@ -26,6 +26,6 @@ class SessionsController < ApplicationController
     cookies.delete :user_id
     cookies.delete :remember
     @current_user = nil
-    redirect_to sessions_sign_in_path(@sessions)
+    redirect_to login_path
   end
 end

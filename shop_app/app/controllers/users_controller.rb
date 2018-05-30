@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to login_path 
   end
 
   def new
@@ -24,12 +23,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
-    end
+    @user.update(permit_params)
+    redirect_after_update_or_create(@user)
   end
 
   def destroy
@@ -39,7 +34,7 @@ class UsersController < ApplicationController
     cookies.delete :user_id
     cookies.delete :remember
     @current_user = nil
-    redirect_to user_index_path  
+    redirect_to login_path  
   end
 
   private
@@ -47,9 +42,12 @@ class UsersController < ApplicationController
       params.permit(:email, :password, :password_confirmation, :first_name, :last_name)
     end
 
+    def permit_params
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone)
+    end
+
     def sign_up
       @user = User.new(user_params)
-      # binding.pry
       if @user.save
         redirect_to @user
       else

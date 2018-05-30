@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, confirmation: true, password_strong: true, on: :create
   validates :password, allow_blank: true, confirmation: true, password_strong: true, on: :update
-  validates :phone, allow_blank: true, phone_number: true
+  validates :phone, presence: true, allow_blank: true, phone_number: true, on: :update
 
   # belongs_to :role
   has_many :comments
