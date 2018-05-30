@@ -1,0 +1,27 @@
+<% content_for :title, 'Account' %>
+<% content_for :script, javascript_include_tag(:shop) %>
+
+<div class="table-responsive">
+  <h2>Account</h2>
+
+  <table class="table">
+    <tr>
+      <th>Email</th>
+      <th>Password</th>
+      <th></th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.password_digest %></td>
+        <td><%= link_to 'Info Account', user_path(user) %></td>
+        <td><%= link_to 'Destroy', user_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </table>
+</div>
+
