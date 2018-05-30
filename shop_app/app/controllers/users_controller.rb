@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-
+  layout 'account'
+  
   def index
     @users = User.all
-    # binding.pry
   end
 
   def show
@@ -23,8 +23,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(permit_params)
-    redirect_after_update_or_create(@user)
+    if @user.update(permit_params)
+      flash[:success] = 'update profile successed'
+      redirect_to @user
+    else
+      render 'edit'
+    end
+
   end
 
   def destroy
@@ -43,15 +48,25 @@ class UsersController < ApplicationController
     end
 
     def permit_params
-      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone)
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar)
     end
 
     def sign_up
       @user = User.new(user_params)
       if @user.save
-        redirect_to @user
+        # UserMailerPreview.account_activation(@user).deliver_now
+        # UserMailer.with(user: @user).welcome_email.deliver_later
+        @user.send_activation_email
+
+        flash[:notice] = "Please check your email to activate your account."
+        redirect_to root_url
+        # redirect_to @user
       else
         render 'new'
       end
+    end
+
+    def micropost_params
+      params.require(:micropost).permit(:content, :picture)
     end
 end

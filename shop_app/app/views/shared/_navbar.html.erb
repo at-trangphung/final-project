@@ -17,13 +17,14 @@
               <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
                   <div class="pull-right">
                       <ul class="userMenu">
+
                           <% if current_user %>
-                            <li class="hidden-xs"><%= link_to "#{current_user.first_name}" , "/users/#{current_user.id}" %></li>
-                           <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
-                         <% else %>  
-                            <li class="hidden-xs"><%= link_to 'Sign In', login_path %></li>
-                            <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %></li>
-                         <% end %>
+                             <li class="hidden-xs"><%= link_to current_user.email, user_path(@current_user) %></li>
+                            <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
+                          <% else %>  
+                             <li class="hidden-xs"><%= link_to 'Sign In', login_path %></li>
+                             <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %></li>
+                          <% end %>
                           
                       </ul>
                   </div>

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post 'sign_up' => 'users#create'
   resources :sessions, only: [:create, :destroy]
   resources :users
+  resources :account_activations, only: :edit
 
 end
