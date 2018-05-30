@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-
+  layout 'account'
+  
   def index
-    @users = User.all
+    @users = User.where(activated: FILL_IN).paginate(page: params[:page])
+
+    # @users = User.all
     # binding.pry
   end
 
   def show
     @user = User.find(params[:id])
-    redirect_to login_path 
+    redirect_to root_path and return unless FILL_IN
   end
 
   def new
@@ -39,7 +42,7 @@ class UsersController < ApplicationController
     cookies.delete :user_id
     cookies.delete :remember
     @current_user = nil
-    redirect_to user_index_path  
+    redirect_to login_path  
   end
 
   private
@@ -51,7 +54,13 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       # binding.pry
       if @user.save
-        redirect_to @user
+        # UserMailerPreview.account_activation(@user).deliver_now
+        # UserMailer.with(user: @user).welcome_email.deliver_later
+        @user.send_activation_email
+
+        flash[:notice] = "Please check your email to activate your account."
+        redirect_to root_url
+        # redirect_to @user
       else
         render 'new'
       end

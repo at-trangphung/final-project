@@ -32,7 +32,10 @@
     </div>
 
     <hr class="mb-4">
-    <%= form.submit 'Create an account', :class => 'btn btn-primary', :type => 'submit'%>      
+    <%= button_tag :class => 'btn btn-primary', :type => 'submit' do %>
+      <i class="fas fa-user"></i> Create an account
+    <% end %>
+    <%#= form.submit 'Create an account', :class => 'btn btn-primary', :type => 'submit'%>      
     
   </div>
 <% end %>

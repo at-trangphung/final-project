@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180528143001) do
     t.datetime "reset_sent_at"
     t.string "activation_digest"
     t.datetime "activated_at"
-    t.boolean "activated"
+    t.boolean "activated", default: false
     t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
