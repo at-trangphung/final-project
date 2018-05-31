@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password validations: false
   attr_accessor :activation_token
+  mount_uploader :avatar, ImageUploader
   before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -9,8 +10,8 @@ class User < ApplicationRecord
   validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, confirmation: true, password_strong: true, on: :create
   validates :password, allow_blank: true, confirmation: true, password_strong: true, on: :update
-  validates :phone, allow_blank: true, phone_number: true
-
+  validates :phone, allow_blank: true, phone_number: true, on: :update
+  validate  :picture_size
   # belongs_to :role
   has_many :comments
   has_many :articles, through: :comments
@@ -56,4 +57,9 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
+  def picture_size
+    if avatar.size > 5.megabytes
+      errors.add(:avatar, "should be less than 5MB")
+    end
+  end
 end

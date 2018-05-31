@@ -1,6 +1,6 @@
 class NameValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless value =~ /[a-z\s.-]/i #The following regex allows letters, white space, dot and dash
+    unless value =~ /\A[a-z]{3,}\z/i
       record.errors[attribute] << (options[:message] || I18n.t("invalid.name"))
     end
   end
