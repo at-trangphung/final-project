@@ -2,15 +2,11 @@ class UsersController < ApplicationController
   layout 'account'
   
   def index
-    @users = User.where(activated: FILL_IN).paginate(page: params[:page])
-
-    # @users = User.all
-    # binding.pry
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_path and return unless FILL_IN
   end
 
   def new
@@ -27,12 +23,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update(user_params)
+    if @user.update(permit_params)
+      flash[:success] = 'update profile successed'
       redirect_to @user
     else
       render 'edit'
     end
+
   end
 
   def destroy
@@ -50,9 +47,12 @@ class UsersController < ApplicationController
       params.permit(:email, :password, :password_confirmation, :first_name, :last_name)
     end
 
+    def permit_params
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar)
+    end
+
     def sign_up
       @user = User.new(user_params)
-      # binding.pry
       if @user.save
         # UserMailerPreview.account_activation(@user).deliver_now
         # UserMailer.with(user: @user).welcome_email.deliver_later
@@ -64,5 +64,9 @@ class UsersController < ApplicationController
       else
         render 'new'
       end
+    end
+
+    def micropost_params
+      params.require(:micropost).permit(:content, :picture)
     end
 end
