@@ -25,20 +25,34 @@ class UsersController < BaseController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(permit_params)
-      flash[:success] = 'update profile successed'
-      redirect_to @user
+    if params[:user][:password]
+      if params[:user][:password].blank?
+        flash[:danger] = 'Update password failed!'
+        render 'show' 
+      elsif @user.update_attributes(change_password_params)
+        flash[:success] = 'Update password successed!'
+        redirect_to @user
+      else
+        flash[:danger] = 'Update password failed!'
+        render 'show' 
+      end
     else
-      render 'edit'
-    end
-
+      if @user.update(permit_params)
+        flash[:success] = 'Update profile successed!'
+        redirect_to @user
+      else
+        render 'edit'
+      end
+    end 
   end
-
+   
   def destroy
     log_out @user
     @user.destroy
     redirect_to root_path  
   end
+
+ 
 
   private
     def user_params
@@ -47,6 +61,10 @@ class UsersController < BaseController
 
     def permit_params
       params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar)
+    end
+
+    def change_password_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
 
     def sign_up
