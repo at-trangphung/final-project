@@ -9,7 +9,7 @@ class UsersController < BaseController
   end
 
   def show
-    # redirect_to root_path and return unless FILL_IN
+    @user = User.find(params[:id])
   end
 
   def new
@@ -24,12 +24,14 @@ class UsersController < BaseController
   end
 
   def update
-
-    if @user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(permit_params)
+      flash[:success] = 'update profile successed'
       redirect_to @user
     else
       render 'edit'
     end
+
   end
 
   def destroy
@@ -41,6 +43,10 @@ class UsersController < BaseController
   private
     def user_params
       params.permit(:email, :password, :password_confirmation, :first_name, :last_name)
+    end
+
+    def permit_params
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar)
     end
 
     def sign_up
@@ -59,11 +65,11 @@ class UsersController < BaseController
       end
     end
 
-    # def get_service_user
-    #    @service_user = ServiceUser.new
-    # end
-
     def get_user
       @user = User.find(params[:id])
+    end
+    
+    def micropost_params
+      params.require(:micropost).permit(:content, :picture)
     end
 end
