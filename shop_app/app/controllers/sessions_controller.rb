@@ -1,41 +1,52 @@
-class SessionsController < ApplicationController
-  layout 'account'
+class SessionsController < BaseController
+  layout 'account' 
+
+  before_action :redirect_if_logged_in, only: %i[new create]
+
   def new
-    
+    @user = User.new
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      if user.activated?
-        # log_in user
-        # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        # redirect_back_or user
-        if params[:remember].to_i == 1
-          cookies.permanent[:remember] = params[:remember].to_i
-          cookies.permanent.encrypted[:user_id] = user.id
-        # binding.pry
-        end
-        redirect_to root_path, :notice => "Logged in!"
-      else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
-        flash[:notice] = message
-        redirect_to root_url
-      end
-
-      session[:user_id] = user.id
-    else
-      redirect_to login_path(@sessions)
-    end
+    @user = User.find_by_email(params[:email])
+    return sign_in if @user && @user.authenticate(params[:password]) && @user.activated?
+    login_failed
   end
 
   def destroy
-    # session[:user_id] = nil
-    session.clear
-    cookies.delete :user_id
-    cookies.delete :remember
-    @current_user = nil
+    @service_user.log_out
+    flash[:success] = "Log out!"
     redirect_to root_path
   end
+
+  private
+
+    def sign_in
+      if @service_user.login!(@user)
+        if params[:remember].to_i == 1
+          cookies.permanent[:remember] = params[:remember].to_i
+          cookies.permanent.encrypted[:user_id] = @user.id
+        end
+        flash[:success] = "Logged in!"
+        redirect_to root_path
+      else  
+        redirect_to login_path, danger: "Login failed"
+      end
+    end
+
+    def login_failed
+      if !@user.nil? && !@user.activated?
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:danger] = message
+      else
+        flash[:danger] = "Invalid email/password combination"
+      end
+      render :new
+    end
+
+    def redirect_if_logged_in
+      redirect_to root_path, success: "Already login!" if logged_in?
+    end   
+
 end
