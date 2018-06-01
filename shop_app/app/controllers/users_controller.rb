@@ -1,16 +1,15 @@
-class UsersController < ApplicationController
+class UsersController < BaseController
   layout 'account'
-  
+  # before_action :get_service_user
+  before_action :logged_in?
+  before_action :get_user, only: %i[edit update destroy show]
+ 
   def index
-    @users = User.where(activated: FILL_IN).paginate(page: params[:page])
-
-    # @users = User.all
-    # binding.pry
+    @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
-    redirect_to root_path and return unless FILL_IN
+    # redirect_to root_path and return unless FILL_IN
   end
 
   def new
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -26,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
 
     if @user.update(user_params)
       redirect_to @user
@@ -36,13 +33,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    log_out @user
     @user.destroy
-    session[:user_id] = nil
-    cookies.delete :user_id
-    cookies.delete :remember
-    @current_user = nil
-    redirect_to login_path  
+    redirect_to root_path  
   end
 
   private
@@ -52,17 +45,25 @@ class UsersController < ApplicationController
 
     def sign_up
       @user = User.new(user_params)
-      # binding.pry
       if @user.save
         # UserMailerPreview.account_activation(@user).deliver_now
-        # UserMailer.with(user: @user).welcome_email.deliver_later
         @user.send_activation_email
-
-        flash[:notice] = "Please check your email to activate your account."
-        redirect_to root_url
-        # redirect_to @user
+        message  = "Created account. "
+        message += "Please check your email to activate your account."
+        flash[:success] = message
+        # session[:user_id] = @user.id
+        redirect_to login_url
       else
+        flash[:danger] = "Create account failed!"
         render 'new'
       end
+    end
+
+    # def get_service_user
+    #    @service_user = ServiceUser.new
+    # end
+
+    def get_user
+      @user = User.find(params[:id])
     end
 end
