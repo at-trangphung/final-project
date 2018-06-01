@@ -13,4 +13,21 @@
 
   <!-- include icheck plugin // customized checkboxes and radio buttons   -->
   <script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
+  <% @categories.each do |categories| %>
+        <ul class="nav nav-pills nav-stacked tree">
+          <li class="active dropdown-tree open-tree"><a class="dropdown-tree-a">
+          <% @category_child = Category.where(parent_id: categories.id)%>
+          <span class="badge pull-right"><%= @category_child.size %></span> <%= categories.name %> </a>
+            
+            <% @category_child.each do |category_child| %>
+            <ul class="category-level-2 dropdown-menu-tree">
+              <li class="dropdown-tree"><a class="dropdown-tree-a" href="sub-category.html">
+              <%= category_child.name %></a>
+              </li>
+            </ul>
+            <% end %>
+          </li>
+        </ul> 
+      <% end %>   
+
 <% end %>
