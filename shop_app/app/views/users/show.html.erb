@@ -1,10 +1,12 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-
-<%= form_with model: current_user, :html => {:class => 'regForm', novalidate: 'novalidate'}, local: true do |form| %>
-  <div class="panel panel-info">
+<%= form_with model: @user, :html => {:class => 'regForm', novalidate: 'novalidate'}, local: true do |form| %>
+  <div class="panel panel-info" style="padding-bottom: 10px;">
     <div class="panel-heading">
       <h3 class="panel-title">Profile Customer</h3>
     </div>
@@ -47,13 +49,46 @@
       </div>
       </div>
     </div>
-    <div class="panel-footer pull-right">
+       
+    <div class="row">
+      <div class=" col-sm-2 control-label pull-right">
         <%= link_to  "/users/#{current_user.id}/edit" do %>
-          <i class="glyphicon glyphicon-edit btn btn-lg btn-warning "></i>
+          <i class="glyphicon glyphicon-edit btn-lg btn-warning"> Edit</i>
         <% end %>
+      </div>
+      <div class="col-sm-offset-1 col-sm-8 control-label">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-cog"></i> Change password</button>
+        <div id="demo" class="collapse">
+   
+          <div class="form-group">
+            <label class="col-sm-4 control-label">New password: </label>
+            <div class="col-sm-8">
+              <%= form.password_field :password, class: 'form-control', placeholder: 'Enter new password'  %>
+              <%= msg_form_errors @user, :password %>
+            </div>
+          </div>
 
-        
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Confirm new password: </label>
+            <div class="col-sm-8">
+              <%= form.password_field  :password_confirmation, class: 'form-control', placeholder: 'Enter new confirm password'  %>
+              <%= msg_form_errors @user, :password_confirmation %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-2">
+              <%= link_to "Cancel" , user_path(@current_user) ,class: "btn btn-primary"%>
+            </div> 
+            <div class="col-sm-2">
+                            
+                <%= form.submit "Change", class: "btn btn-primary" %>
+            </div>   
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
-  
 <% end %>
+
