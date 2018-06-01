@@ -1,9 +1,6 @@
 class CategoryController < ApplicationController
  # protect_from_forgery with: :exception
  def index
-   @categories = Category.all.where(parent_id: 0)
-   @category_child = Category.where(parent_id: params[:parent_id])
-   binding.pry
  end
 
   def new
