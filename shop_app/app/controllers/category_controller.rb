@@ -3,7 +3,6 @@ class CategoryController < ApplicationController
  def index
    @categories = Category.all.where(parent_id: 0)
    @category_child = Category.where(parent_id: params[:parent_id])
-   binding.pry
  end
 
   def new
@@ -15,3 +14,4 @@ class CategoryController < ApplicationController
      params.require(:category).permit(:name, :parent_id)
    end
 end
+
