@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180601101504) do
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
     t.index ["price"], name: "index_products_on_price"
-  end
+
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
