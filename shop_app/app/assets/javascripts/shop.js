@@ -9,4 +9,4 @@
 //= require ./js/bootstrap.touchspin
 //= require ./js/home
 //= require ./js/script
-
+<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
