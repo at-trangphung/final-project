@@ -17,7 +17,7 @@
 <% end %>
 
 <div class="w100 productFilter clearfix">
-  <p class="pull-left"> Showing <strong><%= @productList.size %></strong> products </p>
+  <p class="pull-left"> Showing <strong><%= @productList.length %></strong> products </p>
 
   <div class="pull-right ">
     <div class="change-order pull-right">
@@ -65,4 +65,9 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="row categoryFooter">
+  <div class="col-lg-offset-4 col-lg-8 ">
+    <%= will_paginate(@productList, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+  </div>
 </div>
