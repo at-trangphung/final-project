@@ -6,13 +6,8 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
-  validates :first_name, presence: true, name: true
-  validates :last_name, presence: true, name: true
-  validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
-  validates :password, presence: true, confirmation: true, password_strong: true, on: :create
-  validates :password, allow_blank: true, confirmation: true, password_strong: true, on: :update
-  validates :phone, allow_blank: true, phone_number: true, on: :update
-  validate  :picture_size
+  #strong params
+  # USER_PARAMS = [user: {:email, :password, :password_confirmation, :first_name, :last_name}]
   # belongs_to :role
   has_many :comments
   has_many :articles, through: :comments

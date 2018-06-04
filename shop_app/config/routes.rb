@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   post 'sign_up' => 'users#create'
   resources :sessions, only: [:create, :destroy]
   resources :users
+  resources :products
   resources :account_activations, only: :edit
   resources :category
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :products, only: :show
+  resources :products, only: [:show, :update]
 end

@@ -68,9 +68,25 @@
             <!-- product Image and Zoom -->
             <div class="main-image sp-wrap col-lg-12 no-padding">
 
-                <a href="../assets/product_details/coffee/coffee_1.jpg"><%= image_tag("#{image_path 'product_details/coffee/coffee_1.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
+                <a href="../assets/product_details/coffee/coffee_1.jpg"><%= image_tag("#{@product.image_link}", 
+                :class => 'img-responsive', alt: 'img') %></a>
                 <a href="../assets/product_details/coffee/coffee_2.jpg"><%= image_tag("#{image_path 'product_details/coffee/coffee_2.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a>
-                <a href="../assets/product_details/coffee/coffee_3.jpg"><%= image_tag("#{image_path 'product_details/coffee/coffee_3.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a></div>
+                <a href="../assets/product_details/coffee/coffee_3.jpg"><%= image_tag("#{image_path 'product_details/coffee/coffee_3.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-10">
+                <span class="image">
+                  <%= form.file_field :image_link, accept: 'image/jpeg, image/gif, image/png' %>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-2">
+                <%= form.submit "Submit", class: 'btn btn-primary' %>
+              </div>   
+            </div>
         </div>
         <!--/ left column end -->
 
@@ -83,7 +99,7 @@
                 <div class="rating">
                     <p><span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i
                             class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i
-                            class="fa fa-star-o "></i></span> <span class="ratingInfo"> <span> / </span> <a
+                            class="far fa-star "></i></span> <span class="ratingInfo"> <span> / </span> <a
                             data-target="#modal-review" data-toggle="modal"> Write a review</a> </span></p>
                 </div>
                 <div class="product-price"><span class="price-sales"> $70</span> <span class="price-standard">$95</span>
@@ -91,15 +107,7 @@
                 <div class="details-description">
                     <p>In scelerisque libero ut elit porttitor commodo Suspendisse laoreet magna. </p>
                 </div>
-                <div class="color-details"><span class="selected-color"><strong>COLOR</strong></span>
-                    <ul class="swatches Color">
-                        <li class="selected"><a style="background-color:#f1f40e"> </a></li>
-                        <li><a style="background-color:#adadad"> </a></li>
-                        <li><a style="background-color:#4EC67F"> </a></li>
-                    </ul>
-                </div>
-                <!--/.color-details-->
-
+                
                 <div class="productFilter productFilterLook2">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-xs-6">
@@ -145,12 +153,12 @@
                             to Wishlist</a></div>
                     </div>
                     <div style="clear:both"></div>
-                    <h3 class="incaps"><i class="fa fa fa-check-circle-o color-in"></i> In stock</h3>
+                    <h3 class="incaps"><i class="fa fas fa-check-circle color-in"></i> In stock</h3>
 
                     <h3 style="display:none" class="incaps"><i class="fa fa-minus-circle color-out"></i> Out of stock
                     </h3>
 
-                    <h3 class="incaps"><i class="glyphicon glyphicon-lock"></i> Secure online ordering</h3>
+                    <h3 class="incaps"><i class="fas fa-lock"></i> Secure online ordering</h3>
                 </div>
                 <!--/.cart-actions-->
 
@@ -221,10 +229,10 @@
                 <div class="product-share clearfix">
                     <p> SHARE </p>
 
-                    <div class="socialIcon"><a href="#"> <i class="fa fa-facebook"></i></a> <a href="#"> <i
-                            class="fa fa-twitter"></i></a> <a href="#"> <i class="fa fa-google-plus"></i></a> <a
+                    <div class="socialIcon"><a href="#"> <i class="fab fa-facebook-f"></i></a> <a href="#"> <i
+                            class="fab fa-twitter"></i></a> <a href="#"> <i class="fab fa-google-plus-g"></i></a> <a
                             href="#">
-                        <i class="fa fa-pinterest"></i></a></div>
+                        <i class="fab fa-pinterest"></i></a></div>
                 </div>
                 <!--/.product-share-->
 
