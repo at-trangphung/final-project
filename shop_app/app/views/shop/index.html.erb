@@ -1,547 +1,68 @@
 <% content_for :title, 'Shop Cafe' %>
 <% content_for :script, javascript_include_tag(:shop) %>
 <% content_for :script do %>
-  <!-- include  parallax plugin -->
-  <script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
+<!-- include  parallax plugin -->
+<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
 
-  <!-- optionally include helper plugins -->
-  <script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
+<!-- optionally include helper plugins -->
+<script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
 
-  <!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
+<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
 
-  <script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
 
-  <!-- include icheck plugin // customized checkboxes and radio buttons   -->
-  <script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
+<!-- include icheck plugin // customized checkboxes and radio buttons   -->
+<script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
+
 <% end %>
 
-<div class="banner">
-    <div class="full-container">
-        <div class="slider-content">
-            <!-- <ul id="pager2" class="container"> -->
-            <ul id="" class="container">
-            <span class="cycle-pager-active">•</span><span class="">•</span><span class="">•</span><span class="">•</span><span class="">•</span></ul>
-            <!-- prev/next links -->
-
-            <span class="prevControl sliderControl"> <i class="fa fa-angle-left fa-3x "></i></span> <span class="nextControl sliderControl"> <i class="fa fa-angle-right fa-3x "></i></span>
-
-            <div class="slider slider-v1" data-cycle-swipe="true" data-cycle-prev=".prevControl" data-cycle-next=".nextControl" data-cycle-loader="wait" style="overflow: hidden;"><div class="slider-item slider-item-img1 cycle-slide cycle-sentinel" style="visibility: hidden; position: static; top: 0px; left: 0px; z-index: 100; opacity: 1; display: block;">
-            <%= image_tag("#{image_path 'slider/slider0.jpeg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-                </div>
-                
-                
-                <!--/.slider-item-->
-
-                
-                <!--/.slider-item-->
-
-                
-                <!--/.slider-item-->
-
-                
-            <div class="slider-item slider-item-img1 cycle-slide" style="visibility: visible; position: absolute; top: 0px; left: -1.15746px; z-index: 100; opacity: 1; display: block;">
-            <%= image_tag("#{image_path 'slider/slider1.jpeg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-
-                </div><div class="slider-item slider-item-img1 cycle-slide cycle-slide-active" style="visibility: visible; position: absolute; top: 0px; left: 1298.84px; z-index: 99; opacity: 1; display: block;">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull ">
-                                <div class="inner text-center">
-                                    <div class="topAnima animated">
-                                        <h1 class="uppercase xlarge">FREE SHIPPING</h1>
-
-                                        <h3 class="hidden-xs"> Free Standard Shipping on Orders Over $100 </h3>
-                                    </div>
-                                    <a class="btn btn-danger btn-lg bottomAnima animated opacity0">SHOP NOW ON TSHOP
-                                        <span class="arrowUnicode">►</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag("#{image_path 'slider/slider2.jpeg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-                    </div><div class="slider-item slider-item-img2  cycle-slide" style="visibility: hidden; position: absolute; top: 0px; left: 0px; z-index: 97; opacity: 1; display: block;">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull  ">
-                                <div class="inner dark maxwidth500 text-center animated topAnima">
-                                    <div class=" ">
-                                        <h1 class="uppercase xlarge"> CUSTOM HTML BLOCK</h1>
-
-                                        <h3 class="hidden-xs"> Custom Slides to Your Slider </h3>
-                                    </div>
-                                    <a class="btn btn-danger btn-lg">SHOP NOW ON TSHOP <span class="arrowUnicode">►</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag("#{image_path 'slider/slider3.jpeg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-                    </div><div class="slider-item slider-item-img3  cycle-slide" style="visibility: hidden; position: absolute; top: 0px; left: 0px; z-index: 96; opacity: 1; display: block;">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-5 col-md-4 col-sm-6 col-xs-8   pull-left sliderText white hidden-xs">
-                                <div class="inner">
-                                    <h1>TSHOP JEANS</h1>
-
-                                    <h3 class="price "> Free Shipping on $100</h3>
-
-                                    <p class="hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                        diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                        volutpat. </p>
-                                    <a href="category.html" class="btn btn-primary">SHOP NOW <span class="arrowUnicode">►</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag("#{image_path 'slider/slider4.jpeg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-                    </div><div class="slider-item slider-item-img3 cycle-slide" style="visibility: hidden; position: absolute; top: 0px; left: 0px; z-index: 95; opacity: 1; display: block;">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-5 col-md-6 col-sm-5 col-xs-5 pull-left sliderText blankstyle transformRight">
-                                <div class="inner text-right">
-                                <%= image_tag("#{image_path 'slider/color.png'}", :class => 'img-responsive', alt: 'img') %>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-7   pull-left sliderText blankstyle color-white">
-                                <div class="inner">
-                                    <h1 class="uppercase topAnima animated ">10+ Amazing Color Theme</h1>
-
-                                    <p class="bot tomAnima animated opacity0 hidden-xs"> Fully responsive bootstrap
-                                        Ecommerce Template. Available in 10+ color schemes and easy to set. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag("#{image_path 'slider/slider2.jpg'}", :class => 'img-responsive parallaximg sliderImg', alt: 'img', style: '"visibility: hidden; margin-top: 0px') %>
-                    </div></div>
-            <!--/.slider slider-v1-->
-        </div>
-        <!--/.slider-content-->
-    </div>
-    <!--/.full-container-->
-</div>
-
 <div class="w100 productFilter clearfix">
-    <p class="pull-left"> Showing <strong>12</strong> products </p>
+  <p class="pull-left"> Showing <strong><%= @productList.size %></strong> products </p>
 
-    <div class="pull-right ">
-        <div class="change-order pull-right">
-            <select class="form-control" name="orderby">
-                <option selected="selected">Default sorting</option>
-                <option value="popularity">Sort by popularity</option>
-                <option value="rating">Sort by average rating</option>
-                <option value="date">Sort by newness</option>
-                <option value="price">Sort by price: low to high</option>
-                <option value="price-desc">Sort by price: high to low</option>
-            </select>
-        </div>
-        <div class="change-view pull-right"><a href="#" title="Grid" class="grid-view"> <i class="fa fa-th-large"></i> </a> <a href="#" title="List" class="list-view "><i class="fa fa-th-list"></i></a></div>
+  <div class="pull-right ">
+    <div class="change-order pull-right">
+      <select class="form-control" name="orderby">
+        <option selected="selected">Default sorting</option>
+        <option value="popularity">Sort by popularity</option>
+        <option value="rating">Sort by average rating</option>
+        <option value="date">Sort by newness</option>
+        <option value="price">Sort by price: low to high</option>
+        <option value="price-desc">Sort by price: high to low</option>
+      </select>
     </div>
+    <div class="change-view pull-right"><a href="#" title="Grid" class="grid-view"> <i class="fa fa-th-large"></i> </a> <a href="#" title="List" class="list-view "><i class="fa fa-th-list"></i></a></div>
+  </div>
 </div>
 
 <div class="row  categoryProduct xsResponse clearfix">
+  <% @productList.each do |product| %>
     <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
+      <div class="product">
+        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
+          <i class="fas fa-heart"></i>
+        </a>
 
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
+        <div class="image">
+          <div class="quickview">
+            <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
 
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/30.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">aliquam erat volutpat</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
+          </div>
+          <a href="product-details.html">
+          </a>
+          <img src="http://2sao.vietnamnetjsc.vn/images/2017/11/10/15/51/kem-dau-tay.jpg", class="img-responsive">
+          <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= product.discount%>%</span></div>
         </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/31.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="discount">15% OFF</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">ullamcorper suscipit lobortis </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
+        <div class="description">
+          <h4><a href="product-details.html"><%= product.name %></a></h4>
+          <div class="list-description">
+            <p><%= product.description%></p>
+          </div>
+          <span class="size">S/ M/ L </span>
         </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/34.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="new-product"> NEW</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">demonstraverunt lectores </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span> <span class="old-price">$75</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
+        <div class="price"><span><%= product.price%> VND</span></div>
+        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a>
         </div>
+      </div>
     </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/35.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">humanitatis per</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/33.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">Eodem modo typi</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/10.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">sequitur mutationem </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/37.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">consuetudium lectorum.</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span> <span class="old-price">$75</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/16.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">parum claram</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span> <span class="old-price">$75</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/19.jpg'}", :class => 'img-responsive', alt: 'img') %></a></div>
-            <div class="description">
-                <h4><a href="product-details.html">duis dolore </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/15.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">aliquam erat volutpat</a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/14.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="discount">15% OFF</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">ullamcorper suscipit lobortis </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 474px;">
-        <div class="product">
-            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-              <i class="fas fa-heart"></i>
-            </a>
-
-            <div class="image">
-                <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-                </div>
-                <a href="product-details.html"><%= image_tag("#{image_path 'product/17.jpg'}", :class => 'img-responsive', alt: 'img') %></a>
-
-                <div class="promotion"><span class="new-product"> NEW</span></div>
-            </div>
-            <div class="description">
-                <h4><a href="product-details.html">demonstraverunt lectores </a></h4>
-
-                <div class="grid-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                </div>
-                <div class="list-description">
-                    <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit ante. Aliquam vel
-                        fermentum elit. Morbi rhoncus, neque in vulputate facilisis, leo tortor sollicitudin
-                        odio, quis pellentesque lorem nisi quis enim. In dolor mi, hendrerit at blandit
-                        vulputate, congue a purus. Sed eget turpis sit amet orci euismod accumsan. Praesent
-                        sit amet placerat elit. </p>
-                </div>
-                <span class="size">XL / XXL / S </span></div>
-            <div class="price"><span>$25</span></div>
-            <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a></div>
-        </div>
-    </div>
-    <!--/.item-->
-</div>
-
-<div class="w100 categoryFooter">
-    <div class="pagination pull-left no-margin-top">
-        <ul class="pagination no-margin-top">
-            <li><a href="#">«</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
-    </div>
-    <div class="pull-right pull-right col-sm-4 col-xs-12 no-padding text-right text-left-xs">
-        <p>Showing 1–450 of 12 results</p>
-    </div>
+  <% end %>
 </div>
