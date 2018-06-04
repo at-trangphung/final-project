@@ -1,0 +1,18 @@
+<tr>
+  <td><%= product.id %></td>
+  <td class="th-product"><%= image_tag product.picture%></td>
+  <td><%= product.name %></td>
+  <td><%= product.quantity %></td>
+  <td><%= product.price %></td>
+  <td><%= product.category_name %></td>
+  <td>
+    <%= link_to product_path(product), method: :delete,
+      data: {confirm: "Do you want delete this product"} do %>
+      <i class="pe-7s-trash"></i>
+    <% end %>
+    |
+    <%= link_to edit_product_path(product) do %>
+      <i class="pe-7s-pen"></i>
+    <% end %>
+  </td>
+</tr>
