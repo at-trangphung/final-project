@@ -1,11 +1,12 @@
 class UsersController < BaseController
   layout 'account'
   # before_action :get_service_user
+  # before_action :init_service
   before_action :logged_in?
   before_action :get_user, only: %i[edit update destroy show]
  
   def index
-    @users = User.all
+    @users = @service.index
   end
 
   def show
@@ -52,7 +53,9 @@ class UsersController < BaseController
     redirect_to root_path  
   end
 
- 
+ # def init_service
+ #   @service = UserService.new(params, @current_user)
+ # end
 
   private
     def user_params

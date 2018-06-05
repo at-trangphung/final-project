@@ -1,3 +1,3 @@
 class ProductOption < ApplicationRecord
-  
+
 end

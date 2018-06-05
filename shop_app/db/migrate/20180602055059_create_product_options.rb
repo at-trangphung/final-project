@@ -1,9 +1,9 @@
 class CreateProductOptions < ActiveRecord::Migration[5.1]
   def change
     create_table :product_options do |t|
-      t.belongs_to :products
-      t.belongs_to :sizes
-      t.belongs_to :types
+      t.integer :product_id
+      t.integer :size_id
+      t.integer :type_id
       
       t.timestamps
     end

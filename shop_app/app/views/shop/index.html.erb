@@ -47,9 +47,10 @@
             <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
 
           </div>
-          <a href="product-details.html">
-          </a>
-          <img src="http://2sao.vietnamnetjsc.vn/images/2017/11/10/15/51/kem-dau-tay.jpg", class="img-responsive">
+          <%= link_to product_path(product) do %>
+            <%= image_tag("#{product.image_link}", :class => 'img-responsive', alt: 'img') %>
+          <% end %>
+          
           <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= product.discount%>%</span></div>
         </div>
         <div class="description">

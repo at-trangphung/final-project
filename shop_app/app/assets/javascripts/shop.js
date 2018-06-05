@@ -9,4 +9,3 @@
 //= require ./js/bootstrap.touchspin
 //= require ./js/home
 //= require ./js/script
-

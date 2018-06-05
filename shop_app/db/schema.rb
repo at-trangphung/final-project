@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601101504) do
+ActiveRecord::Schema.define(version: 20180602055239) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -21,32 +28,55 @@ ActiveRecord::Schema.define(version: 20180601101504) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
-  create_table "product_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "products_id"
-    t.bigint "sizes_id"
-    t.bigint "types_id"
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "article_id"
+    t.text "content"
+    t.datetime "day_created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["products_id"], name: "index_product_options_on_products_id"
-    t.index ["sizes_id"], name: "index_product_options_on_sizes_id"
-    t.index ["types_id"], name: "index_product_options_on_types_id"
+  end
+
+  create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "address_deliver"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.float "total_payment", limit: 24
+    t.integer "status"
+    t.text "data"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "size_id"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id"
+    t.integer "category_id"
     t.string "name"
     t.float "price", limit: 24
-    t.integer "quantity"
     t.text "description"
     t.integer "discount"
     t.string "image_link"
     t.integer "view"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["name"], name: "index_products_on_name"
-    t.index ["price"], name: "index_products_on_price"
-
+  end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -56,6 +86,16 @@ ActiveRecord::Schema.define(version: 20180601101504) do
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "status"
+    t.integer "customer_id"
+    t.float "amount", limit: 24
+    t.string "payment"
+    t.datetime "created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
