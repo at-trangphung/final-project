@@ -69,6 +69,6 @@
 </div>
 <div class="row categoryFooter">
   <div class="col-lg-offset-4 col-lg-8 ">
-    <%= will_paginate(@productList, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    <%= will_paginate(@productList, renderer: BootstrapPagination::Rails) %>
   </div>
 </div>
