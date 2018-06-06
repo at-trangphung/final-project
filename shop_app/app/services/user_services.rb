@@ -1,5 +1,5 @@
-module Services
-  class ServiceUser
+# module Services
+  class UserServices
     attr_reader :session, :cookies, :params
 
     def initialize(session, cookies, params)
@@ -15,11 +15,8 @@ module Services
         # if user && user.activated? && user.authenticated?(:activation, user.id)
         if user && user.activated?
           login!(user)
-
-          # session[:user_id] = user.id
           @current_user = user
         end
-        # redirect_to root_path
       end
       @current_user
     end
@@ -51,4 +48,4 @@ module Services
     end
 
   end
-end
+# end

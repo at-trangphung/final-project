@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy' 
   get 'sign_up' => 'users#new'
   post 'sign_up' => 'users#create'
+  get '/search' => 'shop#search'
+  post '/search' => 'shop#search'
+
+  resources :shop, only: [:index, :create]
   resources :sessions, only: [:create, :destroy]
   resources :users
   resources :products

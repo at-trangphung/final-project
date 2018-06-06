@@ -6,7 +6,7 @@ class UsersController < BaseController
   before_action :get_user, only: %i[edit update destroy show]
  
   def index
-    @users = @service.index
+    @users = User.all
   end
 
   def show
