@@ -1,5 +1,5 @@
 class ProductsController < BaseController
-  layout 'account'
+  layout 'customer'
 
   def index
     # @all_product = @service.search

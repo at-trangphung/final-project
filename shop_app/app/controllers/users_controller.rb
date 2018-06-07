@@ -1,5 +1,5 @@
 class UsersController < BaseController
-  layout 'account'
+  layout 'customer'
   # before_action :get_service_user
   # before_action :init_service
   before_action :logged_in?
