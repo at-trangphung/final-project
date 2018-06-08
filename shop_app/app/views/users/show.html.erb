@@ -13,8 +13,8 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-3 col-lg-3 mx-3 " align="center">
-          <% if current_user[:avatar] %>
-            <%= image_tag("#{current_user.avatar}", class: "img-circle profile_img") %> 
+          <% if @service_user.current_user[:avatar] %>
+            <%= image_tag("#{@service_user.current_user.avatar}", class: "img-circle profile_img") %> 
           <% else %>  
             <%= image_tag("default-avatar.png", class: "img-circle profile_img") %>  
           <% end %>
@@ -25,24 +25,24 @@
             <tbody>
               <tr>
                 <td>First name:</td>
-                <td><%= current_user.first_name %></td>
+                <td><%= @service_user.current_user.first_name %></td>
               </tr>
               <tr>
                 <td>Last name:</td>
-                <td><%= current_user.last_name %></td>
+                <td><%= @service_user.current_user.last_name %></td>
               </tr>
               <tr>
                 <td>Email:</td>
-                <td><%= current_user.email %></td>
+                <td><%= @service_user.current_user.email %></td>
               </tr>
               <tr>
                 <td>Address:</td>
-                <td><%= current_user.address %></td>
+                <td><%= @service_user.current_user.address %></td>
               </tr>
 
               <tr>
                 <td>Phone:</td>
-                <td><%= current_user.phone %></td>
+                <td><%= @service_user.current_user.phone %></td>
               </tr>
           </tbody>
         </table>
@@ -52,7 +52,7 @@
        
     <div class="row">
       <div class=" col-sm-2 control-label pull-right">
-        <%= link_to  "/users/#{current_user.id}/edit" do %>
+        <%= link_to  "/users/#{@service_user.current_user.id}/edit" do %>
           <i class="glyphicon glyphicon-edit btn-lg btn-warning"> Edit</i>
         <% end %>
       </div>
@@ -78,7 +78,7 @@
 
           <div class="form-group">
             <div class="col-sm-offset-4 col-sm-2">
-              <%= link_to "Cancel" , user_path(@current_user) ,class: "btn btn-primary"%>
+              <%= link_to "Cancel" , user_path(@service_user.current_user) ,class: "btn btn-primary"%>
             </div> 
             <div class="col-sm-2">
                             

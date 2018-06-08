@@ -45,8 +45,6 @@
     });
 
   });
-
-
 </script>
 
 <% end %>
@@ -69,11 +67,11 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <!-- product Image and Zoom -->
       <div class="main-image sp-wrap col-lg-12 no-padding">
-
-        <a href="../assets/product_details/coffee/coffee_1.jpg"><%#= image_tag("#{@product.image_link}", 
+        <%= image_tag("#{@product.image_link}", :class => 'img-responsive', alt: 'img') %>
+        <!-- <a href="../assets/product_details/coffee/coffee_1.jpg"><%#= image_tag("#{@product.image_link}", 
         :class => 'img-responsive', alt: 'img') %></a>
         <a href="../assets/product_details/coffee/coffee_2.jpg"><%#= image_tag("#{image_path 'product_details/coffee/coffee_2.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a>
-        <a href="../assets/product_details/coffee/coffee_3.jpg"><%#= image_tag("#{image_path 'product_details/coffee/coffee_3.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a>
+        <a href="../assets/product_details/coffee/coffee_3.jpg"><%#= image_tag("#{image_path 'product_details/coffee/coffee_3.jpg'}", :class => 'img-responsive', alt: 'img') %></a></a> -->
       </div>
 
       <div class="form-group">
@@ -114,29 +112,12 @@
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-xs-6">
               <div class="filterBox">
-                <select class="form-control">
-                  <option value="strawberries" selected>Quantity</option>
-                  <option value="mango">1</option>
-                  <option value="bananas">2</option>
-                  <option value="watermelon">3</option>
-                  <option value="grapes">4</option>
-                  <option value="oranges">5</option>
-                  <option value="pineapple">6</option>
-                  <option value="peaches">7</option>
-                  <option value="cherries">8</option>
-                </select>
+                <%= form.select :size, @sizes.map { |size| [size.name] }, { include_blank: 'Size' }, { class: 'form-control' } %>
               </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-6">
               <div class="filterBox">
-                <select class="form-control">
-                  <option value="strawberries" selected>Size</option>
-                  <option value="mango">XL</option>
-                  <option value="bananas">XXL</option>
-                  <option value="watermelon">M</option>
-                  <option value="apples">L</option>
-                  <option value="apples">S</option>
-                </select>
+                <%= form.select :type, @types.map { |type| [type.name] }, { include_blank: 'Type' }, { class: 'form-control' } %>
               </div>
             </div>
           </div>
@@ -157,10 +138,8 @@
           </div>
           <div style="clear:both"></div>
           <h3 class="incaps"><i class="fa fas fa-check-circle color-in"></i> In stock</h3>
-
           <h3 style="display:none" class="incaps"><i class="fa fa-minus-circle color-out"></i> Out of stock
           </h3>
-
           <h3 class="incaps"><i class="fas fa-lock"></i> Secure online ordering</h3>
         </div>
         <!--/.cart-actions-->

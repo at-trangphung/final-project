@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 module SessionsHelper
-  def current_user
-      # binding.pry
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    unless @current_user
-      user = User.find_by(id: cookies.encrypted[:user_id])
-      if user && !user.activated? && user.authenticated?(:activation, params[:id])
-        session[:user_id] = user.id
-        @current_user = user
-      end
-      # redirect_to root_path
-    end
-    @current_user
-  end
+  # def current_user
+  #     # binding.pry
+  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  #   unless @current_user
+  #     user = User.find_by(id: cookies.encrypted[:user_id])
+  #     if user && !user.activated? && user.authenticated?(:activation, params[:id])
+  #       session[:user_id] = user.id
+  #       @current_user = user
+  #     end
+  #     # redirect_to root_path
+  #   end
+  #   @current_user
+  # end
 
   def authorize
     if cookies[:remember] != 1

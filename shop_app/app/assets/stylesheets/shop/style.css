@@ -3270,6 +3270,10 @@ h5.parallaxSubtitle {
     padding-top: 120px;
 }
 
+.headerOffset-checkout {
+    padding-top: 0px;
+}
+
 .category-top > h2 {
     color: #303030;
     font-weight: 700;

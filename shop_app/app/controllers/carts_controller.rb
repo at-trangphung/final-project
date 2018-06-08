@@ -1,7 +1,7 @@
 class CartsController < BaseController
   before_action :load_product, only: %i(create)
   before_action :current_order, only: [:show, :edit, :update, :destroy]
-  layout 'account'
+  layout 'customer'
   
   def index
     @order_details = []

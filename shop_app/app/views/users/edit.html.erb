@@ -64,7 +64,7 @@
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-2">
-          <%= link_to "Cancel" , "/users/#{current_user.id}" ,class: "btn btn-primary"%>
+          <%= link_to "Cancel" , "/users/#{@service_user.current_user.id}" ,class: "btn btn-primary"%>
         </div> 
         <div class="col-sm-2">
           <%= form.submit "Submit", class: 'btn btn-primary' %>

@@ -18,4 +18,10 @@ private
   def order_item_params
     params.require(:product).permit(:product_id)
   end
+
+  def search
+    @categories = Category.all.where(parent_id: 0)
+    @listProduct = @service_shop.search_product
+  end
+  
 end
