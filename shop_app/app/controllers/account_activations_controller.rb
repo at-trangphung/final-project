@@ -17,4 +17,5 @@ class AccountActivationsController < BaseController
       redirect_to root_path
     end
   end
+
 end
