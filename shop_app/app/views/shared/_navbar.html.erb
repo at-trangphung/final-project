@@ -74,10 +74,14 @@
 
         <div class="nav navbar-nav navbar-right hidden-xs">
           <div class="dropdown  cartMenu ">
-            <%= link_to root_path, class: 'dropdown-toggle' do %>
+            <%= link_to carts_path, class: 'dropdown-toggle' do %>
             <i class="fa fa-shopping-cart"></i> 
             <span class="cartRespons">
-              <b>(<%= current_order.size %>)</b>
+              <% count_products = 0 %>
+              <% @order_items.each do |item| %>
+              <% count_products += item["quantity"]%>
+              <% end %>
+              <b>(<%= count_products %>)</b>
             </span>
             <b class="caret"> </b>
             <% end %>

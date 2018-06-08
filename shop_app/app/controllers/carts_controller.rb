@@ -23,28 +23,41 @@ class CartsController < BaseController
     order_detail = Order.new item_params
     result = find_product_in_cart(order_detail.product_id)
     if order_detail.quantity.nil? || order_detail.quantity <= 0
-      flash[:danger] = "add failed"
+      flash[:danger] = "Add to cart failed"
       redirect_to root_path
     elsif result
       check_quantity result, order_detail.quantity
     else
       session[:shopping_cart] << order_detail
-      flash[:success] = "add success"
+      flash[:success] = "Add to cart success"
       redirect_to root_path
     end
 
   end
 
   def update
+
     product = Product.find_by id: params[:id]
-    quantity = params[:quantity].to_i
-    if quantity > product.quantity || quantity <= 0
-      flash[:danger] = "invalid quantity"
-    else
-      result = find_product_in_cart(product.id)
-      result["quantity"] = quantity
-      flash[:success] = "apply success"
+    cart_item_quantity = find_product_in_cart(product.id)["quantity"]
+      if params[:button] == "-"
+      quantity = cart_item_quantity - 1
+      if quantity <= 0
+      flash[:danger] = "At least 1 product"
+      else
+        result = find_product_in_cart(product.id)
+        result["quantity"] = result["quantity"] - 1
+      end
+    else 
+      quantity = cart_item_quantity + 1
+      if quantity > product.quantity
+      flash[:danger] = "Invalid quantity of product"
+      else
+        result = find_product_in_cart(product.id)
+        result["quantity"] = result["quantity"] + 1
+      end
+
     end
+
     redirect_to carts_path
   end
 
@@ -52,7 +65,7 @@ class CartsController < BaseController
     session[:shopping_cart].each do |item|
       session[:shopping_cart].delete(item) if item["product_id"] == params[:id].to_i
     end
-    flash[:success] = "delete success"
+    flash[:success] = "Delete success"
     redirect_to carts_path
   end
 
@@ -66,7 +79,7 @@ class CartsController < BaseController
     current_order
     @product = Product.find_by id: params[:product_id]
     return if @product
-    flash[:danger] = "not found product"
+    flash[:danger] = "Not found product"
     redirect_to root_path
   end
   

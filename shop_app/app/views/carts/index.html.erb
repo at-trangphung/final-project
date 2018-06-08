@@ -21,10 +21,23 @@
       <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
           <div class="contentBox">
             <div class="w100 costDetails">
-              <div class="table-block" id="order-detail-content"><a class="btn btn-primary btn-lg btn-block "
-                title="checkout" href="checkout-0.html"
-                style="margin-bottom:20px"> Proceed to
-                checkout &nbsp; <i class="fa fa-arrow-right"></i> </a>
+              <div class="table-block" id="order-detail-content">
+
+              <% if session[:shopping_cart].empty? %>
+                <a class="btn btn-lg btn-block btn-primary btn-lg disabled "
+                title="checkout"
+                style="margin-bottom:20px"> 
+                Proceed to checkout &nbsp; 
+                <i class="fa fa-arrow-right"></i> 
+                </a>
+              <% else %>  
+                <%= link_to root_path, class: "btn btn-primary btn-lg btn-block" ,
+                  id: "order-detail-content", style: "margin-bottom:20px" do%>
+                  <span>Proceed to checkout &nbsp; </span>
+                  <i class="fa fa-arrow-right"> </i>
+                <% end %>
+               
+              <% end %>
 
                 <div class="w100 cartMiniTable">
                   <table id="cart-summary" class="std table">

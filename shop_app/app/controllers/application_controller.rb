@@ -8,9 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cart
+    @count_products = 0     
     @order_items = []
     current_order.each do |item|
       @order_items << Order.new(item)
+      @count_products += item["quantity"]
+
     end
     @order_items
   end
