@@ -10,6 +10,11 @@ class ShopController < BaseController
     @listProduct = @service_shop.search_product
   end
 
+  def show
+    @categories = Category.all.where(parent_id: 0)
+    @productByCategory =  Category.all.where(parent_id: params[:id]).paginate page: params[:page], per_page: 9
+  end  
+
   private
 
 end

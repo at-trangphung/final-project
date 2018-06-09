@@ -17,8 +17,11 @@
               
               <% @category_child.each do |category_child| %>
               <ul class="category-level-2 dropdown-menu-tree">
-                <li class="dropdown-tree"><a class="dropdown-tree-a" href="sub-category.html">
-                <%= category_child.name %></a>
+                <li class="dropdown-tree">
+                <!-- <a class="dropdown-tree-a" href="sub-category.html"> -->
+                  <%= link_to shop_path(category_child) do %>
+                    <%= category_child.name %>
+                  <% end %>
                 </li>
               </ul>
               <% end %>

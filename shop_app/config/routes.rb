@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/search' => 'shop#search'
   post '/search' => 'shop#search'
 
-  resources :shop, only: [:index, :create]
+  resources :shop, only: [:index, :create, :show]
   resources :sessions, only: [:create, :destroy]
   resources :users
   resources :products
