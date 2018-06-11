@@ -1,240 +1,196 @@
 <div class="navbar navbar-tshop navbar-fixed-top megamenu" role="navigation">
   <div class="navbar-top">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
-                  <div class="pull-left ">
-                      <ul class="userMenu ">
-                          <li><a href="#"> <span class="hidden-xs">HELP</span><i
-                                  class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a></li>
-                          <li class="phone-number"><a href="callto:+12025550151"> <span> <i
-                                  class="fas fa-phone-volume"></i></span> <span class="hidden-xs"
-                                                                                           style="margin-left:5px"> +1-202-555-0151 </span>
-                          </a></li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
-                  <div class="pull-right">
-                      <ul class="userMenu">
-                      
-                          <% if @service_user.current_user %>
-                             <li class="hidden-xs"><%= link_to @service_user.current_user.email, user_path(@service_user.current_user) %></li>
-                            <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
-                          <% else %>  
-                             <li class="hidden-xs"><%= link_to 'Sign In', login_path %></li>
-                             <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %></li>
-                          <% end %>
-                          
-                      </ul>
-                  </div>
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+          <div class="pull-left ">
+            <ul class="userMenu ">
+              <li>
+                <a href="#"> 
+                  <span class="hidden-xs">HELP</span>
+                  <i class="glyphicon glyphicon-info-sign hide visible-xs "></i>
+                </a>
+              </li>
+              <li class="phone-number">
+                <a href="callto:+12025550151"> 
+                  <span> <i class="fas fa-phone-volume"></i>
+                  </span> 
+                  <span class="hidden-xs" style="margin-left:5px"> +1-202-555-0151
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+          <div class="pull-right">
+            <ul class="userMenu">
+
+              <% if @service_user.current_user %>
+              <li class="hidden-xs"><%= link_to @service_user.current_user.email, user_path(@service_user.current_user) %></li>
+              <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
+              <% else %>  
+              <li class="hidden-xs"><%= link_to 'Sign In', login_path %></li>
+              <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %></li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
   <!--/.navbar-top-->
 
   <div class="container">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-                  class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span
-                  class="icon-bar"> </span> <span class="icon-bar"> </span></button>
-          <%= button_tag :class => 'navbar-toggle', :type => 'button' do %>
-            <i class="fa fa-shopping-cart colorWhite"> </i>
-            <span class="cartRespons colorWhite"> Cart ($210.00) </span>
-          <% end %>
-          
-          <%= link_to 'Caferia Coffee', root_path, class: 'navbar-brand' %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
+        class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span
+        class="icon-bar"> </span> <span class="icon-bar"> </span></button>
+        <%= button_tag :class => 'navbar-toggle', :type => 'button' do %>
+        <i class="fa fa-shopping-cart colorWhite"> </i>
+        <span class="cartRespons colorWhite"> Cart ($210.00) </span>
+        <% end %>
 
-          <!-- this part for mobile -->
-          <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
-              <div class="input-group">
-                <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'submit' do %>
-                  <i class="fa fa-search"></i>
-                <% end %>
-                  <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
-              </div>
-              <!-- /input-group -->
+        <%= link_to 'Caferia Coffee', root_path, class: 'navbar-brand' %>
 
+        <!-- this part for mobile -->
+        <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
+          <div class="input-group">
+            <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'submit' do %>
+            <i class="fa fa-search"></i>
+            <% end %>
+            <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
           </div>
+          <!-- /input-group -->
+
+        </div>
       </div>
 
       <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><%= link_to 'Home', root_path %></li>
-          </ul>
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'Home', root_path %></li>
+        </ul>
 
-          <div class="nav navbar-nav navbar-right hidden-xs">
-            <div class="dropdown  cartMenu ">
-              <%= link_to root_path, class: 'dropdown-toggle' do %>
-                <i class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Cart ($210.00) </span>
-                <b class="caret"> </b>
+        <div class="nav navbar-nav navbar-right hidden-xs">
+          <div class="dropdown  cartMenu ">
+            <%= link_to carts_path, class: 'dropdown-toggle' do %>
+            <i class="fa fa-shopping-cart"></i> 
+            <span class="cartRespons">
+              <% count_products = 0 %>
+              <% @order_items.each do |item| %>
+              <% count_products += item["quantity"]%>
               <% end %>
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Cart ($210.00) </span> <b class="caret"> </b> </a> -->
-
-                  <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
-                      <div class="w100 miniCartTable scroll-pane mCustomScrollbar _mCS_2" style="overflow: hidden;"><div class="mCustomScrollBox mCS-dark-2" id="mCSB_2" style="position: relative; height: 100%; overflow: hidden; max-width: 100%; max-height: 300px;"><div class="mCSB_container mCS_no_scrollbar" style="position:relative; top:0;">
-                          <table>
-                              <tbody>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img">
-                                      </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> TSHOP Tshirt DO9 </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $22 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $33 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/product/2.jpg" alt="img">
-                                      </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> TShir TSHOP 09 </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $15 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $120 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/product/5.jpg" alt="img">
-                                      </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> Tshir 2014 </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $30 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $80 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img">
-                                      </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> TSHOP T shirt DO20 </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $15 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $55 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/product/4.jpg" alt="img">
-                                      </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> T shirt Black </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $44 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $40 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              <tr class="miniCartProduct">
-                                  <td style="width:20%" class="miniCartProductThumb">
-                                      <div><a href="product-details.html"> <img src="images/site/winter.jpg" alt="img"> </a></div>
-                                  </td>
-                                  <td style="width:40%">
-                                      <div class="miniCartDescription">
-                                          <h4><a href="product-details.html"> G Star T shirt </a></h4>
-                                          <span class="size"> 12 x 1.5 L </span>
-
-                                          <div class="price"><span> $80 </span></div>
-                                      </div>
-                                  </td>
-                                  <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                                  <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                                  <td style="width:5%" class="delete"><a> x </a></td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px; height: 194px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position: relative; line-height: 194px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
-                      <!--/.miniCartTable-->
-
-                      <div class="miniCartFooter text-right">
-                          <h3 class="text-right subtotal"> Subtotal: $210 </h3>
-                          <%= link_to root_path, class: 'btn btn-sm btn-danger' do %>
-                             <i class="fa fa-shopping-cart"> </i> VIEWCART
+              <b>(<%= count_products %>)</b>
+            </span>
+            <b class="caret"> </b>
+            <% end %>
+            <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+              <div class="w100 miniCartTable scroll-pane mCustomScrollbar _mCS_2" 
+              style="overflow: hidden;">
+              <div class="mCustomScrollBox mCS-dark-2" id="mCSB_2" 
+              style="position: relative; height: 100%; overflow: hidden; max-width: 100%; max-height: 300px;"><div class="mCSB_container mCS_no_scrollbar" style="position:relative; top:0;">
+              <table>
+                <tbody>
+                  <% if @order_items %>
+                  <% @order_items.each do |item| %>
+                  <tr class="miniCartProduct">
+                    <td style="width:20%" class="miniCartProductThumb">
+                      <div>
+                        <a href="product-details.html"> 
+                          <%= link_to item.product do %>
+                          <%= image_tag "#{item.product.image_link}" %>
                           <% end %>
-
-                          <%= link_to 'CHECKOUT', checkout_index_path, class: 'btn btn-sm btn-primary' %>
-
-                          <!-- <a class="btn btn-sm btn-danger" href="cart.html"> <i class="fa fa-shopping-cart"> </i> VIEW
-                              CART </a>
-                          <a class="btn btn-sm btn-primary"> CHECKOUT </a> -->
+                        </a>
                       </div>
-                      <!--/.miniCartFooter-->
+                    </td>
+                    <td style="width:40%">
+                      <div class="miniCartDescription">
+                        <h4>
+                          <%= link_to item.product do %>
+                          <%= item.product.name %>
+                          <% end %>
+                        </h4>
+                        <div class="price">
+                          <span>
+                            <%= item.product.price %>
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="width:10%" class="miniCartQuantity">
+                      X <%= item.quantity %>
+                    </td>
+                    <td style="width:15%" class="miniCartSubtotal">
+                      <span>
+                        <%= item.product.price * item.quantity%>
+                      </span>
+                    </td>
+                    <td style="width:5%" class="delete">
+                      <%= link_to cart_path(id: item.product_id),
+                      method: :delete,
+                      data: {confirm: "Do you want delete" } do %>
+                      <span>x</span>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <% end %> 
+                  <% end %> 
+                </tbody>
+              </table>
+            </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px; height: 194px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position: relative; line-height: 194px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+            <!--/.miniCartTable-->
 
-                  </div>
-                  <!--/.dropdown-menu-->
+            <div class="miniCartFooter text-right">
+              <h3 class="text-right subtotal"> </h3>
+              <%= link_to carts_path, class: 'btn btn-sm btn-danger' do %> 
+              <i class="fa fa-shopping-cart"></i>
+              <span>VIEWCART</span>
+              <% end %>
+              <%= link_to 'CHECKOUT', root_path, class: 'btn btn-sm btn-primary' %>
+
+              <!-- <a class="btn btn-sm btn-danger" href="cart.html"> <i class="fa fa-shopping-cart"> </i> VIEW
+                  CART </a>
+                  <a class="btn btn-sm btn-primary"> CHECKOUT </a> -->
+                </div>
+              </div>
             </div>
-              <!--/.cartMenu-->
+            <!--/.cartMenu-->
 
             <div class="search-box">
-                <div class="input-group">
-                    <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
-                    <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'button' do %>
-                      <i class="fa fa-search"></i>
-                    <% end %>
-                </div>
-                <!-- /input-group -->
+              <div class="input-group">
+                <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
+                <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'button' do %>
+                <i class="fa fa-search"></i>
+                <% end %>
+              </div>
+              <!-- /input-group -->
             </div>
-              
+
             <!--/.search-box -->
           </div>
-              
+
+        </div>
+        <!--/.nav-collapse -->
+
       </div>
-      <!--/.nav-collapse -->
+      <!--/.container -->
 
-  </div>
-    <!--/.container -->
+      <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
 
-  <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
-
-      <div class="searchInputBox pull-right">
+        <div class="searchInputBox pull-right">
           <!-- <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search"
-                 class="search-input"> -->
+          class="search-input"> -->
 
           <%= form_tag('/search', method: 'get') do %>
-            <%= text_field_tag :search, nil, class: 'search-input', type: 'search', placeholder: 'start typing and hit enter to search' %>
-            <%= button_tag :class => 'btn-nobg search-btn', :type => 'submit' do %>
-             <i class="fa fa-search"></i> Search
-            <% end %>
+          <%= text_field_tag :search, nil, class: 'search-input', type: 'search', placeholder: 'start typing and hit enter to search' %>
+          <%= button_tag :class => 'btn-nobg search-btn', :type => 'submit' do %>
+          <i class="fa fa-search"></i> Search
+          <% end %>
           <% end %>
           <!-- <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button> -->
+        </div>
       </div>
-  </div>
-    <!--/.search-full-->
+      <!--/.search-full-->
 
-</div>
+    </div>

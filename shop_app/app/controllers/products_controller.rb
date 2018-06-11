@@ -2,12 +2,18 @@ class ProductsController < BaseController
   layout 'customer'
 
   def index
-    # @all_product = @service.search
+    @products = Product.all
   end
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
+    view = @product.view + 1
+    if @product.update_attributes(view: view) 
+      flash[:success] = 'Update view successed!'
+      redirect_to root_path
+
+    elsif 
+      @product.update(product_params)
       flash[:success] = 'Update image_link successed!'
       redirect_to @product
     end

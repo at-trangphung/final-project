@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   resources :category
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products, only: [:show, :update]
+  resources :carts, except: %i(new edit)
   resources :checkout
 end

@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180602055239) do
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
-    t.integer "cart_id"
+    t.integer "transaction_id"
     t.float "total_payment", limit: 24
     t.integer "status"
     t.text "data"
