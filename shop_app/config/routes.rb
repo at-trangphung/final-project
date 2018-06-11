@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'terms_conditions/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'shop#index'
 
@@ -10,7 +12,8 @@ Rails.application.routes.draw do
   post 'sign_up' => 'users#create'
   get '/search' => 'shop#search'
   post '/search' => 'shop#search'
-
+  get '/terms_conditions' => 'terms_conditions#index'
+  
   resources :shop, only: [:index, :create]
   resources :sessions, only: [:create, :destroy]
   resources :users
