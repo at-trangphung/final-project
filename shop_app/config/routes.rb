@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products, only: [:show, :update]
   resources :checkout
+  resources :articles, only: [:index, :show]
 end

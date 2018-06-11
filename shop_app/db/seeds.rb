@@ -15,3 +15,4 @@ end
   name = 'Product'  + "#{i}"
   Product.create!()
 end
+

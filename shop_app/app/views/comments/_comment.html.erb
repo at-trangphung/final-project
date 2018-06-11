@@ -1,0 +1,68 @@
+<div class="well" style="margin-top: 20px;">
+  <% if @comments  == [] %>
+    <small class="text-muted">There are no comment yet - be the first one to comment!
+    </small>
+
+  <% else %>
+  <% @comments.each do |comment|  %>
+    <p class="text-muted">Added by 
+    <strong><%= comment.user.first_name%></strong>
+    <strong><%= comment.user.last_name%></strong>
+    <div class="row">
+      <div class="col-md-1 col-lg-1 mx-1">
+        <% if comment.user[:avatar] %>
+          <%= image_tag( comment.user.avatar.url, class: "img-circle profile_img_comment") %> 
+        <% else %>  
+          <%= image_tag("default-avatar.png", class: "img-circle profile_img_comment")%>  
+        <% end %>
+      </div>
+      <div class="col-md-11 col-lg-11 mx-11 ">
+        <blockquote>
+        <p><%= comment["content"]  %></p>
+        </blockquote>
+        <div class="row">
+          <div class="col-md-1 col-lg-1 mx-1">
+            <p class="text-reply">reply</p>
+          </div>
+          <div class="col-md-11 col-lg-11 mx-11">
+            <span>
+              <%= l(comment["created_at"], format: '%B, %d %Y %H:%M:%S') %></p>
+            </span>
+          </div>
+        </div>
+        <% @comment_child = Comment.where(parent_id: comment.id)%>
+        <% @comment_child.each do |comment_child| %>
+          <p class="text-muted">replied by 
+          <strong><%= comment_child.user.first_name%></strong>
+          <strong><%= comment_child.user.last_name%></strong>
+
+          <div class="row">
+            <div class="col-md-1 col-lg-1 mx-1 ">
+              <% if comment_child.user[:avatar] %>
+                <%= image_tag(comment.user.avatar.url, class: "img-circle profile_img_comment") %> 
+              <% else %>  
+                <%= image_tag("default-avatar.png", class: "img-circle profile_img_comment")%>  
+              <% end %>
+            </div>
+            <div class="col-md-11 col-lg-11 mx-11 ">
+              <blockquote>
+              <p><%= comment_child["content"]  %></p>
+              </blockquote>
+              <div class="row">
+                <div class="col-md-1 col-lg-1 mx-1">
+                  <p class="text-reply">reply</p>
+                </div>
+                <div class="col-md-11 col-lg-11 mx-11">
+                  <span>
+                    <%= l(comment["created_at"], format: '%B, %d %Y %H:%M:%S') %></p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>
