@@ -17,7 +17,7 @@
 <% end %>
 
 <div class="w100 productFilter clearfix">
-  <p class="pull-left"> Showing <strong><%= @productList.length %></strong> products </p>
+  <p class="pull-left"> Showing <strong><%= @productByCategory.length %></strong> products </p>
 
   <div class="pull-right ">
     <div class="change-order pull-right">
@@ -35,37 +35,33 @@
 </div>
 
 <div class="row  categoryProduct xsResponse clearfix">
-  
-  <% @productList.each do |product| %>
+  <% @productByCategory.each do |item| %>
     <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
       <div class="product">
-          <%= link_to product_path(id: product.id),
-            method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
-            <i class="fas fa-heart">
-              <span><%= product.view ? product.view : 0 %></span>
-            </i>
-          <% end %>
+        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
+          <i class="fas fa-heart"></i>
+        </a>
 
         <div class="image">
-          <%= link_to product_path(product) do %>
-            <%= image_tag("#{product.image_link}", :class => 'img-responsive', 
-            alt: 'img') %>
+          <div class="quickview">
+            <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
+
+          </div>
+          <%= link_to product_path(item) do %>
+            <%= image_tag("#{item.products[0]["image_link"]}", :class => 'img-responsive', alt: 'img') %>
           <% end %>
           
-          <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= product.discount%>%</span></div>
+          <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= item.products[0]["discount"]%>%</span></div>
         </div>
         <div class="description">
-          <h4><%= product.name %></a></h4>
+          <h4><a href="product-details.html"><%= item.name %></a></h4>
           <div class="list-description">
-            <p><%= product.description%></p>
+            <p><%= item.products[0]["description"]%></p>
           </div>
           <span class="size">S/ M/ L </span>
         </div>
-        <div class="price"><span><%= product.price %> VND</span></div>
-        <div class="action-control">
-          <%= link_to product_path(product.id), class: "btn btn-primary" do %>
-            <span>View Details Product</span>
-          <% end %>
+        <div class="price"><span><%= item.products[0]["price"]%> VND</span></div>
+        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a>
         </div>
       </div>
     </div>
@@ -73,6 +69,6 @@
 </div>
 <div class="row categoryFooter">
   <div class="col-lg-offset-4 col-lg-8 ">
-    <%= will_paginate(@productList, renderer: BootstrapPagination::Rails)%>
+    <%= will_paginate(@productByCategory, renderer: BootstrapPagination::Rails) %>
   </div>
 </div>

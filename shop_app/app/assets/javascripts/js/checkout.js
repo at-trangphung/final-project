@@ -49,18 +49,14 @@ function delivery_time() {
   }
 }
 
-function cb_payment() {
+function cb_payment_fnc() {
   var btn_payment = document.getElementById('btn_payment');
   var cb_payment = document.getElementById('cb_payment');
-
+  
   if (cb_payment.checked === true) {
     btn_payment.disabled = false;
   } else {
     btn_payment.disabled = true;
   }
 
-}
-
-function terms_conditions() {
-  window.open("http://localhost:3000/terms_conditions");
 }

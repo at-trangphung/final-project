@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'thanks_for_order/index'
+
   get 'terms_conditions/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -12,9 +14,9 @@ Rails.application.routes.draw do
   post 'sign_up' => 'users#create'
   get '/search' => 'shop#search'
   post '/search' => 'shop#search'
-  get '/terms_conditions' => 'terms_conditions#index'
-  
-  resources :shop, only: [:index, :create]
+  get '/thanks_for_order' => 'thanks_for_order#index'
+
+  resources :shop, only: [:index, :create, :show]
   resources :sessions, only: [:create, :destroy]
   resources :users
   resources :products
@@ -22,5 +24,8 @@ Rails.application.routes.draw do
   resources :category
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products, only: [:show, :update]
+  resources :carts, except: %i(new edit)
   resources :checkout
+  resources :transactions, controller: :checkout
+  resources :terms_conditions, only: [:index]
 end
