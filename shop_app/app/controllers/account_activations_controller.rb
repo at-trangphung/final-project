@@ -1,7 +1,7 @@
 class AccountActivationsController < BaseController
   def edit
-    # user = User.find_by(email: params[:email])
-    user = User.find_by(email: current_user.email)
+    user = User.find_by(email: params[:email])
+    # user = User.find_by(email: current_user.email)
     # binding.pry
     if user && !user.activated?
       user.activate
@@ -17,4 +17,5 @@ class AccountActivationsController < BaseController
       redirect_to root_path
     end
   end
+
 end

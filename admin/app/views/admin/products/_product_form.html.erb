@@ -4,29 +4,36 @@
     <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
   </div>
   <div class="form-group">
-    <%= f.label :detail %>
-    <%= f.text_area :detail, class: "form-control", placeholder: "Detail product"%>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Detail product"%>
   </div>
   <div class="form-group">
     <%= f.label :price %>
     <%= f.number_field :price, class: "form-control", placeholder: "Price" %>
   </div>
   <div class="form-group">
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity, class: "form-control", placeholder: "Quantity" %>
+    <%= f.label :image_link %>
+    <%= f.file_field :image_link, accept: 'image/jpeg, image/gif, image/png',
+    class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :picture %>
-    <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+    <%= f.label :category_id, "Category" %>
+    <%= f.select(:category_id,{ class:"form-control" }) do  %>
+      <%= @categories.each do |item| %> 
+        <%subcategories = Category.where(parent_id: item.id) %>
+        <optgroup label='<%= item.name%>'.html_safe >
+          <% subcategories.each do |sub|%>
+            <option value='<%= sub.id %>'.html_safe><%=sub.name%></option>
+          <% end %>
+        </optgroup> 
+      <% end %> 
+    <% end %>
+
   </div>
-  <div class="form-group">
-    <%= f.label :category_id, "category" %>
-    <%= f.collection_select :category_id, Category.where(parent_id:0), :id, :name, {}, class: "form-control" %>
-  </div>
-    <div class="col-sm-2">
+    <div class="col-sm-offset-2 col-sm-2">
       <%= link_to "Cancel" , products_path ,class: "btn btn-primary"%>
     </div>
-    <div class="col-sm-offset-2 col-sm-2">
+    <div class="col-sm-offset-4 col-sm-2">
       <%= f.submit ("Save"),class: "btn btn-primary" %>
     </div>
 <% end %>

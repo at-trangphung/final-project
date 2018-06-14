@@ -1622,7 +1622,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .banner {
-    margin-top: 80px;
+    /*margin-top: 80px;*/
     -webkit-transition: all 0.1s ease-out 0s;
     -moz-transition: all 0.1s ease-out 0s;
     -ms-transition: all 0.1s ease-out 0s;
@@ -1641,7 +1641,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 .banner, .slider-content, .slider, .slider-v2 {
     width: 100%;
     display: block;
-    max-height: 540px;
+    /*max-height: 540px;*/
     height: auto;
     overflow: hidden;
     position: relative;
@@ -2756,7 +2756,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 
 .description {
     margin: 0 auto;
-    min-height: 107px;
+    /*min-height: 107px;*/
     max-width: 235px;
 }
 
@@ -3270,6 +3270,10 @@ h5.parallaxSubtitle {
     padding-top: 120px;
 }
 
+.headerOffset-checkout {
+    padding-top: 0px;
+}
+
 .category-top > h2 {
     color: #303030;
     font-weight: 700;
@@ -3423,7 +3427,6 @@ h5.parallaxSubtitle {
 
 .categoryFooter {
     border-top: solid 1px #eee;
-    padding-top: 20px;
     margin-top: 0;
 }
 

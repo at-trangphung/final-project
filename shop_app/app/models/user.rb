@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :password, allow_blank: true, confirmation: true, password_strong: true, on: :update
   validates :phone, allow_blank: true, phone_number: true, on: :update
   validate  :picture_size
+  #strong params
+  # USER_PARAMS = [user: {:email, :password, :password_confirmation, :first_name, :last_name}]
   # belongs_to :role
   has_many :comments
   has_many :articles, through: :comments

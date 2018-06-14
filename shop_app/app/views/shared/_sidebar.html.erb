@@ -7,22 +7,29 @@
   </div>
   <div id="collapseCategory" class="panel-collapse collapse in">
     <div class="panel-body">
-      <% @categories.each do |categories| %>
-        <ul class="nav nav-pills nav-stacked tree">
-          <li class="active dropdown-tree open-tree"><a class="dropdown-tree-a">
-          <% @category_child = Category.where(parent_id: categories.id)%>
-          <span class="badge pull-right"><%= @category_child.size %></span> <%= categories.name %> </a>
-            
-            <% @category_child.each do |category_child| %>
-            <ul class="category-level-2 dropdown-menu-tree">
-              <li class="dropdown-tree"><a class="dropdown-tree-a" href="sub-category.html">
-              <%= category_child.name %></a>
-              </li>
-            </ul>
-            <% end %>
-          </li>
-        </ul> 
-      <% end %>   
+
+      <% if @categories %>
+        <% @categories.each do |categories| %>
+          <ul class="nav nav-pills nav-stacked tree">
+            <li class="active dropdown-tree open-tree"><a class="dropdown-tree-a">
+            <% @category_child = Category.where(parent_id: categories.id)%>
+            <span class="badge pull-right"><%= @category_child.size %></span> <%= categories.name %> </a>
+              
+              <% @category_child.each do |category_child| %>
+              <ul class="category-level-2 dropdown-menu-tree">
+                <li class="dropdown-tree">
+                <!-- <a class="dropdown-tree-a" href="sub-category.html"> -->
+                  <%= link_to shop_path(category_child) do %>
+                    <%= category_child.name %>
+                  <% end %>
+                </li>
+              </ul>
+              <% end %>
+            </li>
+          </ul> 
+        <% end %>
+      <% end %>
+         
     </div>
   </div>
 </div>

@@ -10,14 +10,13 @@
             <th>id</th>
             <th class="th-product">Picture</th>
             <th>Name</th>
-            <th>Quantity</th>
             <th>Price</th>
             <th>Category_id</th>
             <th>Function</th>
           </tr>
         </thead>
         <tbody>
-          <%= render partial: "product", collection: @products %>
+          <%= render partial: "product", collection: @productList %>
         </tbody>
       </table>
     </div>
