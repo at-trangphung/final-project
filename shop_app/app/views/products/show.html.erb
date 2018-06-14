@@ -125,22 +125,21 @@
         <!-- productFilter -->
 
         <div class="cart-actions">
-          <div class="addto row">
+          <div class="add to row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <button onclick="productAddToCartForm.submit(this);"
-                  class="button btn-block btn-cart cart first" title="Add to Cart" type="button">Add
-                to Cart
-              </button>
+              <%= button_to carts_path(product_id: @product.id, quantity: 1), 
+                method: :create,
+                class: "btn btn-primary" do %>
+                <span>Add to Cart</span>
+              <% end %>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a class="link-wishlist wishlist btn-block ">Add
               to Wishlist</a></div>
           </div>
           <div style="clear:both"></div>
           <h3 class="incaps"><i class="fa fas fa-check-circle color-in"></i> In stock</h3>
-
           <h3 style="display:none" class="incaps"><i class="fa fa-minus-circle color-out"></i> Out of stock
           </h3>
-
           <h3 class="incaps"><i class="fas fa-lock"></i> Secure online ordering</h3>
         </div>
         <!--/.cart-actions-->

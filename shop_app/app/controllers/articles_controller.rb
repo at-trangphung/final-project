@@ -1,6 +1,6 @@
 class ArticlesController < BaseController
   layout 'customer'
-  before_action :logged_in?
+
   def index
     @categories = Category.all.where(parent_id: 0)
     @articles = Article.all.paginate page: params[:page], per_page: 9

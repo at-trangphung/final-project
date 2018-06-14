@@ -1,33 +1,6 @@
 <% content_for :script, javascript_include_tag(:shop) %>
-<% content_for :script do %>
-  
-  <!-- include smoothproducts // product zoom plugin  -->
-  <script type="text/javascript" src="../assets/js/smoothproducts.min.js"></script>
-
-  <!-- jquery-migrate only for product details -->
-  <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-
-  <!-- include  parallax plugin -->
-  <script type="text/javascript" src="../assets/js/jquery.parallax-1.1.js"></script>
-
-  <!-- optionally include helper plugins -->
-  <script type="text/javascript" src="../assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
-
-  <!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
-
-  <script type="text/javascript" src="../assets/js/jquery.mCustomScrollbar.js"></script>
-
-  <!-- include icheck plugin // customized checkboxes and radio buttons   -->
-  <script type="text/javascript" src="../assets/plugins/icheck-1.x/icheck.min.js"></script>
-
-
-
-<% end %>
-
-<%= form_with model: @article, local: true do |form| %>
 <div class="container main-container">
   <div class="row">
-
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="main-image col-lg-12 no-padding">
       <%#= image_tag("#{@article.image_link}", :class => 'img-responsive', alt: 'img') %>
@@ -35,29 +8,21 @@
       style="width: 500px"></a>
       </div>
     </div>
-
     <div class="col-lg-6 col-md-6 col-sm-5">
       <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12">
           <h2><b><%= @article.title %></b></h2>
         </div>
       </div>
-     
       <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12">
-          <div class="">
             <%= @article.content %>
-          </div>
         </div>
       </div>
-
-
       <div class="clear"></div>
-
       <div style="clear:both"></div>
       <div class="product-share clearfix">
         <p> SHARE </p>
-
         <div class="socialIcon">
           <a href="#"><i class="fab fa-facebook-f"></i></a> 
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -67,13 +32,15 @@
       </div>
     </div>
   </div>
-  <div class="row recommended">
-    <h1> COMMENTs </h1>
+  <div class="row" style="margin: 20px 0px">
       <div>
+        <% if @service_user.current_user %>
+          <%= render 'comments/form'%> 
+        <% end %>
+        <h2> COMMENTs </h2>
         <%= render 'comments/comment'%> 
       </div>
     </div>
   </div>
 </div>
 <div style="clear:both"></div>
-<% end %>

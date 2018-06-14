@@ -15,4 +15,5 @@ class BaseController < ApplicationController
   def logged_in?
     @service_user.current_user.present?
   end
+
 end

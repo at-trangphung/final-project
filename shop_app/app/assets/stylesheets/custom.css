@@ -5,7 +5,8 @@
   z-index: 1000;
   position: inherit;
   border: 1px solid rgba(52,73,94,.44);
-  padding: 2px;
+  padding: 1px;
+  margin-left: 15px;
 }
 .img-circle.profile_img {
   width: 150px;
@@ -70,4 +71,26 @@ img {
     line-height: 1.4;
     padding: 8px 20px;
     transition: all 0.25s linear 0s;
+}
+.pb-cmnt-textarea {
+  resize: none;
+  padding: 20px;
+  height: 130px;
+  width: 80%;
+  border: 1px solid rgba(52,73,94,.44);
+}
+.btn-comment {
+  border-radius: 15%;
+  width: 45px;
+}
+.content-comment {
+  border:1px solid rgba(52,73,94,.44);
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #E4EDF1;
+  background-attachment: fixed;
+}
+.item-comment {
+  margin-top: 10px;
 }

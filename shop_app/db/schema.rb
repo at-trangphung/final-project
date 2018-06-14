@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20180610154223) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.integer "parent_id"
+    t.integer "parent_id", default: 0
     t.integer "sort_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20180610154223) do
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
-    t.integer "cart_id"
+    t.integer "transaction_id"
     t.float "total_payment", limit: 24
     t.integer "status"
     t.text "data"
@@ -60,30 +61,23 @@ ActiveRecord::Schema.define(version: 20180610154223) do
   end
 
   create_table "product_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "products_id"
-    t.bigint "sizes_id"
-    t.bigint "types_id"
+    t.integer "product_id"
+    t.integer "size_id"
+    t.integer "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["products_id"], name: "index_product_options_on_products_id"
-    t.index ["sizes_id"], name: "index_product_options_on_sizes_id"
-    t.index ["types_id"], name: "index_product_options_on_types_id"
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id"
+    t.integer "category_id"
     t.string "name"
     t.float "price", limit: 24
-    t.integer "quantity"
     t.text "description"
     t.integer "discount"
     t.string "image_link"
     t.integer "view"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["name"], name: "index_products_on_name"
-    t.index ["price"], name: "index_products_on_price"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
