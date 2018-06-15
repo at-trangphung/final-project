@@ -72,3 +72,15 @@ function cb_receiver_fnc() {
     }
   }
 }
+
+function select_price_fnc(id_tab) {
+  for (let i = 1; i <= 3; i++){
+    var size_show  = document.getElementById('size_'+i);
+    var price_show = document.getElementById('price'+i);
+    if (i === id_tab) {
+      option_show.style.display = 'block';
+    } else {
+      option_show.style.display = 'none';
+    }
+  }
+}

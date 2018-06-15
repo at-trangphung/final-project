@@ -23,8 +23,7 @@ class ProductsController < BaseController
 
   def show
     @product = Product.find(params[:id])
-    price = @product.product_options.map{ |p| p.price }
-    binding.pry
+    @price = @product.product_options
     @sizes = Product.find_by(id: params[:id]).sizes
     @types = Product.find_by(id: params[:id]).types.distinct
   end
