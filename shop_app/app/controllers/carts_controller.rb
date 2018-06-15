@@ -24,7 +24,7 @@ class CartsController < BaseController
     result = find_product_in_cart(order_detail.product_id)
     if order_detail.quantity.nil? || order_detail.quantity <= 0
       flash[:danger] = "Add to cart failed"
-      redirect_to root_path
+      redirect_to @product
     elsif result
       check_quantity result, order_detail.quantity
     else

@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   resources :products, only: [:show, :update]
   resources :carts, except: %i(new edit)
   resources :checkout
+  resources :articles do 
+    resources :comments
+  end
+
 end
