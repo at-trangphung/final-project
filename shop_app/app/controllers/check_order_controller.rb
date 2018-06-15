@@ -1,0 +1,3 @@
+class CheckOrderController < ApplicationController
+
+end

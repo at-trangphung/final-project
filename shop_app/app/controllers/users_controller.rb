@@ -48,7 +48,7 @@ class UsersController < BaseController
   end
    
   def destroy
-    log_out @user
+    @service_user.log_out
     @user.destroy
     redirect_to root_path  
   end

@@ -1,8 +1,8 @@
 class PasswordResetsController < BaseController
   layout 'customer'
   before_action :get_user,   only: [:edit, :update]
-  # before_action :valid_user, only: [:edit, :update]
-  # before_action :check_expiration, only: [:edit, :update]  
+  before_action :valid_user, only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]  
 
   def new
     
@@ -33,7 +33,7 @@ class PasswordResetsController < BaseController
       render 'edit'
     elsif @user.update_attributes(user_params)
       # session[:user_id] = @user.id
-      @service_user.login!
+      @service_user.login!(@user)
       @user.update_attribute(:reset_digest, nil)
 
       flash[:success] = "Password has been reset."
@@ -60,11 +60,11 @@ class PasswordResetsController < BaseController
     end
 
     # Confirms a valid user.
-    # def valid_user
-    #   @user = User.find_by(email: params[:email])
-    #   unless (@user && @user.activated?)
-    #     redirect_to root_url
-    #   end
-    # end
+    def valid_user
+      @user = User.find_by(email: params[:email])
+      unless (@user && @user.activated?)
+        redirect_to root_url
+      end
+    end
 
 end
