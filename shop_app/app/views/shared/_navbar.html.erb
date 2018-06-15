@@ -96,7 +96,7 @@
                           </a>
                         </div>
                       </td>
-                      <td style="width:40%">
+                      <td style="width:30%">
                         <div class="miniCartDescription">
                           <h4>
                             <%= link_to item.product do %>
@@ -105,17 +105,20 @@
                           </h4>
                           <div class="price">
                             <span>
-                              <%= item.product.price %>
+                              <%= item.price %>
                             </span>
                           </div>
                         </div>
+                      </td>
+                      <td style="width:10%" class="miniCartQuantity">
+                         <%= item.size %>
                       </td>
                       <td style="width:10%" class="miniCartQuantity">
                         X <%= item.quantity %>
                       </td>
                       <td style="width:15%" class="miniCartSubtotal">
                         <span>
-                          <%= item.product.price.to_i * item.quantity.to_i %>
+                          <%= item.price.to_f * item.quantity.to_f %>
                         </span>
                       </td>
                       <td style="width:5%" class="delete">

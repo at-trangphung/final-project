@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
   protect_from_forgery with: :exception
-  attr_reader :service_user, :service_shop
+  attr_reader :service_user, :service_shop, :service_checkout, :service_cart
 
   # include Services
   include ViewHelper
@@ -12,6 +12,8 @@ class BaseController < ApplicationController
   def get_service
     @service_user = UserServices.new(session, cookies, params)
     @service_shop = ShopServices.new(params)
+    @service_checkout = CheckoutServices.new(params)
+    @service_cart = CartServices.new(params, session)
   end
 
   def logged_in?
@@ -19,7 +21,7 @@ class BaseController < ApplicationController
   end
 
   def current_order
-    @current_order = session[:shopping_cart] ? session[:shopping_cart] : []
+    session[:shopping_cart] ||= session[:shopping_cart]
   end
 
   def load_cart
@@ -29,9 +31,8 @@ class BaseController < ApplicationController
     @total = 0
     current_order.each do |item|
       @count_products += item["quantity"]
-      product = Product.find_by(id: item["product_id"])
-      @total += (item["quantity"].to_i * product.price.to_i)
-      item["total_payment"] = (item["quantity"].to_i * product.price.to_i)
+      @total += (item["quantity"].to_f * item["price"].to_f)
+      item["total_payment"] = (item["quantity"].to_f * item["price"].to_f)
       @order_items << Order.new(item)
     end
     @order_items

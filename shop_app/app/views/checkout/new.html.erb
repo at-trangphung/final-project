@@ -1,20 +1,5 @@
 <% content_for :title, 'Shop Cafe' %>
 <% content_for :script, javascript_include_tag(:shop) %>
-<% content_for :script do %>
-<!-- include  parallax plugin -->
-<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
-
-<!-- optionally include helper plugins -->
-<script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
-
-<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
-
-<script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
-
-<!-- include icheck plugin // customized checkboxes and radio buttons   -->
-<script type="text/javascript" src="assets/js/icheck.min.js"></script>
-
-<% end %>
 
 <div class="container main-container headerOffset-checkout">
   <div class="row">
@@ -178,7 +163,7 @@
                   <div class="cartFooter w100">
                     <div class="box-footer">
                       <div class="pull-left">
-                        <%= link_to root_path, class: 'btn btn-default' do %>
+                        <%= link_to root_path, class: 'btn btn-primary btn-small' do %>
                           <i class="fa fa-arrow-left"></i> &nbsp; Back to Shop </a>
                         <% end %>
                       </div>
@@ -199,10 +184,10 @@
                   </h2>
                 </div>
 
-                <div class="col-xs-12 col-sm-12" hidden>
+                <div class="col-xs-12 col-sm-12">
                   <label class="checkbox-inline checkbox-order col-md-5" for="checkboxes-0">
                     <div class="icheckbox_square-green iCheck-margin" style="position: relative;">
-                      <input name="checkboxes" id="checkbox-form" checked type="checkbox" style="position: absolute;">                    
+                      <input name="checkboxes" id="cb_receiver" onclick="cb_receiver_fnc()" type="checkbox">                    
                     </div>
                     My delivery and billing addresses are the same. 
                   </label>
@@ -254,7 +239,7 @@
                 <div class="cartFooter w100">
                   <div class="box-footer">
                     <div class="pull-left">
-                      <%= button_tag type: 'button', class: 'btn btn-default', onclick: 'load_steps_checkout(1)' do %>
+                      <%= button_tag type: 'button', class: 'btn btn-primary btn-small', onclick: 'load_steps_checkout(1)' do %>
                         <i class="fa fa-arrow-left"></i> &nbsp; Shipping address 
                       <% end %>
                     </div>
@@ -321,7 +306,7 @@
                 <div class="cartFooter w100">
                   <div class="box-footer">
                       <div class="pull-left">
-                        <button type="button" class="btn btn-default" onclick="load_steps_checkout(2)">
+                        <button type="button" class="btn btn-primary btn-small" onclick="load_steps_checkout(2)">
                           <i class="fa fa-arrow-left"></i> &nbsp; Shipping method 
                         </button>
                       </div>
@@ -383,7 +368,7 @@
 
                 <div class="cartFooter w100">
                   <div class="box-footer">
-                    <div class="pull-left"><button type="button" class="btn btn-default" onclick="load_steps_checkout(3)"> <i class="fa fa-arrow-left"></i> &nbsp; Shipping address </button>
+                    <div class="pull-left"><button type="button" class="btn btn-primary btn-small" onclick="load_steps_checkout(3)"> <i class="fa fa-arrow-left"></i> &nbsp; Shipping address </button>
                     </div>
                   </div>
                 </div>
@@ -423,7 +408,7 @@
                                 </h4>
                                 <div class="price">
                                   <span>
-                                    <%= order_detail.product.price %>
+                                    <%= order_detail.price %>
                                   </span>
                                 </div>
                               </div>
@@ -431,7 +416,7 @@
                             <td>
                               <%= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
                             </td>
-                            <td class="price"><%= order_detail.quantity * order_detail.product.price.to_i %></td>
+                            <td class="price"><%= order_detail.quantity * order_detail.price.to_f %></td>
                           </tr>
                         <% end %>
                       </tbody>
@@ -441,7 +426,7 @@
 
                 <div class="cartFooter w100">
                   <div class="box-footer">
-                    <div class="pull-left"><button type="button" class="btn btn-default" onclick="load_steps_checkout(4)"><i class="fa fa-arrow-left"></i> &nbsp; Payment method 
+                    <div class="pull-left"><button type="button" class="btn btn-primary btn-small" onclick="load_steps_checkout(4)"><i class="fa fa-arrow-left"></i> &nbsp; Payment method 
                       </button>
                     </div>
                     <div class="pull-right">

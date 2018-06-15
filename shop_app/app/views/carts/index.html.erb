@@ -51,36 +51,53 @@
                       </a></h4>
                       <div class="price">
                         <span>
-                          <%= order_detail.product.price %>
+                          <%= order_detail.price %>
                         </span>
                       </div>
                     </div>
                   </td>
                   <td class="delete">
-                    <%= link_to cart_path(id: order_detail.product_id),
+                    <%= link_to cart_path(id: order_detail.product_id, size: order_detail.size),
                         method: :delete,
                         data: {confirm: "Do you want delete" } do %>
                       <%= content_tag :i, "", class: "fa fa-trash fa-2x" %>
                     <% end %>
                   </td>
                   <td>
+                    <%= order_detail.size %>
                   </td>
-                  <td></td>
                   <td>
-                    <%= form_tag cart_path(id: order_detail.product_id), method: :put do %>
-                      <%= button_tag type: "submit", value: "-", class: "btn btn-sm btn-primary",
+                    <%= order_detail.type %>
+                  </td>
+                  <td>
+                    <%= form_with scope: :cart, url: cart_path(id: order_detail.product_id), method: :put, local: true do |form| %>
+                    <%#= form_tag cart_path(id: order_detail.product_id, size: order_detail.size), method: :put do %>
+                      <%= form.button value: "-", class: "btn btn-sm btn-primary",
                       style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
-                      <%= content_tag :span, " - " %>
+                       <%= content_tag :span, " - " %>
                       <% end %>
-                        
+
+                      <%= form.hidden_field :size, value: order_detail.size %>
                       <%= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
-                      <%= button_tag type: "submit", value: "+", class: "btn btn-sm btn-primary",
+                      <%= form.button value: "+", class: "btn btn-sm btn-primary",
                       style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
-                      <%= content_tag :span, " + " %>
+                        <%= content_tag :span, " + " %>
                       <% end %>
                     <% end %>
+                    <%#= form_tag cart_path(id: order_detail.product_id, size: order_detail.size), method: :put do %>
+                      <%#= button_tag type: "submit", value: "-", class: "btn btn-sm btn-primary",
+                      style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
+                       <%#= content_tag :span, " - " %>
+                      <%# end %>
+                      
+                      <%#= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
+                      <%#= button_tag type: "submit", value: "+", class: "btn btn-sm btn-primary",
+                      style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
+                        <%#= content_tag :span, " + " %>
+                      <%# end %>
+                    <%# end %>
                   </td>
-                  <td class="price"><%= order_detail.quantity.to_i * order_detail.product.price.to_i %></td>
+                  <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -104,8 +121,7 @@
     <div class="contentBox">
       <div class="w100 costDetails">
         <div class="table-block" id="order-detail-content">
-
-          <% if session[:shopping_cart].nil? %>
+          <% if session[:shopping_cart].blank? %>
             <a class="btn btn-lg btn-block btn-primary btn-lg disabled "
             title="checkout"
             style="margin-bottom:20px"> 

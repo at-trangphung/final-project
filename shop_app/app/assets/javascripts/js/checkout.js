@@ -6,7 +6,7 @@ function load_steps_checkout(id_tab) {
     	order_show.classList.add('active');
       div_show.style.display = 'block';
       if (id_tab === 2) {
-        var checkbox = document.getElementById('checkbox-form');
+        var checkbox = document.getElementById('cb_receiver');
         for (let i = 1; i <= 7; i++) {
           var object_address  = document.getElementById('object_address_'+i);
           var object_billing  = document.getElementById('object_billing_'+i);
@@ -59,4 +59,16 @@ function cb_payment_fnc() {
     btn_payment.disabled = true;
   }
 
+}
+
+function cb_receiver_fnc() {
+  for (let i = 1; i <= 7; i++) {
+    var object_address  = document.getElementById('object_address_'+i);
+    var object_billing  = document.getElementById('object_billing_'+i);
+    if (cb_receiver.checked == true) {
+      object_billing.value = object_address.value;
+    } else {
+      object_billing.value = "";
+    }
+  }
 }

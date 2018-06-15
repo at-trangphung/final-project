@@ -1,6 +1,6 @@
 class ShopController < BaseController
   before_action :logged_in?
-  before_action :current_order
+  
   def index
     @categories = Category.all.where(parent_id: 0)
     @productList = Product.all.paginate page: params[:page],

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/show'
+
   get 'thanks_for_order/index'
 
   get 'terms_conditions/index'
@@ -28,4 +32,5 @@ Rails.application.routes.draw do
   resources :checkout
   resources :transactions, controller: :checkout
   resources :terms_conditions, only: [:index]
+  # resources :check_order, only: :show
 end

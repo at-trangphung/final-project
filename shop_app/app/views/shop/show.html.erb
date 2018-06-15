@@ -1,20 +1,5 @@
 <% content_for :title, 'Shop Cafe' %>
 <% content_for :script, javascript_include_tag(:shop) %>
-<% content_for :script do %>
-<!-- include  parallax plugin -->
-<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
-
-<!-- optionally include helper plugins -->
-<script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
-
-<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
-
-<script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
-
-<!-- include icheck plugin // customized checkboxes and radio buttons   -->
-<script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
-
-<% end %>
 
 <div class="w100 productFilter clearfix">
   <p class="pull-left"> Showing <strong><%= @productByCategory.length %></strong> products </p>

@@ -16,8 +16,7 @@
       <div class="row userInfo">
 
         <div class="thanxContent text-center">
-
-          <h1> Thank you for your order <a>#<%= session[:transaction_id] %></a></h1>
+          <h1> Thank you for your order <%= link_to "# #{session[:transaction_id]}", checkout_path(session[:transaction_id]) %></h1>
           <h4>we'll let you know when your items are on their way</h4>
           <h4>Items to be Shipped</h4>
 
@@ -52,7 +51,7 @@
                           </h4>
                           <div class="price">
                             <span>
-                              <%= order_detail.product.price %>
+                              <%= order_detail.price %>
                             </span>
                           </div>
                         </div>
@@ -60,7 +59,7 @@
                       <td>
                         <%= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
                       </td>
-                      <td class="price"><%= order_detail.quantity * order_detail.product.price.to_i %></td>
+                      <td class="price"><%= order_detail.quantity * order_detail.price.to_i %></td>
                     </tr>
                   <% end %>
 

@@ -7,19 +7,6 @@
   <!-- jquery-migrate only for product details -->
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
-  <!-- include  parallax plugin -->
-  <script type="text/javascript" src="../assets/js/jquery.parallax-1.1.js"></script>
-
-  <!-- optionally include helper plugins -->
-  <script type="text/javascript" src="../assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
-
-  <!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
-
-  <script type="text/javascript" src="../assets/js/jquery.mCustomScrollbar.js"></script>
-
-  <!-- include icheck plugin // customized checkboxes and radio buttons   -->
-  <script type="text/javascript" src="../assets/plugins/icheck-1.x/icheck.min.js"></script>
-
 <% end %>
 
 
@@ -72,7 +59,7 @@
                   class="far fa-star "></i></span> <span class="ratingInfo"> <span> / </span> <a
                   data-target="#modal-review" data-toggle="modal"> Write a review</a> </span></p>
             </div>
-            <div class="product-price"><span class="price-sales"><%= @product.price %> VND</span>
+            <div class="product-price"><span class="price-sales"><%#= @product.price %> $</span>
             </div>
             <div class="details-description">
               <p>In scelerisque libero ut elit porttitor commodo Suspendisse laoreet magna. </p>
@@ -82,12 +69,12 @@
                 <div class="row">
                   <div class="col-lg-6 col-sm-6 col-xs-6">
                     <div class="filterBox">
-                      <%= form.select :size, @sizes.map { |size| [size.name] }, { include_blank: 'Size' }, { class: 'form-control' } %>
+                      <%= form.select :size, @sizes.map { |size| [size.name, size.id] }, { include_blank: 'Size' }, { class: 'form-control' } %>
                     </div>
                   </div>
                   <div class="col-lg-6 col-sm-6 col-xs-6">
                     <div class="filterBox">
-                      <%= form.select :type, @types.map { |type| [type.name] }, { include_blank: 'Type' }, { class: 'form-control' } %>
+                      <%= form.select :type, @types.map { |type| [type.name, type.id] }, { include_blank: 'Type' }, { class: 'form-control' } %>
                     </div>
                   </div>
                 </div>
@@ -98,7 +85,6 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <%= form.hidden_field :product_id, value: @product.id %>
                     <%= form.hidden_field :quantity, value: 1 %>
-
                     <%= form.submit 'Add to Cart', class: 'btn btn-primary btn-fs' %>
 
                   </div>
