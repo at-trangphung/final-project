@@ -1,16 +1,10 @@
-<div id="page-wrapper" class="page-wrapper">
+<div class="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Manager Categories</h1>
+      <h1 class="page-header">Manager users</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel-heading">
-        <%= link_to ("add new"), new_category_path, class: "btn btn-primary" %>
-      </div>
-    </div>
-  </div>
+  <div>
   <div class="col-lg-12">
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
@@ -21,7 +15,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h5> List category </h5>
+          <h5>List user</h5>
         </div>
         <div class="panel-body">
           <div class="table-responsive">
@@ -29,19 +23,22 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>NAME</th>
-                  <th>PARENT_ID</th>
-                  <th>FUNCTION</th>
+                  <th>Avatar</th>
+                  <th>First name</th>    
+                  <th>Last name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>PhoneNumber</th>
+                  <th>Function</th>
                 </tr>
               </thead>
               <tbody id="list-category">
-                <%= render partial: "category", collection: @categories %>
+                <%= render partial: "user", collection: @users %>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
