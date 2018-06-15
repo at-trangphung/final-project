@@ -1,6 +1,11 @@
   class Admin::CategoriesController < AdminController
     def index
-      @categories = Category.all
+      @categories =
+      if params[:search]
+        Category.search(params[:search])
+      else
+        Category.all
+      end  
     end
 
     def new
@@ -44,6 +49,11 @@
         flash[:danger] = "deleted failed"
       end
       redirect_to categories_path
+    end
+
+    def search
+      debugger
+      @category = @service_search.search_category
     end
 
     private
