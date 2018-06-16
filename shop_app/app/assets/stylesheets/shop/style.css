@@ -1438,7 +1438,7 @@ legend {
 }
 
 .box-content-overly.box-content-overly-white {
-    opacity: 0;
+    /*opacity: 0;*/
 }
 
 .box-blank-url {

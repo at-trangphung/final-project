@@ -16,7 +16,7 @@ class SessionsController < BaseController
   def destroy
     @service_user.log_out
     flash[:success] = "Log out!"
-    redirect_to root_path
+    redirect_to request.referrer
   end
 
   private
@@ -28,7 +28,7 @@ class SessionsController < BaseController
           cookies.permanent.encrypted[:user_id] = @user.id
         end
         flash[:success] = "Logged in!"
-        redirect_to root_path
+        redirect_to request.referrer
       else  
         redirect_to login_path, danger: "Login failed"
       end

@@ -8,6 +8,11 @@
   <td><%= product.name %></td>
   <td><%= product.price %></td>
   <td><%= product.category.name %></td>
+  <td><%= product.description %></td>
+  <td class="text-center"><%= product.discount %></td>
+  <td class="text-center"><%= product.view %></td>
+  <td class="text-center"><%= product.sizes[0]["name"] %></td>
+  <td class="text-center"><%= product.types[0]["name"] %></td>
   <td>
     <%= link_to product_path(product), method: :delete,
       data: {confirm: "Do you want delete this product"} do %>

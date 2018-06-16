@@ -4,21 +4,26 @@ class Admin::CategoriesController < AdminController
   end
 
   def new
+    @categories = Category.all
     @category = Category.new
   end
 
   def create
-    @category = Category.new category_params
+    parent_id = category_params[:parent_id]
+    parent_id = 0 if category_params[:parent_id].empty?
+    @category = Category.new(name: category_params[:name], parent_id: parent_id)
     if @category.save
       flash[:success] = "add successfully"
       redirect_to categories_path
     else
+      @categories = Category.all
       flash[:danger] = "add failed"
       render :new
     end
   end
 
   def edit
+    @categories = Category.all
     category
   end
 

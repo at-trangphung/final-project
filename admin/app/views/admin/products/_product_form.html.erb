@@ -1,7 +1,9 @@
-<%= form_with model: @product, local: true, class: 'form-horizontal', html: { role: 'form'} do |f| %>
+<%= form_with model: @product, local: true, class: 'form-horizontal', 
+  html: { role: 'form'} do |f| %>
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
+    <%= f.text_field :name, class: "form-control", placeholder: "Name", 
+      required: true %>
   </div>
   <div class="form-group">
     <%= f.label :description %>
@@ -9,7 +11,32 @@
   </div>
   <div class="form-group">
     <%= f.label :price %>
-    <%= f.number_field :price, class: "form-control", placeholder: "Price" %>
+    <%= f.number_field :price, class: "form-control", placeholder: "Price", 
+      required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :discount %>
+    <%= f.number_field :discount, value: 0, class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.label :view %>
+    <%= f.number_field :view, value: 0, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :size_id, "Size" %>
+    <%= f.select("type_id", "type_id",{}, { class:"form-control" }) do  %>
+      <%= @types.each do |item| %> 
+        <option value='<%= item.id %>'.html_safe><%=item.name%></option>
+      <% end %> 
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :type_id, "Type" %>
+    <%= f.select("size_id", "size_id",{}, { class:"form-control" }) do  %>
+      <%= @types.each do |item| %> 
+        <option value='<%= item.id %>'.html_safe><%=item.name%></option>
+      <% end %> 
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :image_link %>
@@ -18,7 +45,7 @@
   </div>
   <div class="form-group">
     <%= f.label :category_id, "Category" %>
-    <%= f.select(:category_id,{ class:"form-control" }) do  %>
+    <%= f.select("category_id", "category_id", {}, { class:"form-control" }) do  %>
       <%= @categories.each do |item| %> 
         <%subcategories = Category.where(parent_id: item.id) %>
         <optgroup label='<%= item.name%>'.html_safe >
@@ -28,7 +55,6 @@
         </optgroup> 
       <% end %> 
     <% end %>
-
   </div>
     <div class="col-sm-offset-2 col-sm-2">
       <%= link_to "Cancel" , products_path ,class: "btn btn-primary"%>
