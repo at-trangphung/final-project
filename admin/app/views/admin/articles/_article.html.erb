@@ -1,0 +1,22 @@
+<tr>
+
+  <td><%= article.id %></td>
+  <td><%= article.title %></td>
+  <td><%= article.content %></td>
+  <td>
+    <%# if article.image_link? %>
+      <%#= image_tag article.image_link.url, :size => "70x50" %>
+    <%# end %>
+  </td>
+  <td>
+    <%= link_to article_path(article), 
+      method: :delete,
+      data: {confirm: "Do you want detele this article"} do %>
+      <i class="pe-7s-trash"></i>
+    <% end %>
+    |
+    <%= link_to edit_article_path(article) do %>
+      <i class="pe-7s-pen"></i>
+    <% end %>
+  </td>
+</tr>
