@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   scope module: "admin", path: "admin" do
     resources :dashboard, only: :index
     resources :categories, except: :show
+    resources :orders do
+      resources :order_details, only: :index
+    end  
   end
 end
