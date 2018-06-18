@@ -1,12 +1,10 @@
 <tr>
   <td><%= product.id %></td>
   <td>
-    <% if product.image_link? %>
-      <%= image_tag product.image_link.url, :size => "70x50" %>
-    <% end %>
-    </td>
+    <%= cl_image_tag(product.image_link, :width => 70, :height => 50) %>
+  </td>
   <td><%= product.name %></td>
-  <td><%= product.price %></td>
+  <td><%= product.product_options[0]["price"] %></td>
   <td><%= product.category.name %></td>
   <td><%= product.description %></td>
   <td class="text-center"><%= product.discount %></td>

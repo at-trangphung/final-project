@@ -29,6 +29,7 @@ class CartsController < BaseController
 
   def update
     @service_cart.update
+    flash[:success] = "add success"
     # product = Product.find_by id: params[:id]
     # size = product.sizes.find_by(name: params.require(:cart)[:size]).name
     # cart_item_quantity = @service_cart.find_product_in_cart(product.id, size)["quantity"]

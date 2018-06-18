@@ -96,7 +96,7 @@
                         <div>
                           <a href="product-details.html"> 
                             <%= link_to item.product do %>
-                            <%= image_tag "#{item.product.image_link}" %>
+                            <%= cl_image_tag item.product.image_link %>
                             <% end %>
                           </a>
                         </div>

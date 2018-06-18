@@ -37,7 +37,7 @@
                   <td class="CartProductThumb">
                     <div>
                         <%= link_to order_detail.product do %>
-                          <%= image_tag "#{order_detail.product.image_link}" %>
+                          <%= cl_image_tag order_detail.product.image_link %>
                         <% end %>
                       </a>
                     </div>

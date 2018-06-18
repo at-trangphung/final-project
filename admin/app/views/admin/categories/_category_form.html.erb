@@ -8,7 +8,8 @@
     </div>
   <div class="form-group">
     <%= f.label :parent_id, "Parent" %>
-    <%= select("category", "parent_id", @categories.collect {|p| [ p.name, p.id ] }, 
+    <%= select("category", "parent_id", @categories.collect {
+      |p| [ p.name, p.id ] }, 
       {include_blank:'None'},{ class:"form-control" })%>
   </div>
   <div class="col-sm-2">

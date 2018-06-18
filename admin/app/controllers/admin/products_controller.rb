@@ -12,6 +12,7 @@ class Admin::ProductsController < AdminController
   end
 
   def create
+    string = product_params[:image_link].original_filename.split('.')[0]
     @categories = Category.all.where(parent_id: 0)
     @sizes = Size.all
     @types = Type.all
@@ -19,6 +20,8 @@ class Admin::ProductsController < AdminController
     if @product.save
       @product_option =  @product.product_options.new(option_params)
       @product_option.save
+      upload_images
+      @product.update!(image_link: string)
       flash[:success] = "add successfully"
       redirect_to products_path
     else
@@ -67,12 +70,21 @@ class Admin::ProductsController < AdminController
   end
 
   def product_params
-     params.require(:product).permit(:name, :description, :price,
+     params.require(:product).permit(:name, :description,
                                       :category_id, :image_link, :discount,
                                       :view)
   end
+
   def option_params
-     params.require(:product).permit(:size_id, :type_id)
+     params.require(:product).permit(:size_id, :type_id, :price)
+  end
+
+  def upload_images
+    @uploads = {}
+
+    @uploads[:image_product] = Cloudinary::Uploader.upload(
+      product_params[:image_link], 
+      :public_id => product_params[:image_link].original_filename.split('.')[0])
   end
   
 end

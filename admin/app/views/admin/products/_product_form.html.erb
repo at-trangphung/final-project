@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= f.label :size_id, "Size" %>
     <%= f.select("type_id", "type_id",{}, { class:"form-control" }) do  %>
-      <%= @types.each do |item| %> 
+      <%= @sizes.each do |item| %> 
         <option value='<%= item.id %>'.html_safe><%=item.name%></option>
       <% end %> 
     <% end %>

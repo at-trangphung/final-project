@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "cloudinary"
 gem 'will_paginate',           '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'carrierwave',             '1.2.2'
