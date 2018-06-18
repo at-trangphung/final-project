@@ -15,15 +15,6 @@ class CheckoutController < BaseController
       @transaction.customer_id = @customer_member.id
       @transaction.receiver_id = @receiver.id
       @transaction.amount = @total
-
-      # hours_delivery = params[:transaction][:transaction][:hours]
-      # minutes_delivery = params[:transaction][:transaction][:minutes]
-      # if ( hours_delivery.blank? && minutes_delivery.blank? )
-      #   @transaction.delivery_time = Time.zone.now
-      # else
-      #   @transaction.delivery_time = Time.zone.now + hours_delivery.to_i.hours 
-      #                                              + minutes_delivery.to_i.minutes
-      # end
     else
       @check_user =  User.find_by(email: @customer.email)
 
@@ -33,47 +24,23 @@ class CheckoutController < BaseController
         @transaction.customer_id = @user_customer.id
         @transaction.receiver_id = @receiver.id
         @transaction.amount = @total
-
-        # hours_delivery = params[:transaction][:transaction][:hours]
-        # minutes_delivery = params[:transaction][:transaction][:minutes]
-        # if ( hours_delivery.blank? && minutes_delivery.blank? )
-        #   @transaction.delivery_time = Time.zone.now
-        # else
-        #   @transaction.delivery_time = Time.zone.now + hours_delivery.to_i.hours + minutes_delivery.to_i.minutes
-        # end
       else
-        @service_checkout.create_new_user
-        # @new_user = User.new
-        # @new_user.password = "Thuanhieu123"
-        # @new_user.first_name = customer_params[:first_name]
-        # @new_user.last_name = customer_params[:last_name]
-        # @new_user.email = customer_params[:email]
-        # @new_user.address = customer_params[:address]
-        # @new_user.address_deliver = customer_params[:address_deliver]
-        # @new_user.company = customer_params[:company]
-        # @new_user.phone = customer_params[:phone]
-        # @new_user.save!
+        @new_user = @service_checkout.create_new_user
         @customer.save! 
         @transaction = @service_checkout.create_transaction
         @transaction.customer_id = @customer.id
         @transaction.receiver_id = @receiver.id
         @transaction.amount = @total
-
-        # hours_delivery = params[:transaction][:transaction][:hours]
-        # minutes_delivery = params[:transaction][:transaction][:minutes]
-        # if ( hours_delivery.blank? && minutes_delivery.blank? )
-        #   @transaction.delivery_time = Time.zone.now
-        # else
-        #   @transaction.delivery_time = Time.zone.now + hours_delivery.to_i.hours + minutes_delivery.to_i.minutes
-        # end
       end
     end
     
-    binding.pry
     if @transaction.save!
       @order_items.each do |order_detail|
         order_detail.transaction_id = @transaction.id
         order_detail.save
+      end
+      if @new_user
+        UserMailer.new_user_checkout(@new_user).deliver_now
       end
       @transaction.send_check_order_email
       session[:transaction_id] = @transaction.id

@@ -9,7 +9,7 @@ class AccountActivationsController < BaseController
       redirect_to user
     else
       if user.activated?
-        flash[:success] = "Account already activated!"
+        flash[:danger] = "Account already activated!"
       else
         flash[:danger] = "Invalid activation link"
       end

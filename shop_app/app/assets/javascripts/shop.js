@@ -6,7 +6,6 @@
 //= require ./js/owl.carousel.min
 //= require ./js/bootstrap.touchspin
 //= require js/bootstrap.min
-//= require js/select2.min
 //= require ./js/jquery.parallax-1.1
 //= require ./js/helper-plugins/jquery.mousewheel.min
 //= require ./js/jquery.mCustomScrollbar

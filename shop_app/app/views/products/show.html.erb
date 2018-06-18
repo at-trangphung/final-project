@@ -65,18 +65,21 @@
             </div>
             <%= form_with scope: :cart, url: carts_path, local: true do |form| %>
               <div class="product-price">
-                <%= form.select :price, @price.map { |p| [p.price, {:id => "price_#{p.id}"}] }, { include_blank: 'Price' }, { class: 'price-sales' } %> $
+                <h3 class="product-title">Price</h3>
+                <%= form.select :price, @price.map { |p| [p.price, {:id => "price_#{p.id}"}] }, {}, { class: 'price-sales', onclick: 'select_size_fnc()' } %> $
               </div>
               <div class="productFilter productFilterLook2">
                 <div class="row">
                   <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <h3 class="product-title">Size</h3>
                     <div class="filterBox">
-                      <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, { include_blank: 'Size' }, { class: 'form-control' } %>
+                      <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, {}, { class: 'form-control' } %>
                     </div>
                   </div>
                   <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <h3 class="product-title">Type</h3>
                     <div class="filterBox">
-                      <%= form.select :type, @types.map { |type| [type.name] }, { include_blank: 'Type' }, { class: 'form-control' } %>
+                      <%= form.select :type, @types.map { |type| [type.name] }, {}, { class: 'form-control' } %>
                     </div>
                   </div>
                 </div>

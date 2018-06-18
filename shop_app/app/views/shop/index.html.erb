@@ -36,7 +36,6 @@
             <%= image_tag("#{product.image_link}", :class => 'img-responsive', 
             alt: 'img') %>
           <% end %>
-          
           <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>
         <div class="description">
@@ -44,9 +43,11 @@
           <div class="list-description">
             <p><%= product.description%></p>
           </div>
-          <span class="size">S/ M/ L </span>
+          <span class="size"><%= product.sizes.map{|p| p.name } %></span>
         </div>
-        <div class="price"><span><%#= product.price %> VND</span></div>
+        <div class="price">
+          <span class="price"><%= product.product_options.map {|p| p.price} %> VND</span>
+        </div>
         <div class="action-control">
           <%= link_to product_path(product.id), class: "btn btn-primary" do %>
             <span>View Details Product</span>
