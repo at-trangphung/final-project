@@ -32,6 +32,7 @@
       @new_user.company = customer_params[:company]
       @new_user.phone = customer_params[:phone]
       @new_user.save!
+      @new_user
     end
 
     def customer_params

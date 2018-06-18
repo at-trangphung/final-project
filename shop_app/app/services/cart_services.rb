@@ -66,7 +66,6 @@
 
     def update_quantity result, quantity
       result["quantity"] += quantity
-      flash[:success] = "add success"
     end
   end
 # end
