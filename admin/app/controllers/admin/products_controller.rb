@@ -39,7 +39,10 @@ class Admin::ProductsController < AdminController
   end
 
   def update
+    string = product_params[:image_link].original_filename.split('.')[0]
     if product.update(product_params) && product_option.update(option_params)
+      upload_images
+      @product.update!(image_link: string)
       flash[:success] = "update successfully"
       redirect_to products_path
     else

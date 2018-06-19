@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="main-image col-lg-12 no-padding">
-      <%#= image_tag("#{@article.image_link}", :class => 'img-responsive', alt: 'img') %>
-      <a><img src="http://7dayscoffee.vn/uploads/images/guide/img-gioi-thieu.jpg" 
-      style="width: 500px"></a>
+      <a>
+      <img src="http://res.cloudinary.com/hieugakt/image/upload/<%= @article[:image_link]%>"
+      style="width: 500px">
+      </a>
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-5">
