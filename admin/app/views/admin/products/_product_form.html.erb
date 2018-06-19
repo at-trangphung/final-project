@@ -24,7 +24,7 @@
   </div>
   <div class="form-group">
     <%= f.label :size_id, "Size" %>
-    <%= f.select("type_id", "type_id",{}, { class:"form-control" }) do  %>
+    <%= f.select("size_id", "size_id",{}, { class:"form-control" }) do  %>
       <%= @sizes.each do |item| %> 
         <option value='<%= item.id %>'.html_safe><%=item.name%></option>
       <% end %> 
@@ -32,7 +32,7 @@
   </div>
   <div class="form-group">
     <%= f.label :type_id, "Type" %>
-    <%= f.select("size_id", "size_id",{}, { class:"form-control" }) do  %>
+    <%= f.select("type_id", "type_id",{}, { class:"form-control" }) do  %>
       <%= @types.each do |item| %> 
         <option value='<%= item.id %>'.html_safe><%=item.name%></option>
       <% end %> 
@@ -47,8 +47,8 @@
     <%= f.label :category_id, "Category" %>
     <%= f.select("category_id", "category_id", {}, { class:"form-control" }) do  %>
       <%= @categories.each do |item| %> 
-        <%subcategories = Category.where(parent_id: item.id) %>
-        <optgroup label='<%= item.name%>'.html_safe >
+        <% subcategories = Category.where(parent_id: item.id) %>
+        <optgroup label='<%= item.name %>'.html_safe >
           <% subcategories.each do |sub|%>
             <option value='<%= sub.id %>'.html_safe><%=sub.name%></option>
           <% end %>

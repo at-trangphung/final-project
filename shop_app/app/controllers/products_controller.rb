@@ -12,7 +12,7 @@ class ProductsController < BaseController
   def show
     @product = Product.find(params[:id])
     @price = @product.product_options
-    @sizes = Product.find_by(id: params[:id]).sizes
+    @sizes = Product.find_by(id: params[:id]).sizes.distinct
     @types = Product.find_by(id: params[:id]).types.distinct
   end
 
