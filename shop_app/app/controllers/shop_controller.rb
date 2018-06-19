@@ -8,6 +8,7 @@ class ShopController < BaseController
     @order_details = []
     @count_products = 0
     @total = 0
+
   end
 
   def create
@@ -21,6 +22,6 @@ class ShopController < BaseController
 
   def show
     @categories = Category.all.where(parent_id: 0)
-    @productByCategory =  Category.all.where(parent_id: params[:id]).paginate page: params[:page], per_page: 9
+    @productByCategory = Product.all.where(category_id: params[:id]).paginate page: params[:page], per_page: 9
   end  
 end
