@@ -1,0 +1,22 @@
+<tr class="text-center">
+  <td><%= product_option.id %></td>
+  <td><%= product_option.products.name %></td>
+  <td>
+    <%= cl_image_tag(product_option.products.image_link, :width => 70, :height => 50) %>
+  </td>
+  <td><%= product_option.types.name%></td>
+  <td><%= product_option.sizes.name %></td> 
+  <td><%= product_option.price %></td> 
+  <td>
+  <%= link_to product_option_path(product_option), 
+    method: :delete,
+    data: {confirm: "Do you want detele this product_option"} do %>
+    <i class="pe-7s-trash"></i>
+  <% end %>
+  |
+  <%= link_to edit_product_option_path(product_option) do %>
+    <i class="pe-7s-pen"></i>
+  <% end %>
+  </td>
+</tr>
+

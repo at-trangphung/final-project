@@ -47,7 +47,11 @@ class Admin::ProductsController < AdminController
       redirect_to products_path
     else
       flash[:danger] = "update failed"
+      @categories = Category.all.where(parent_id: 0)
+      @sizes = Size.all
+      @types = Type.all
       render :edit
+      
     end
   end
 
@@ -64,7 +68,7 @@ class Admin::ProductsController < AdminController
 
   def product
     return @product if @product
-    @product = Product.find(params[:id])
+    @product = Product.includes(:category).find(params[:id])
   end
 
   def product_option

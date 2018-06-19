@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     resources :dashboard, only: :index
     resources :categories, except: :show
     resources :articles
+    resources :sizes
+    resources :types
+    resources :product_options
   end
 end
