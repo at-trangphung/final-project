@@ -4,7 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.integer :status
       t.integer :customer_id
       t.float :amount
-      t.string :payment
+      t.string :comment
       t.datetime :created
       
       t.timestamps

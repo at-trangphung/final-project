@@ -11,10 +11,7 @@
     def create
       session[:shopping_cart] ||= []
       order_detail = Order.new(item_params)
-      price = Product.find(params.require(:cart)[:product_id])
-                     .sizes.find_by(name: params.require(:cart)[:size])
-                     .product_options.map{ |a| a.price }
-      order_detail.price = price[0]
+      order_detail.price = params.require(:cart)[:price]
       order_detail.size = params.require(:cart)[:size]
       order_detail.type = params.require(:cart)[:type]
 
@@ -59,8 +56,9 @@
     def find_product_in_cart(product_id, size)
       return unless session[:shopping_cart]
       session[:shopping_cart].detect do |item|
-        item["product_id"] == product_id
-        item["size"] == size
+        if (item["product_id"] == product_id)
+          item["size"] == size
+        end 
       end
     end
 

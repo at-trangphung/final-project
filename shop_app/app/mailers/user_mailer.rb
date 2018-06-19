@@ -26,7 +26,6 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.check_order.subject
   #
   def check_order(transaction)
-    binding.pry
     @transaction = transaction
     @customer = Customer.find(transaction.customer_id).email
     mail to: @customer, subject: "Order"

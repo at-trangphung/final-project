@@ -28,7 +28,7 @@
             method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
             <i class="fas fa-heart">
               <span><%= product.view ? product.view : 0 %></span>
-            </i>https://www.google.comlo.vn/search?q=coffee+sua&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjj2P_uxt7bAhVWT30KHbokBkYQ_AUICigB&biw=1301&bih=678#imgrc=o9KcoIaXIsaaIM:
+            </i>
           <% end %>
 
         <div class="image">
@@ -39,17 +39,20 @@
         </div>
         <div class="description">
           <h4><%= product.name %></a></h4>
-          <div class="list-description">
             <p><%= product.description%></p>
-          </div>
-          <span class="size"><%= product.sizes.map{|p| p.name } %></span>
+          <span class="size"><%= product.sizes.first.name %></span>
         </div>
         <div class="price">
-          <span class="price"><%= product.product_options.map {|p| p.price} %> VND</span>
+          <span class="price"><%= product.product_options.first.price %>$</span>
         </div>
         <div class="action-control">
-          <%= link_to product_path(product.id), class: "btn btn-primary" do %>
-            <span>View Details Product</span>
+          <%= form_with scope: :cart, url: carts_path, local: true do |form| %>
+            <%= form.hidden_field :price, value: product.product_options.first.price %>
+            <%= form.hidden_field :size, value: product.sizes.first.name %>
+            <%= form.hidden_field :type, value: product.types.first.name %>
+            <%= form.hidden_field :product_id, value: product.id %>
+            <%= form.hidden_field :quantity, value: 1 %>
+            <%= form.submit 'Add to Cart', class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>
