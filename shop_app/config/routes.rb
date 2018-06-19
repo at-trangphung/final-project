@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 
   resources :transactions, controller: :checkout
   resources :terms_conditions, only: [:index]
-  # resources :check_order, only: :show
   resources :articles do 
     resources :comments
   end

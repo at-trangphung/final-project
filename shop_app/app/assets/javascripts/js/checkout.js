@@ -73,14 +73,20 @@ function cb_receiver_fnc() {
   }
 }
 
-function select_price_fnc(id_tab) {
-  for (let i = 1; i <= 3; i++){
-    var size_show  = document.getElementById('size_'+i);
-    var price_show = document.getElementById('price'+i);
-    if (i === id_tab) {
-      option_show.style.display = 'block';
-    } else {
-      option_show.style.display = 'none';
+function select_size_fnc() {
+  for (let i = 1; i <= 5; i++) {
+    var size = document.getElementById('size_'+i);
+    var price = document.getElementById('price_'+i);
+    console.log("ss");
+    
+    if (price) {
+      if (price.selected === true) {
+        size.selected = true;
+        size.disabled = false;
+      }else {
+        size.selected = false;
+        size.disabled = true;
+      }
     }
   }
 }

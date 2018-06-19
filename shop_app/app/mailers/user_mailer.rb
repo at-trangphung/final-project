@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-
+  default from: "CaferiaCoffe@gmail.com"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -30,5 +30,10 @@ class UserMailer < ApplicationMailer
     @transaction = transaction
     @customer = Customer.find(transaction.customer_id).email
     mail to: @customer, subject: "Order"
+  end
+
+  def new_user_checkout(user)
+   @user = user
+   mail to: user.email, subject: "Activation and UpdatePassword"
   end
 end
