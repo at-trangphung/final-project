@@ -59,7 +59,6 @@
     def find_product_in_cart(product_id, size)
       return unless session[:shopping_cart]
       session[:shopping_cart].detect do |item|
-        binding.pry
         item["product_id"] == product_id
         item["size"] == size
       end
