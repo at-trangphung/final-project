@@ -73,19 +73,31 @@ function cb_receiver_fnc() {
   }
 }
 
+function select_price_fnc() {
+  for (let i = 1; i <= 5; i++) {
+    var size = document.getElementById('size_'+i);
+    var price = document.getElementById('price_'+i);
+    
+    if (size) {
+      if (size.selected === true) {
+        price.selected = true;
+      }else {
+        price.selected = false;
+      }
+    }
+  }
+}
+
 function select_size_fnc() {
   for (let i = 1; i <= 5; i++) {
     var size = document.getElementById('size_'+i);
     var price = document.getElementById('price_'+i);
-    console.log("ss");
     
     if (price) {
       if (price.selected === true) {
         size.selected = true;
-        size.disabled = false;
       }else {
         size.selected = false;
-        size.disabled = true;
       }
     }
   }

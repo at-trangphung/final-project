@@ -52,15 +52,14 @@
               <div class="product-price">
                 <h3 class="product-title">Price</h3>
                 <%= form.select :price, @price.map { |p| [p.price, 
-                  {:id => "price_#{p.id}"}] }, {}, { class: 'price-sales', 
-                  onclick: 'select_size_fnc()' } %> $
+                  {:id => "price_#{p.id}"}] }, {}, { class: 'price-sales', onclick: 'select_size_fnc()' } %> $
               </div>
               <div class="productFilter productFilterLook2">
                 <div class="row">
                   <div class="col-lg-6 col-sm-6 col-xs-6">
                     <h3 class="product-title">Size</h3>
                     <div class="filterBox">
-                      <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, {}, { class: 'form-control' } %>
+                      <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, {}, { class: 'form-control', onclick: 'select_price_fnc()' } %>
                     </div>
                   </div>
                   <div class="col-lg-6 col-sm-6 col-xs-6">

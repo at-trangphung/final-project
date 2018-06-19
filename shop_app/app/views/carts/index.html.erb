@@ -14,8 +14,6 @@
       </h4>
     </div>
   </div>
-    <!--/.row-->
-
     
   <div class="col-lg-9 col-md-9 col-sm-7">
     <div class="row userInfo">
@@ -51,7 +49,7 @@
                       </a></h4>
                       <div class="price">
                         <span>
-                          <%= order_detail.price %>
+                          <%= order_detail.price %>$
                         </span>
                       </div>
                     </div>
@@ -71,7 +69,6 @@
                   </td>
                   <td>
                     <%= form_with scope: :cart, url: cart_path(id: order_detail.product_id), method: :put, local: true do |form| %>
-                    <%#= form_tag cart_path(id: order_detail.product_id, size: order_detail.size), method: :put do %>
                       <%= form.button value: "-", class: "btn btn-sm btn-primary",
                       style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
                        <%= content_tag :span, " - " %>
@@ -84,20 +81,8 @@
                         <%= content_tag :span, " + " %>
                       <% end %>
                     <% end %>
-                    <%#= form_tag cart_path(id: order_detail.product_id, size: order_detail.size), method: :put do %>
-                      <%#= button_tag type: "submit", value: "-", class: "btn btn-sm btn-primary",
-                      style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
-                       <%#= content_tag :span, " - " %>
-                      <%# end %>
-                      
-                      <%#= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
-                      <%#= button_tag type: "submit", value: "+", class: "btn btn-sm btn-primary",
-                      style: "margin: 14px -3px 15px -3px; padding: 5px 10px" do %>
-                        <%#= content_tag :span, " + " %>
-                      <%# end %>
-                    <%# end %>
                   </td>
-                  <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %></td>
+                  <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %>$</td>
                 </tr>
               <% end %>
             </tbody>
@@ -154,11 +139,11 @@
                 </tr>
                 <tr>
                   <td>Total tax</td>
-                  <td class="price" id="total-tax"><%= @total%></td>
+                  <td class="price" id="total-tax"><%= @total%>$</td>
                 </tr>
                 <tr>
                   <td> Total</td>
-                  <td class=" site-color" id="total-price"><%= @total%></td>
+                  <td class=" site-color" id="total-price"><%= @total%>$</td>
                 </tr>
                 <tr>
                   <td colspan="2">

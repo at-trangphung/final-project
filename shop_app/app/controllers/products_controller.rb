@@ -7,18 +7,6 @@ class ProductsController < BaseController
   end
 
   def update
-    @product = Product.find(params[:id])
-    # view = @product.view + 1
-    # if @product.update_attributes(view: view) 
-    #   flash[:success] = 'Update view successed!'
-    #   redirect_to root_path
-
-    # elsif 
-      # upload_images
-      @product.update(product_params)
-      flash[:success] = 'Update image_link successed!'
-      redirect_to @product
-    # end
   end
 
   def show
@@ -36,15 +24,4 @@ class ProductsController < BaseController
     def permit_params
       params.require(:product).permit(:size, :type)
     end
-
-    def local_image_path(name)
-      Rails.root.join("uploads", name).to_s
-    end
-
-    # def upload_images
-    #   @uploads = {}
-
-    #   @uploads[:image_link] = Cloudinary::Uploader.upload
-    #     local_image_path("coffee_1.jpg"), :tags => "basic_sample"
-    # end
 end
