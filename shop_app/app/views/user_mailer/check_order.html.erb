@@ -10,6 +10,31 @@
 
         </div>
 
+        <% @order_items = Order.where(transaction_id: @transaction.id) %>
+        <% @transaction = Transaction.find_by(id: @transaction.id) %>
+        <% @customer = Customer.find_by(id: @transaction.customer_id) %>
+        <% @total_price = @transaction.amount %>
+
+        <div class="col-lg-7 col-center">
+          <p>Customer: <%= @customer.first_name %> <%= @customer.last_name %></p>
+          <p>Phone: <%= @customer.phone %></p>
+          <p>Time Shipping: <%= @transaction.delivery_time %></p>
+          <p>Address Deliver: <%= @customer.address_deliver %></p>
+        </div>
+
+        <div class="col-lg-7 col-center">
+          <p>Customer: <%= @customer.first_name %> <%= @customer.last_name %></p>
+          <p>Phone: <%= @customer.phone %> </p>
+          <p>Time Shipping: <%= @transaction.delivery_time %> </p>
+          <% if @receiver %>
+            <p>Receiver: <%= @receiver["first_name"] %> <%= @receiver["last_name"] %></p>
+            <p>Address Deliver: <%= @receiver["address_deliver"] %></p>
+            <p>Phone Receiver: <%= @receiver["phone"] %></p>
+          <% else %>
+            <p>Address Deliver: <%= @customer.address_deliver %></p>
+          <% end %>
+        </div>
+
         <div class="col-lg-7 col-center">
           <div class="cartContent table-responsive  w100">
             <table style="width:100%" class="cartTable cartTableBorder">
@@ -20,15 +45,12 @@
                     <td style="width:20%">Quantity</td>
                     <td style="width:35%">Total</td>
                   </tr>
-                  <% @order_items = Order.where(transaction_id: @transaction.id) %>
-                  <% @total_price = Transaction.find_by(id: @transaction.id).amount %>
                   <% @order_items.each do |order_detail| %>
                     <tr class="CartProduct">
                       <td class="CartProductThumb">
                         <div>
                             <%= link_to order_detail.product do %>
-                             <%#= image_tag(product.image_link(:thumbnail), :width => 50, :height => 50) %>
-                              <%= image_tag "#{order_detail.product.image_link}" %>
+                              <%= cl_image_tag order_detail.product.image_link, :class => 'img-responsive', alt: 'img', width: 50, height: 50 %>
                             <% end %>
                         </div>
                       </td>
@@ -41,7 +63,7 @@
                           </h4>
                           <div class="price">
                             <span>
-                              <%= order_detail.price %>
+                              <%= order_detail.price %>$
                             </span>
                           </div>
                         </div>
@@ -49,7 +71,7 @@
                       <td>
                         <%= label_tag "#{order_detail.quantity}", nil,  class: "btn"%>
                       </td>
-                      <td class="price"><%= order_detail.quantity * order_detail.price.to_i %></td>
+                      <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %>$</td>
                     </tr>
                   <% end %>
 
@@ -61,7 +83,7 @@
           <div class="cartFooter w100">
             <div class="box-footer">
               <h4>Total payment</h4>
-              <span><h4 class="price"><%= @total_price %> VND</h4></span>
+              <span><h4 class="price"><%= @total_price %>$</h4></span>
             </div>
           </div>
         </div>

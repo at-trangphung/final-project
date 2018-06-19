@@ -25,30 +25,35 @@
     <% @listProduct.each do |product| %>
       <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
         <div class="product">
-          <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-            <i class="fas fa-heart"></i>
-          </a>
+            <%= link_to product_path(id: product.id),
+              method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
+              <i class="fas fa-heart">
+                <span><%= product.view ? product.view : 0 %></span>
+              </i>
+            <% end %>
 
           <div class="image">
-            <div class="quickview">
-              <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-
-            </div>
             <%= link_to product_path(product) do %>
-              <%= image_tag("#{product.image_link}", :class => 'img-responsive', alt: 'img') %>
+              <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
             <% end %>
-            
-            <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= product.discount%>%</span></div>
+            <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
           </div>
           <div class="description">
-            <h4><a href="product-details.html"><%= product.name %></a></h4>
-            <div class="list-description">
+            <h4><%= product.name %></a></h4>
               <p><%= product.description%></p>
-            </div>
-            <span class="size">S/ M/ L </span>
+            <span class="size"><%= product.sizes.pluck(:name).join %></span>
           </div>
-          <div class="price"><span><%#= product.price%> VND</span></div>
-          <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i class="fa fa-shopping-cart colorWhite"></i> Add to cart </span> </a>
+          <div class="price">
+            <span class="price"><%= product.product_options.pluck(:price).join %>$</span>
+          </div>
+          <div class="action-control">
+            <%= form_with scope: :cart, url: carts_path, local: true do |form| %>
+              <%= form.hidden_field :size, value: product.sizes.pluck(:name).join %>
+              <%= form.hidden_field :type, value: product.types.pluck(:name).join %>
+              <%= form.hidden_field :product_id, value: product.id %>
+              <%= form.hidden_field :quantity, value: 1 %>
+              <%= form.submit 'Add to Cart', class: 'btn btn-primary' %>
+            <% end %>
           </div>
         </div>
       </div>

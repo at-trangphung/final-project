@@ -535,7 +535,6 @@ $(document).ready(function () {
     // $("select").minimalect(); // REMOVED with  selct2.min.js
 
     $(document).ready(function () {
-        $('select').select2();
     });
 
     // cart quantity changer sniper

@@ -1,7 +1,7 @@
 class BaseController < ApplicationController
   protect_from_forgery with: :exception
   attr_reader :service_user, :service_shop, :service_checkout, :service_cart
-
+  attr_accessor :total
   # include Services
   include ViewHelper
 
@@ -12,7 +12,7 @@ class BaseController < ApplicationController
   def get_service
     @service_user = UserServices.new(session, cookies, params)
     @service_shop = ShopServices.new(params)
-    @service_checkout = CheckoutServices.new(params)
+    @service_checkout = CheckoutServices.new(params, @service_user.current_user, load_cart, @total, session)
     @service_cart = CartServices.new(params, session)
   end
 
