@@ -8,8 +8,11 @@
     end
 
     def create
+      string = article_params[:image_link].original_filename.split('.')[0]
       @article = Article.new article_params
       if @article.save
+        upload_images
+        @article.update!(image_link: string)
         flash[:success] = "add successfully"
         redirect_to articles_path
       else
@@ -24,7 +27,10 @@
     end
 
     def update
+      string = article_params[:image_link].original_filename.split('.')[0]
       if article.update(article_params)
+        upload_images
+        @article.update!(image_link: string)
         flash[:success] = "update successfully"
         redirect_to articles_path
       else
@@ -53,4 +59,11 @@
       params.require(:article).permit :title, :content, :image_link
     end
 
+    def upload_images
+      @uploads = {}
+
+      @uploads[:image_article] = Cloudinary::Uploader.upload(
+        article_params[:image_link], 
+        :public_id => article_params[:image_link].original_filename.split('.')[0])
+    end
   end
