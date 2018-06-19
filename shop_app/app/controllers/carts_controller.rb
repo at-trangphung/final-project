@@ -14,7 +14,6 @@ class CartsController < BaseController
   def update
     @service_cart.update
     flash[:success] = "add success"
-    
     redirect_to carts_path
   end
 

@@ -28,13 +28,12 @@
             method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
             <i class="fas fa-heart">
               <span><%= product.view ? product.view : 0 %></span>
-            </i>
+            </i>https://www.google.comlo.vn/search?q=coffee+sua&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjj2P_uxt7bAhVWT30KHbokBkYQ_AUICigB&biw=1301&bih=678#imgrc=o9KcoIaXIsaaIM:
           <% end %>
 
         <div class="image">
           <%= link_to product_path(product) do %>
-            <%= image_tag("#{product.image_link}", :class => 'img-responsive', 
-            alt: 'img') %>
+            <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
           <% end %>
           <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>
