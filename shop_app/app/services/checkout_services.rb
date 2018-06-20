@@ -59,6 +59,7 @@
       @transaction.created = Time.now
       hours_delivery = params[:transaction][:transaction][:hours]
       minutes_delivery = params[:transaction][:transaction][:minutes]
+      @transaction.comment = params[:transaction][:transaction][:comment]
       if ( hours_delivery.blank? && minutes_delivery.blank? )
         @transaction.delivery_time = Time.zone.now
       else

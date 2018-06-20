@@ -2,24 +2,45 @@ function load_steps_checkout(id_tab) {
   for (let i = 1; i <= 5; i++){
     var div_show  = document.getElementById('step-'+i);
     var order_show  = document.getElementById('order-step-'+i);
+    var temp = true;
     if (i === id_tab) {
-    	order_show.classList.add('active');
-      div_show.style.display = 'block';
       if (id_tab === 2) {
         var checkbox = document.getElementById('cb_receiver');
         for (let i = 1; i <= 7; i++) {
           var object_address  = document.getElementById('object_address_'+i);
           var object_billing  = document.getElementById('object_billing_'+i);
+          if (object_address.value === "" && object_address.placeholder !== "Company") {
+            temp = false;
+            alert("Please fill info " + object_address.placeholder);
+          }
           if (checkbox.checked == true) {
             object_billing.value = object_address.value;
           }
-        }
+        }          
       }
+
       if (id_tab === 3) {
+        for (let i = 1; i <= 7; i++) {
+          var object_billing  = document.getElementById('object_billing_'+i);
+          if (object_billing.value === "" && object_billing.placeholder !== "Company") {
+            temp = false;
+            alert("Please fill info " + object_billing.placeholder);
+          }
+        }          
         delivery_time();
       }
+
+      if (temp === true) {
+          order_show.classList.add('active');
+          div_show.style.display = 'block';
+      } else {
+        div_show  = document.getElementById('step-'+(i-1));
+        order_show  = document.getElementById('order-step-'+(i-1));
+        order_show.classList.add('active');
+        div_show.style.display = 'block';
+      }
     } else {
-    	order_show.classList.remove('active');
+      order_show.classList.remove('active');
       div_show.style.display = 'none';
     }
   }
