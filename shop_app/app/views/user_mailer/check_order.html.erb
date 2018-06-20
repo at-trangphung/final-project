@@ -20,19 +20,7 @@
           <p>Phone: <%= @customer.phone %></p>
           <p>Time Shipping: <%= @transaction.delivery_time %></p>
           <p>Address Deliver: <%= @customer.address_deliver %></p>
-        </div>
-
-        <div class="col-lg-7 col-center">
-          <p>Customer: <%= @customer.first_name %> <%= @customer.last_name %></p>
-          <p>Phone: <%= @customer.phone %> </p>
-          <p>Time Shipping: <%= @transaction.delivery_time %> </p>
-          <% if @receiver %>
-            <p>Receiver: <%= @receiver["first_name"] %> <%= @receiver["last_name"] %></p>
-            <p>Address Deliver: <%= @receiver["address_deliver"] %></p>
-            <p>Phone Receiver: <%= @receiver["phone"] %></p>
-          <% else %>
-            <p>Address Deliver: <%= @customer.address_deliver %></p>
-          <% end %>
+          <p>Comment: <%= @transaction.comment %> </p>
         </div>
 
         <div class="col-lg-7 col-center">
