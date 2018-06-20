@@ -2,7 +2,6 @@ class AccountActivationsController < BaseController
   def edit
     user = User.find_by(email: params[:email])
     # user = User.find_by(email: current_user.email)
-    # binding.pry
     if user && !user.activated?
       user.activate
       session[:user_id] = user.id
@@ -10,7 +9,7 @@ class AccountActivationsController < BaseController
       redirect_to user
     else
       if user.activated?
-        flash[:success] = "Account already activated!"
+        flash[:danger] = "Account already activated!"
       else
         flash[:danger] = "Invalid activation link"
       end

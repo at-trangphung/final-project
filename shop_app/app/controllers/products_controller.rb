@@ -6,23 +6,17 @@ class ProductsController < BaseController
   end
 
   def update
-    @product = Product.find(params[:id])
-    view = @product.view + 1
-    if @product.update_attributes(view: view) 
-      flash[:success] = 'Update view successed!'
-      redirect_to root_path
-
-    elsif 
-      @product.update(product_params)
-      flash[:success] = 'Update image_link successed!'
-      redirect_to @product
-    end
   end
 
   def show
     @product = Product.find(params[:id])
-    @sizes = Product.find_by(id: params[:id]).sizes
+    @category = Category.find_by(id: @product.category_id)
+    @price = @product.product_options
+    @sizes = Product.find_by(id: params[:id]).sizes.distinct
     @types = Product.find_by(id: params[:id]).types.distinct
+    @comment = Comment.new
+    @comments = Product.find(params[:id]).comment_products.where(
+          parent_id: 0).paginate page: params[:page], per_page: 7
   end
 
   private

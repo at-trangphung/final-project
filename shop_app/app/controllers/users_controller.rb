@@ -1,7 +1,5 @@
 class UsersController < BaseController
   layout 'customer'
-  # before_action :get_service_user
-  # before_action :init_service
   before_action :logged_in?
   before_action :get_user, only: %i[edit update destroy show]
  
@@ -48,7 +46,7 @@ class UsersController < BaseController
   end
    
   def destroy
-    log_out @user
+    @service_user.log_out
     @user.destroy
     redirect_to root_path  
   end

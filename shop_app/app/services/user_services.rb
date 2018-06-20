@@ -37,7 +37,7 @@
     end
 
     def log_out
-      session.clear
+      session[:user_id] = nil
       cookies.delete :user_id
       cookies.delete :remember_digest
       @current_user = nil

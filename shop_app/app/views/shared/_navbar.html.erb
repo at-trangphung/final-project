@@ -44,14 +44,7 @@
 
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-        class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span
-        class="icon-bar"> </span> <span class="icon-bar"> </span></button>
-        <%= button_tag :class => 'navbar-toggle', :type => 'button' do %>
-        <i class="fa fa-shopping-cart colorWhite"> </i>
-        <span class="cartRespons colorWhite"> Cart ($210.00) </span>
-        <% end %>
-
+      
         <%= link_to 'Caferia Coffee', root_path, class: 'navbar-brand' %>
 
         <!-- this part for mobile -->
@@ -60,12 +53,10 @@
             <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'submit' do %>
             <i class="fa fa-search"></i>
             <% end %>
-            <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
           </div>
-          <!-- /input-group -->
 
         </div>
-      </div>
+    </div>
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" >
@@ -98,48 +89,51 @@
               <table>
                 <tbody>
                   <% if @order_items %>
-                  <% @order_items.each do |item| %>
-                  <tr class="miniCartProduct">
-                    <td style="width:20%" class="miniCartProductThumb">
-                      <div>
-                        <a href="product-details.html"> 
-                          <%= link_to item.product do %>
-                          <%= image_tag "#{item.product.image_link}" %>
-                          <% end %>
-                        </a>
-                      </div>
-                    </td>
-                    <td style="width:40%">
-                      <div class="miniCartDescription">
-                        <h4>
-                          <%= link_to item.product do %>
-                          <%= item.product.name %>
-                          <% end %>
-                        </h4>
-                        <div class="price">
-                          <span>
-                            <%= item.product.price %>
-                          </span>
+                    <% @order_items.each do |item| %>
+                    <tr class="miniCartProduct">
+                      <td style="width:20%" class="miniCartProductThumb">
+                        <div>
+                          <a href="product-details.html"> 
+                            <%= link_to item.product do %>
+                            <%= cl_image_tag item.product.image_link %>
+                            <% end %>
+                          </a>
                         </div>
-                      </div>
-                    </td>
-                    <td style="width:10%" class="miniCartQuantity">
-                      X <%= item.quantity %>
-                    </td>
-                    <td style="width:15%" class="miniCartSubtotal">
-                      <span>
-                        <%= item.product.price * item.quantity%>
-                      </span>
-                    </td>
-                    <td style="width:5%" class="delete">
-                      <%= link_to cart_path(id: item.product_id),
-                      method: :delete,
-                      data: {confirm: "Do you want delete" } do %>
-                      <span>x</span>
-                      <% end %>
-                    </td>
-                  </tr>
-                  <% end %> 
+                      </td>
+                      <td style="width:30%">
+                        <div class="miniCartDescription">
+                          <h4>
+                            <%= link_to item.product do %>
+                            <%= item.product.name %>
+                            <% end %>
+                          </h4>
+                          <div class="price">
+                            <span>
+                              <%= item.price %>$
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td style="width:10%" class="miniCartQuantity">
+                         <%= item.size %>
+                      </td>
+                      <td style="width:10%" class="miniCartQuantity">
+                        X <%= item.quantity %>
+                      </td>
+                      <td style="width:15%" class="miniCartSubtotal">
+                        <span>
+                          <%= item.price.to_f * item.quantity.to_f %>$
+                        </span>
+                      </td>
+                      <td style="width:5%" class="delete">
+                        <%= link_to cart_path(id: item.product_id),
+                        method: :delete,
+                        data: {confirm: "Do you want delete" } do %>
+                        <span>x</span>
+                        <% end %>
+                      </td>
+                    </tr>
+                    <% end %> 
                   <% end %> 
                 </tbody>
               </table>
@@ -152,11 +146,11 @@
               <i class="fa fa-shopping-cart"></i>
               <span>VIEWCART</span>
               <% end %>
-              <%= link_to 'CHECKOUT', root_path, class: 'btn btn-sm btn-primary' %>
-
-              <!-- <a class="btn btn-sm btn-danger" href="cart.html"> <i class="fa fa-shopping-cart"> </i> VIEW
-                  CART </a>
-                  <a class="btn btn-sm btn-primary"> CHECKOUT </a> -->
+              <% if @order_items.blank? %>
+                <%= link_to 'CHECKOUT', new_checkout_path, class: 'btn btn-sm btn-primary order-pointer' %>
+              <% else %>
+                <%= link_to 'CHECKOUT', new_checkout_path, class: 'btn btn-sm btn-primary' %>
+              <% end %>
                 </div>
               </div>
             </div>
@@ -164,7 +158,6 @@
 
             <div class="search-box">
               <div class="input-group">
-                <!-- <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button> -->
                 <%= button_tag :class => 'btn btn-nobg getFullSearch', :type => 'button' do %>
                 <i class="fa fa-search"></i>
                 <% end %>
@@ -177,25 +170,20 @@
 
         </div>
         <!--/.nav-collapse -->
-
       </div>
       <!--/.container -->
 
       <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
 
         <div class="searchInputBox pull-right">
-          <!-- <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search"
-          class="search-input"> -->
 
           <%= form_tag('/search', method: 'get') do %>
-          <%= text_field_tag :search, nil, class: 'search-input', type: 'search', placeholder: 'start typing and hit enter to search' %>
-          <%= button_tag :class => 'btn-nobg search-btn', :type => 'submit' do %>
-          <i class="fa fa-search"></i> Search
+            <%= text_field_tag :search, nil, class: 'search-input', type: 'search', placeholder: 'start typing and hit enter to search' %>
+            <%= button_tag :class => 'btn-nobg search-btn', :type => 'submit' do %>
+            <i class="fa fa-search"></i> Search
+            <% end %>
           <% end %>
-          <% end %>
-          <!-- <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button> -->
         </div>
       </div>
-      <!--/.search-full-->
-
-    </div>
+  
+</div>
