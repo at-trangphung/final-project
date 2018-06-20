@@ -100,7 +100,21 @@
 
     </div>
     <!--/.row-->
-
+   <div class="product-overview-tab">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="product-tab-inner">
+            <h3>Comments</h3>
+              <%if @service_user.current_user %>
+                <%= render "comment_form" %>
+              <% end %>
+              <%= render "comment" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row recommended">
       <h1> YOU MAY ALSO LIKE </h1>
 
