@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613071312) do
+ActiveRecord::Schema.define(version: 20180620025842) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20180613071312) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name"
+  end
+
+  create_table "comment_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.text "content"
+    t.datetime "date_created"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.index ["product_id"], name: "index_comment_products_on_product_id"
+    t.index ["user_id"], name: "index_comment_products_on_user_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,6 +98,18 @@ ActiveRecord::Schema.define(version: 20180613071312) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receivers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.string "address_deliver"
+    t.string "company"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -102,10 +126,11 @@ ActiveRecord::Schema.define(version: 20180613071312) do
     t.integer "status"
     t.integer "customer_id"
     t.float "amount", limit: 24
-    t.string "comment"
+    t.string "payment"
     t.datetime "created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "receiver_id"
     t.datetime "delivery_time"
   end
 
@@ -138,4 +163,6 @@ ActiveRecord::Schema.define(version: 20180613071312) do
     t.string "address_deliver"
   end
 
+  add_foreign_key "comment_products", "products"
+  add_foreign_key "comment_products", "users"
 end
