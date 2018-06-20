@@ -1,0 +1,26 @@
+<tr>
+  <td><%= order.id%></td>
+  <td><%= order.customer.email %></td>
+  <td><%= order.customer.first_name %></td>
+  <td><%= order.customer.last_name %></td>
+  <td><%= order.amount %></td>
+  <td><%= order.status %></td>
+  <td>
+    <%= link_to order_order_details_path(order_id: order.id), 
+      title: "detail" do %>
+      <i class="fa fa-info"></i>
+    <% end %>
+    <%# if order.pending? %>
+      |
+      <%= link_to order_path(id: order.id, status: 1),
+        method: :patch, title: "accept" do %>
+        <i class="fa fa-check"></i>
+      <% end %>
+      |
+      <%= link_to order_path(id: order.id, status: 2),
+        method: :patch, title: "reject" do %>
+        <i class="fa fa-ban"></i>
+      <% end %>
+    <%# end %>
+  </td>
+</tr>

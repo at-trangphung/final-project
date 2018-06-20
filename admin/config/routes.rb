@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :products, except: :show
     resources :dashboard, only: :index
     resources :categories, except: :show
+    resources :orders do
+      resources :order_details, only: :index
+    end  
     resources :articles
     resources :sizes
     resources :types
