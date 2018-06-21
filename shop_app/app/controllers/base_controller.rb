@@ -1,6 +1,7 @@
 class BaseController < ApplicationController
   protect_from_forgery with: :exception
-  attr_reader :service_user, :service_shop, :service_checkout, :service_cart
+  attr_reader :service_user, :service_shop, :service_checkout, 
+              :service_cart, :service_comment, :service_comment_product
   attr_accessor :total
   # include Services
   include ViewHelper
@@ -14,6 +15,8 @@ class BaseController < ApplicationController
     @service_shop = ShopServices.new(params)
     @service_checkout = CheckoutServices.new(params, @service_user.current_user, load_cart, @total, session)
     @service_cart = CartServices.new(params, session)
+    @service_comment = CommentServices.new(params, flash, @service_user.current_user)
+    @service_comment_product = CommentProductServices.new(params, flash, @service_user.current_user)
   end
 
   def logged_in?
