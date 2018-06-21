@@ -22,7 +22,8 @@
 <div class="row  categoryProduct xsResponse clearfix">
   
   <% @productList.each do |product| %>
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
+    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" 
+      style="height: 476px; display: flex;">
       <div class="product">
           <%= link_to product_path(id: product.id),
             method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
@@ -31,9 +32,9 @@
             </i>
           <% end %>
 
-        <div class="image">
+        <div class="image" style="height: 200px; width: 260px">
           <%= link_to product_path(product) do %>
-            <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
+            <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img', height: "100px" %>
           <% end %>
           <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>
