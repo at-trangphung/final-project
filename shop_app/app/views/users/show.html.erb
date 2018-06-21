@@ -6,10 +6,8 @@
 </head>
 <% if @service_user.current_user %>
   <%= form_with model: @user, :html => {:class => 'regForm', novalidate: 'novalidate'}, local: true do |form| %>
-    <div class="panel panel-info" style="padding-bottom: 10px;">
-      <div class="panel-heading">
-        <h3 class="panel-title">Profile Customer</h3>
-      </div>
+    <div class="" style="padding-bottom: 10px;">
+      <legend>Profile Customer</legend>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3 col-lg-3 mx-3 " align="center">
@@ -22,7 +20,7 @@
            
           </div>
           <div class=" col-md-9 col-lg-9 "> 
-            <table class="table table-user-information">
+            <table class="table">
               <tbody>
                 <tr>
                   <td>First name:</td>
@@ -40,10 +38,17 @@
                   <td>Address:</td>
                   <td><%= @service_user.current_user.address %></td>
                 </tr>
-
                 <tr>
                   <td>Phone:</td>
                   <td><%= @service_user.current_user.phone %></td>
+                </tr>
+                <tr>
+                  <td>Company:</td>
+                  <td><%= @service_user.current_user.company %></td>
+                </tr>
+                <tr>
+                  <td>Address deliver:</td>
+                  <td><%= @service_user.current_user.address_deliver %></td>
                 </tr>
             </tbody>
           </table>
@@ -54,11 +59,15 @@
       <div class="row">
         <div class=" col-sm-2 control-label pull-right">
           <%= link_to  "/users/#{@service_user.current_user.id}/edit" do %>
-            <i class="glyphicon glyphicon-edit btn-lg btn-warning"> Edit</i>
+            <i class="glyphicon glyphicon-edit btn btn-primary"> Edit
+            </i>
           <% end %>
         </div>
         <div class="col-sm-offset-1 col-sm-8 control-label">
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-cog"></i> Change password</button>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+            <i class="glyphicon glyphicon-cog">        
+            </i> Change password
+          </button>
           <div id="demo" class="collapse">
      
             <div class="form-group">
