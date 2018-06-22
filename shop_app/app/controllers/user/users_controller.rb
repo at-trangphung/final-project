@@ -37,8 +37,6 @@ class User::UsersController < BaseController
     else
       if @user.update(permit_params)
         upload_images
-        string = permit_params[:avatar].original_filename.split('.')[0]
-        @user.update!(avatar: string)
         flash[:success] = 'Update profile successed!'
         redirect_to @user
       else

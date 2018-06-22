@@ -26,7 +26,8 @@
         <div class="col-lg-6 col-md-6 col-sm-6">
           <!-- product Image and Zoom -->
           <div class="main-image col-lg-12 no-padding">
-            <%= cl_image_tag @product.image_link, :class => 'img-responsive', alt: 'img' %>
+            <%= cl_image_tag @product.image_link, alt: 'img', height: "500px",
+              width: "400px"    %>
           </div>
         </div>
         <!--/ left column end -->
