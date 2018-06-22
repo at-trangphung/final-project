@@ -37,6 +37,9 @@ class UsersController < BaseController
       end
     else
       if @user.update(permit_params)
+        upload_images
+        string = permit_params[:avatar].original_filename.split('.')[0]
+        @user.update!(avatar: string)
         flash[:success] = 'Update profile successed!'
         redirect_to @user
       else
@@ -61,7 +64,7 @@ class UsersController < BaseController
     end
 
     def permit_params
-      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar)
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar, :company, :address_deliver)
     end
 
     def change_password_params
@@ -90,5 +93,13 @@ class UsersController < BaseController
     
     def micropost_params
       params.require(:micropost).permit(:content, :picture)
+    end
+
+    def upload_images
+      @uploads = {}
+
+      @uploads[:avatar] = Cloudinary::Uploader.upload(
+        permit_params[:avatar], 
+        :public_id => permit_params[:avatar].original_filename.split('.')[0])
     end
 end
