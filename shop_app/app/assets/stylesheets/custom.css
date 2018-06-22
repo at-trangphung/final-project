@@ -100,3 +100,6 @@ img {
   color: #fff;
   margin-top: 10px;
 }
+.pointer {
+  cursor: pointer;
+}

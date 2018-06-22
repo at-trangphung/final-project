@@ -13,8 +13,8 @@
         <div class="row">
           <div class="col-md-3 col-lg-3 mx-3 " align="center">
             <% if @service_user.current_user[:avatar] %>
-              <%= image_tag("#{@service_user.current_user.avatar}", 
-                  class: "img-circle profile_img") %> 
+              <%= cl_image_tag @user["avatar"], 
+                  class: "img-circle profile_img" %> 
             <% else %>  
               <%= image_tag("default-avatar.png", class: "img-circle profile_img") %>  
             <% end %>

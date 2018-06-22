@@ -1,6 +1,8 @@
 <tr>
   <td><%= order_detail.product.id %></td>
-  <td><%= order_detail.product.name %> <%= cl_image_tag(order_detail.product.image_link, width: 50, height: 50) %></td>
+  <td><%= order_detail.product.name %></td>
+  <td><%= cl_image_tag(order_detail.product.image_link,
+  	 width: 50, height: 50) %></td>
   <td><%= order_detail.price %>$</td>
   <td><%= order_detail.size %></td>
   <td><%= order_detail.type %></td>

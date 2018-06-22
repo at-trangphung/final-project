@@ -33,7 +33,7 @@ Product.create!(category_id: 4, name:"Coffee matcha", description:"", discount:0
   view: 0 )#4
 Product.create!(category_id: 4, name:"Coffee capuccino", description:"", discount:0, image_link:"capuccino",
   view: 0 )#5
-Product.create!(category_id: 6, name:"7 up", description:"", discount:0, image_link:"7up",
+Product.create!(category_id: 6, name:"7 up", description:"", discount:0, image_link:"7_up",
   view: 0 )#6
 Product.create!(category_id: 6, name:"Pepsi", description:"", discount:0, image_link:"pepsi",
   view: 0 )#7
@@ -43,7 +43,8 @@ Product.create!(category_id: 5, name:"Lemon", description:"", discount:0, image_
   view: 0 )#9
 Product.create!(category_id: 5, name:"Orange", description:"", discount:0, image_link:"orange",
   view: 0 )#10
-Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry",
+Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry_juice
+  ",
   view: 0 )#11
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 1, price:3)
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 2, price:3)
