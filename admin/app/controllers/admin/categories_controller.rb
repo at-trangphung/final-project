@@ -3,6 +3,7 @@ class Admin::CategoriesController < AdminController
     @categories = @service_category.load_list_category
   end
 
+
   def new
     @categories = @service_category.load_list_category
     @category   = Category.new
