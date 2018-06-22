@@ -3,4 +3,7 @@ class Transaction < ApplicationRecord
   has_many :orders
   has_many :products, through: :orders
   
+  def send_check_order_email
+    CheckoutMailer.check_order(self).deliver_now
+  end
 end

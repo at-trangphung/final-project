@@ -11,12 +11,48 @@ function load_steps_checkout(id_tab) {
           var object_billing  = document.getElementById('object_billing_'+i);
           if (object_address.value === "" && object_address.placeholder !== "Company") {
             temp = false;
-            alert("Please fill info " + object_address.placeholder);
+            var p_node = document.createElement("P");
+            var text_pnode = document.createTextNode("Please fill info " + object_address.placeholder);
+            p_node.appendChild(text_pnode);
+            document.getElementById("div-cus-"+i).appendChild(p_node);
+            p_node.classList.add("mystyle");
+            var child = document.getElementById("p_cus_"+i);
+            if (child !== null) {
+              document.getElementById("div-cus-"+i).removeChild(child);
+            }
+            p_node.setAttribute("id", "p_cus_"+i);
+
+            var p_modal = document.createElement("P");
+            var modal_text = document.createTextNode("Please fill info " + object_address.placeholder);
+            p_modal.appendChild(modal_text);
+            var myModal = document.getElementById("myModal");
+            myModal.appendChild(p_modal);
+            p_modal.classList.add("mystyle");
+            var modal_child = document.getElementById("p_cus_modal_"+i);
+            if (modal_child !== null) {
+              myModal.removeChild(modal_child);
+            }
+            p_modal.setAttribute("id", "p_cus_modal_"+i);
+
+          } else {
+            var child = document.getElementById("p_cus_"+i);
+            if (child !== null) {
+              document.getElementById("div-cus-"+i).removeChild(child);
+            }
+
+            var modal_child = document.getElementById("p_cus_modal_"+i);
+            if (modal_child !== null) {
+              document.getElementById("myModal").removeChild(modal_child);
+            }
           }
           if (checkbox.checked == true) {
             object_billing.value = object_address.value;
           }
-        }          
+        }
+        var modal_child = document.getElementById("p_cus_modal_"+i);
+        if (modal_child !== null) {
+          $("#modal-cus").modal("show"); 
+        }
       }
 
       if (id_tab === 3) {
@@ -24,8 +60,44 @@ function load_steps_checkout(id_tab) {
           var object_billing  = document.getElementById('object_billing_'+i);
           if (object_billing.value === "" && object_billing.placeholder !== "Company") {
             temp = false;
-            alert("Please fill info " + object_billing.placeholder);
+            var p_node = document.createElement("P");
+            var text_pnode = document.createTextNode("Please fill info " + object_billing.placeholder);
+            p_node.appendChild(text_pnode);
+            document.getElementById("div-bill-"+i).appendChild(p_node);
+            p_node.classList.add("mystyle");
+            var child = document.getElementById("p_bill_"+i);
+            if (child !== null) {
+              document.getElementById("div-bill-"+i).removeChild(child);
+            }
+            p_node.setAttribute("id", "p_bill_"+i);
+
+            var p_modal = document.createElement("P");
+            var modal_text = document.createTextNode("Please fill info " + object_billing.placeholder);
+            p_modal.appendChild(modal_text);
+            var myModal = document.getElementById("myModal-bill");
+            myModal.appendChild(p_modal);
+            p_modal.classList.add("mystyle");
+            var modal_child = document.getElementById("p_bill_modal_"+i);
+            if (modal_child !== null) {
+              myModal.removeChild(modal_child);
+            }
+            p_modal.setAttribute("id", "p_bill_modal_"+i);
+
+          } else {
+            var child = document.getElementById("p_bill_"+i);
+            if (child !== null) {
+              document.getElementById("div-bill-"+i).removeChild(child);
+            }
+
+            var modal_child = document.getElementById("p_bill_modal_"+i);
+            if (modal_child !== null) {
+              document.getElementById("myModal-bill").removeChild(modal_child);
+            }
           }
+        }
+        var modal_child = document.getElementById("p_bill_modal_"+i);
+        if (modal_child !== null) {
+          $("#modal-bill").modal("show"); 
         }          
         delivery_time();
       }

@@ -1,10 +1,11 @@
+<% content_for :title, 'Sign up' %>
 <%= form_with model: @users, :html => {:class => 'regForm', novalidate: 'novalidate'}, local: true do |form| %>
-  <div class="col-xs-12 col-sm-6">
+  <div class="col-xs-12 col-sm-6 mr-bot">
     <h2 class="block-title-2"> Create an account </h2>
 
     <div class="form-group">
       <%= form.label :first_name %>
-      <%= form.text_field :first_name, :class => 'form-control', placeholder: 'Enter first name', type: 'text' %>
+      <%= form.text_field :first_name, :class => 'form-control', required: true, placeholder: 'Enter first name', type: 'text' %>
     </div>
 
     <div class="form-group">
