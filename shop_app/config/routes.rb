@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :shop, only: [:index, :create, :show]
   resources :sessions, only: [:create, :destroy]
-  resources :users
+  resources :customers
   resources :products do 
     resources :comments_product
   end
@@ -38,5 +38,6 @@ Rails.application.routes.draw do
   resources :articles do 
     resources :comments
   end
+  resources :users
 end
 
