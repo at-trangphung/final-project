@@ -7,14 +7,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-
-    <script>
-        paceOptions = {
-            elements: true
-        };
-    </script>
-    <script src="../assets/js/pace.min.js"></script>
   </head>
 
   <body>
@@ -33,15 +25,7 @@
       </div>   
     </div>
     <%= render 'shared/footer' %>
-    <!-- <script>
-      // this script required for subscribe modal
-      $(window).load(function () {
-          // full load
-          $('#modalAds').modal('show');
-          $('#modalAds').removeClass('hide');
-      });
-
-    </script> -->
+    
     <%= yield :script %>
   </body>
 </html>
