@@ -21,7 +21,8 @@
 
 <div class="row  categoryProduct xsResponse clearfix">
   <% @productByCategory.each do |product| %>
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
+    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" 
+      style="height: 476px;">
       <div class="product">
           <%= link_to product_path(id: product.id),
             method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
@@ -32,7 +33,7 @@
 
         <div class="image">
           <%= link_to product_path(product) do %>
-            <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
+            <%= cl_image_tag product.image_link, alt: 'img' %>
           <% end %>
           <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>
@@ -58,7 +59,17 @@
     </div>
   <% end %>
 </div>
-<div class="row categoryFooter">
+  <% if @lengh < 10 %>
+    <div class="row categoryFooter">
+      <div class="col-lg-offset-4 col-lg-8 ">
+        <ul class="pagination pagination">
+          <li class="prev disabled"><span>&#8592; Previous</span></li>
+          <li class="active"><span>1</span></li> 
+          <li class="next"><a>Next &#8594;</a></li>
+        </ul>
+      </div>
+    </div>
+  <% end %> 
   <div class="col-lg-offset-4 col-lg-8 ">
     <%= will_paginate(@productByCategory, renderer: BootstrapPagination::Rails) %>
   </div>

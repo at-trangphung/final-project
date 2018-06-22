@@ -9,6 +9,7 @@ class ShopController < BaseController
     @order_details = []
     @count_products = 0
     @total = 0
+    @len = Product.all.size
   end
 
   def create
@@ -18,11 +19,13 @@ class ShopController < BaseController
   def search
     @categories = list_find_category
     @listProduct = @service_shop.search_product
+    @lenOfResult = @listProduct.size
   end
 
   def show
     @categories = list_find_category
     @productByCategory = Product.where(category_id: params[:id]).paginate page: params[:page], per_page: 9
+    @lengh = Product.where(category_id: params[:id]).size
   end 
 
   private

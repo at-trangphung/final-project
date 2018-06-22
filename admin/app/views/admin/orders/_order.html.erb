@@ -3,7 +3,7 @@
   <td><%= order.customer.email %></td>
   <td><%= order.customer.first_name %> <%= order.customer.last_name %></td>
   <td><%= order.delivery_time %></td>
-  <td><%= order.amount %></td>
+  <td><%= order.amount %> $</td>
   <td><%= order.status %></td>
   <td>
     <%= link_to order_order_details_path(order_id: order.id), 
