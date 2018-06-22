@@ -1,4 +1,4 @@
-class AccountActivationsController < BaseController
+class User::AccountActivationsController < BaseController
   def edit
     user = User.find_by(email: params[:email])
     # user = User.find_by(email: current_user.email)

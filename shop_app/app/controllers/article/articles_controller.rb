@@ -1,4 +1,4 @@
-class ArticlesController < BaseController
+class Article::ArticlesController < BaseController
   layout 'customer'
   before_action :load_service
 

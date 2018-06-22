@@ -1,2 +1,0 @@
-class NewUserCheckoutController < ApplicationController
-end

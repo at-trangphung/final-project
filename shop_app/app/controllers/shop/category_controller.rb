@@ -1,4 +1,4 @@
-class CategoryController < BaseController
+class Shop::CategoryController < BaseController
 
   def index
   end

@@ -1,4 +1,4 @@
-class PasswordResetsController < BaseController
+class User::PasswordResetsController < BaseController
   layout 'customer'
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]

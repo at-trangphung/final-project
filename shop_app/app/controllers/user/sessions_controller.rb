@@ -1,4 +1,4 @@
-class SessionsController < BaseController
+class User::SessionsController < BaseController
   layout 'customer' 
 
   before_action :redirect_if_logged_in, only: %i[new create]
