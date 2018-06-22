@@ -20,7 +20,6 @@ class User::SessionsController < BaseController
   end
 
   private
-
     def sign_in
       if @service_user.login!(@user)
         if params[:remember].to_i == 1
@@ -48,5 +47,4 @@ class User::SessionsController < BaseController
     def redirect_if_logged_in
       redirect_to root_path, success: "Already login!" if logged_in?
     end   
-
 end

@@ -24,7 +24,8 @@ class Shop::CartsController < BaseController
   end
 
   private
-    def load_service
-      @service_cart = CartServices.new(params, session)
-    end
+  
+  def load_service
+    @service_cart = CartServices.new(params, session)
+  end
 end

@@ -1,4 +1,6 @@
 class Shop::CommentsProductController <  BaseController
+  before_action :load_service
+
   def new
     @comment = Comment.new
   end
@@ -14,4 +16,9 @@ class Shop::CommentsProductController <  BaseController
     product = @service_comment_product.find_product
     redirect_to product_path(product)
   end
+
+  private
+    def load_service
+      @service_comment_product = CommentProductServices.new(params, flash, @service_user.current_user)
+    end
 end

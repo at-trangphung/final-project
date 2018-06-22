@@ -25,15 +25,31 @@
         <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
           <div class="pull-right">
             <ul class="userMenu">
-
-              <% if @service_user.current_user %>
-              <li class="hidden-xs"><%= link_to @service_user.current_user.email, user_path(@service_user.current_user) %></li>
-              <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
+             <% if @service_user.current_user %>
+             <div class="toggle-user">
+              <li class="dropdown-toggle" data-toggle="dropdown">
+                <%= @service_user.current_user.email %>
+                <span class="caret"></span>
+              </li>
+              <ul class="dropdown-menu">
+                <li> 
+                  <%= link_to "Profile", 
+                  user_path(@service_user.current_user), 
+                  class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "History order", customers_path, 
+                   class: "dropdown-item" %>
+                </li>
+                <li class="hidden-xs"><%= link_to "Logout", '/logout' %></li>
+              </ul>
+              </div>
               <% else %>  
-              <li class="hidden-xs"><%= link_to 'Sign In', login_path %></li>
-              <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %></li>
+              <li class="hidden-xs"><%= link_to 'Sign In', login_path %>
+              </li>
+              <li class="hidden-xs"><%= link_to 'Create Account', sign_up_path %>
+              </li>
               <% end %>
-
             </ul>
           </div>
         </div>

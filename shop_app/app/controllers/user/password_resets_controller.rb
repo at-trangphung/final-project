@@ -39,8 +39,8 @@ class User::PasswordResetsController < BaseController
       render 'edit'                                    
     end
   end
+  
   private
-
     def user_params
       params.require(:user).permit(:password, :password_confirmation)
     end
@@ -63,5 +63,4 @@ class User::PasswordResetsController < BaseController
         redirect_to root_url
       end
     end
-
 end
