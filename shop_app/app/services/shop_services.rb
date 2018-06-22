@@ -3,7 +3,7 @@
     attr_reader :params
 
     def initialize(params)
-      @params       = params
+      @params = params
       # @current_user = current_user
     end
 

@@ -3,9 +3,6 @@ class UserMailerPreview < ActionMailer::Preview
 
   # http://localhost:3000/rails/mailers/user_mailer/account_activation
   def account_activation
-    # User.find_each do |u|
-    #   user = UserMailer.account_activation(u).deliver_now
-    # end
     user = User.first
     user.activation_token = User.new_token
     UserMailer.account_activation(user)

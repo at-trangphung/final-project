@@ -1,20 +1,5 @@
 <% content_for :title, 'Shop Cafe' %>
 <% content_for :script, javascript_include_tag(:shop) %>
-<% content_for :script do %>
-<!-- include  parallax plugin -->
-<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
-
-<!-- optionally include helper plugins -->
-<script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
-
-<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
-
-<script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
-
-<!-- include icheck plugin // customized checkboxes and radio buttons   -->
-<script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
-
-<% end %>
 
 <div class="w100 productFilter clearfix">
   <p class="pull-left"> Showing <strong><%= @productList.length %></strong> products </p>
@@ -37,12 +22,9 @@
 <div class="row  categoryProduct xsResponse clearfix">
   
   <% @productList.each do |product| %>
-    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
+    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" 
+      style="height: 476px; display: flex;">
       <div class="product">
-      <!--   <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
-          <i class="fas fa-heart"></i>
-        </a> -->
-
           <%= link_to product_path(id: product.id),
             method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
             <i class="fas fa-heart">
@@ -50,37 +32,34 @@
             </i>
           <% end %>
 
-        <div class="image">
-          <div class="quickview">
-            <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-
-          </div>
+        <div class="image" style="height: 200px; width: 260px">
           <%= link_to product_path(product) do %>
-            <%= image_tag("#{product.image_link}", :class => 'img-responsive', 
-            alt: 'img') %>
+            <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img', height: "100px" %>
           <% end %>
-          
-          <div class="promotion"><span class="new-product"> NEW</span> <span class="discount">Sale <%= product.discount%>%</span></div>
+          <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>
         <div class="description">
-          <h4><a href="product-details.html"><%= product.name %></a></h4>
-          <div class="list-description">
+          <h4><%= product.name %></a></h4>
             <p><%= product.description%></p>
-          </div>
-          <span class="size">S/ M/ L </span>
+          <span class="size"><%= product.sizes.first.name %></span>
         </div>
-        <div class="price"><span><%= product.price%> VND</span></div>
+        <div class="price">
+          <span class="price"><%= product.product_options.first.price %>$</span>
+        </div>
         <div class="action-control">
-          <%= link_to carts_path(product_id: product.id, quantity: 1), 
-            method: :create, 
-            class: "btn btn-primary" do %>
-            <span>Add to Cart</span>
+          <%= form_with scope: :cart, url: carts_path, local: true do |form| %>
+            <%= form.hidden_field :price, value: product.product_options.first.price %>
+            <%= form.hidden_field :size, value: product.sizes.first.name %>
+            <%= form.hidden_field :type, value: product.types.first.name %>
+            <%= form.hidden_field :product_id, value: product.id %>
+            <%= form.hidden_field :quantity, value: 1 %>
+            <%= form.submit 'Add to Cart', class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>
     </div>
   <% end %>
-</div>
+</div> 
 <div class="row categoryFooter">
   <div class="col-lg-offset-4 col-lg-8 ">
     <%= will_paginate(@productList, renderer: BootstrapPagination::Rails)%>
