@@ -1,2 +1,0 @@
-class CheckOrderController < ApplicationController
-end

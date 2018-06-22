@@ -1,4 +1,4 @@
-class CheckoutController < BaseController
+class Shop::CheckoutController < BaseController
   layout 'customer'
   before_action :load_service
 

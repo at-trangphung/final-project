@@ -1,4 +1,4 @@
-class CartsController < BaseController
+class Shop::CartsController < BaseController
   layout 'customer'
   before_action :load_service
 
@@ -24,7 +24,8 @@ class CartsController < BaseController
   end
 
   private
-    def load_service
-      @service_cart = CartServices.new(params, session)
-    end
+  
+  def load_service
+    @service_cart = CartServices.new(params, session)
+  end
 end

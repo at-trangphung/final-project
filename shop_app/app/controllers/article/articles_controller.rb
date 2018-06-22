@@ -1,4 +1,4 @@
-class ArticlesController < BaseController
+class Article::ArticlesController < BaseController
   layout 'customer'
   before_action :load_service
 
@@ -13,7 +13,8 @@ class ArticlesController < BaseController
   end
 
   private
-    def load_service
-      @service_acticle = ActicleServices.new(params)
-    end
+  
+  def load_service
+    @service_acticle = ActicleServices.new(params)
+  end
 end

@@ -1,6 +1,5 @@
-class UsersController < BaseController
+class User::UsersController < BaseController
   layout 'customer'
-  before_action :logged_in?
   before_action :get_user, only: %i[edit update destroy show]
  
   def index
@@ -54,10 +53,6 @@ class UsersController < BaseController
     redirect_to root_path  
   end
 
- # def init_service
- #   @service = UserService.new(params, @current_user)
- # end
-
   private
     def user_params
       params.permit(:email, :password, :password_confirmation, :first_name, :last_name)
@@ -74,12 +69,10 @@ class UsersController < BaseController
     def sign_up
       @user = User.new(user_params)
       if @user.save
-        # UserMailerPreview.account_activation(@user).deliver_now
         @user.send_activation_email
         message  = "Created account. "
         message += "Please check your email to activate your account."
         flash[:success] = message
-        # session[:user_id] = @user.id
         redirect_to login_url
       else
         flash[:danger] = "Create account failed!"
@@ -91,10 +84,6 @@ class UsersController < BaseController
       @user = User.find(params[:id])
     end
     
-    def micropost_params
-      params.require(:micropost).permit(:content, :picture)
-    end
-
     def upload_images
       @uploads = {}
 

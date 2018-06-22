@@ -6,20 +6,16 @@ class OrderServices
     @flash  = flash
   end
 
-  def find_order
-    return if @order
-    @order = Transaction.find_by(id: params[:order_id])
-  end
-
   def load_list_order
-    return if @orders 
     @orders = Transaction.all
   end
 
   def update_order
+    @order = Transaction.find_by(id: params[:id])
     status = params[:status].to_i
     if (check_status status) && (@order.update_attribute :status, status)
       flash[:success] =  "update_success"
+      @order.send_check_order_email
     else
       flash[:danger] =  "update_failed"
     end

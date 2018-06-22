@@ -1,5 +1,6 @@
-class CommentsController < BaseController
+class Article::CommentsController < BaseController
   layout 'customer'
+  before_action :load_service
 
   def new
     @comment = Comment.new
@@ -16,4 +17,10 @@ class CommentsController < BaseController
     article = @service_comment.find_article
     redirect_to article_path(article)
   end
+
+  private
+
+    def load_service
+      @service_comment = CommentServices.new(params, flash, @service_user.current_user)
+    end
 end

@@ -1,4 +1,4 @@
-class ProductsController < BaseController
+class Shop::ProductsController < BaseController
   layout 'customer'
 
   def index

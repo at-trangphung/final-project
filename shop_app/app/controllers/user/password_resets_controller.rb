@@ -1,4 +1,4 @@
-class PasswordResetsController < BaseController
+class User::PasswordResetsController < BaseController
   layout 'customer'
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
@@ -39,8 +39,8 @@ class PasswordResetsController < BaseController
       render 'edit'                                    
     end
   end
+  
   private
-
     def user_params
       params.require(:user).permit(:password, :password_confirmation)
     end
@@ -63,5 +63,4 @@ class PasswordResetsController < BaseController
         redirect_to root_url
       end
     end
-
 end

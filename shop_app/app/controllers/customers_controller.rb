@@ -11,12 +11,14 @@ class CustomersController < BaseController
     @order_details = @order.orders
   end
 
-  def get_customer
-    @customer = User.find_by(id: params[:id])
-  end
+  private
+    def get_customer
+      @customer = User.find_by(id: params[:id])
+    end
 
-  def find_order
-    return if @order
-    @order = Transaction.find_by(id: params[:id])
-   end
+    def find_order
+      return if @order
+      @order = Transaction.find_by(id: params[:id])
+    end
+
 end
