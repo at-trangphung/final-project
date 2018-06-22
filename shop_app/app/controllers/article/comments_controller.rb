@@ -1,4 +1,4 @@
-class CommentsController < BaseController
+class Article::CommentsController < BaseController
   layout 'customer'
 
   def new

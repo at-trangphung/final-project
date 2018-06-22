@@ -1,4 +1,4 @@
-class ThanksForOrderController < BaseController
+class Shop::ThanksForOrderController < BaseController
   layout 'customer'
 
   def index

@@ -1,4 +1,4 @@
-class UsersController < BaseController
+class User::UsersController < BaseController
   layout 'customer'
   before_action :logged_in?
   before_action :get_user, only: %i[edit update destroy show]

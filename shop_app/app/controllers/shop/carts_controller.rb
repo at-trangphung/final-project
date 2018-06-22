@@ -1,4 +1,4 @@
-class CartsController < BaseController
+class Shop::CartsController < BaseController
   layout 'customer'
   before_action :load_service
 
