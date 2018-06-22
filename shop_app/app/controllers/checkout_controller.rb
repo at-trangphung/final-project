@@ -13,7 +13,7 @@ class CheckoutController < BaseController
   def show
     @order_items = Order.where(transaction_id: params[:id])
     @transaction = Transaction.find_by(id: session[:transaction_id])
-    @customer = Customer.find_by(id: @transaction.customer_id)
+    @customer    = Customer.find_by(id: @transaction.customer_id)
     @total_price = @transaction.amount
   end
 end
