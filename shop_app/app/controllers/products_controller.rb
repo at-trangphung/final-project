@@ -9,22 +9,18 @@ class ProductsController < BaseController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = load_product
     @category = Category.find_by(id: @product.category_id)
-    @price = @product.product_options
-    @sizes = Product.find_by(id: params[:id]).sizes.distinct
-    @types = Product.find_by(id: params[:id]).types.distinct
+    @price = @product.product_options.distinct
+    @sizes = @product.sizes.distinct
+    @types = @product.types.distinct
     @comment = Comment.new
-    @comments = Product.find(params[:id]).comment_products.where(
+    @comments = @product.comment_products.where(
           parent_id: 0).paginate page: params[:page], per_page: 7
   end
 
   private
-    def product_params
-      params.require(:product).permit(:image_link)
-    end
-
-    def permit_params
-      params.require(:product).permit(:size, :type)
+    def load_product
+      Product.find_by(id: params[:id])
     end
 end

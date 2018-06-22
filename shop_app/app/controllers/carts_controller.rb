@@ -1,6 +1,6 @@
 class CartsController < BaseController
-  # before_action :current_order, only: [:show, :edit, :update, :destroy, :create]
   layout 'customer'
+  before_action :load_service
 
   def index
   end
@@ -22,4 +22,9 @@ class CartsController < BaseController
     flash[:success] = "Delete success"
     redirect_to carts_path
   end
+
+  private
+    def load_service
+      @service_cart = CartServices.new(params, session)
+    end
 end

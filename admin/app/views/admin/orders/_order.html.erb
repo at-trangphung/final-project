@@ -1,8 +1,8 @@
 <tr>
   <td><%= order.id%></td>
   <td><%= order.customer.email %></td>
-  <td><%= order.customer.first_name %></td>
-  <td><%= order.customer.last_name %></td>
+  <td><%= order.customer.first_name %> <%= order.customer.last_name %></td>
+  <td><%= order.delivery_time %></td>
   <td><%= order.amount %></td>
   <td><%= order.status %></td>
   <td>

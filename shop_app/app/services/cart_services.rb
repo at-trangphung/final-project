@@ -10,10 +10,10 @@
 
     def create
       session[:shopping_cart] ||= []
-      order_detail = Order.new(item_params)
+      order_detail       = Order.new(item_params)
       order_detail.price = params.require(:cart)[:price]
-      order_detail.size = params.require(:cart)[:size]
-      order_detail.type = params.require(:cart)[:type]
+      order_detail.size  = params.require(:cart)[:size]
+      order_detail.type  = params.require(:cart)[:type]
 
       result = find_product_in_cart(order_detail.product_id , order_detail.size)
       if result
@@ -25,7 +25,7 @@
 
     def update
       product = Product.find_by id: params[:id]
-      size = product.sizes.find_by(name: params.require(:cart)[:size]).name
+      size    = product.sizes.find_by(name: params.require(:cart)[:size]).name
       cart_item_quantity = find_product_in_cart(product.id, size)["quantity"]
       if params[:button] == "-"
         quantity = cart_item_quantity - 1
@@ -37,7 +37,7 @@
         end
       else 
         quantity = cart_item_quantity + 1
-        result = find_product_in_cart(product.id, size)
+        result   = find_product_in_cart(product.id, size)
         result["quantity"] = result["quantity"] + 1
       end
     end

@@ -27,8 +27,11 @@ class UserMailer < ApplicationMailer
   #
   def check_order(transaction)
     @transaction = transaction
-    @customer = Customer.find(transaction.customer_id).email
-    mail to: @customer, subject: "Order"
+    @order_items = Order.where(transaction_id: @transaction.id)
+    @transaction = Transaction.find_by(id: @transaction.id)
+    @customer    = Customer.find_by(id: @transaction.customer_id)
+    @total_price = @transaction.amount
+    mail to: @customer.email, subject: "Order"
   end
 
   def new_user_checkout(user)

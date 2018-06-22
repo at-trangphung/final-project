@@ -20,3 +20,15 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+.mr-bot {
+	margin-bottom: 30px;
+}
+
+.mystyle {
+	color: #f33131;
+}
+
+.mr-top {
+	margin-top: 40px;
+}

@@ -1,5 +1,6 @@
 class CheckoutController < BaseController
   layout 'customer'
+  before_action :load_service
 
   def create
     @service_checkout.checkout
@@ -11,9 +12,14 @@ class CheckoutController < BaseController
   end
 
   def show
-    @order_items = Order.where(transaction_id: params[:id])
-    @transaction = Transaction.find_by(id: session[:transaction_id])
-    @customer = Customer.find_by(id: @transaction.customer_id)
+    @order_items = @service_checkout.load_order
+    @transaction = @service_checkout.load_transaction
+    @customer    = @service_checkout.load_customer
     @total_price = @transaction.amount
   end
+
+  private
+    def load_service
+      @service_checkout = CheckoutServices.new(params, @service_user.current_user, load_cart, @total, session)
+    end
 end

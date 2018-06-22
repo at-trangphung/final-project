@@ -14,7 +14,7 @@ class PasswordResetsController < BaseController
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:success] = "Email sent with password reset instructions"
-      redirect_to root_url
+      redirect_to request.referrer
     else
       flash[:danger] = "Email address not found"
       render 'new'
@@ -26,13 +26,10 @@ class PasswordResetsController < BaseController
   end
 
   def update        
-      # binding.pry
     if params[:user][:password].empty?               
       flash[:danger] = "can't be empty"
-      # @user = User.new
       render 'edit'
     elsif @user.update_attributes(user_params)
-      # session[:user_id] = @user.id
       @service_user.login!(@user)
       @user.update_attribute(:reset_digest, nil)
 

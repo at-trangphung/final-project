@@ -5,9 +5,9 @@
     def initialize(params, current_user, order_items, total, session)
       @params       = params
       @current_user = current_user
-      @order_items = order_items
-      @total = total
-      @session = session
+      @order_items  = order_items
+      @total        = total
+      @session      = session
     end
 
     def checkout
@@ -47,7 +47,7 @@
         if @new_user
           UserMailer.new_user_checkout(@new_user).deliver_now
         end
-        @transaction.send_check_order_email
+        # @transaction.send_check_order_email
         session[:receiver] = receiver_params
         session[:transaction_id] = @transaction.id
         session[:shopping_cart] = []
@@ -81,6 +81,19 @@
       @new_user.phone = customer_params[:phone]
       @new_user.save!
       @new_user
+    end
+
+    def load_order
+      Order.where(transaction_id: params[:id])
+    end
+
+    def load_transaction
+      Transaction.find_by(id: session[:transaction_id])
+    end
+
+    def load_customer
+      @transaction = Transaction.find_by(id: session[:transaction_id])
+      Customer.find_by(id: @transaction.customer_id)
     end
 
     def customer_params
