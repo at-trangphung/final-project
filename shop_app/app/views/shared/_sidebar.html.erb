@@ -1,38 +1,38 @@
-
 <!--Category-->
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title"><a data-toggle="collapse" href="#collapseCategory"
-                                   class="collapseWill active ">
-            <span class="pull-left"> <i class="fa fa-caret-right"></i></span> Category </a></h4>
-    </div>
-    <div id="collapseCategory" class="panel-collapse collapse in">
-        <div class="panel-body">
-            <ul class="nav nav-pills nav-stacked tree">
-                <li class="active dropdown-tree open-tree"><a class="dropdown-tree-a"> <span
-                        class="badge pull-right">42</span> Coffe </a>
-                    <ul class="category-level-2 dropdown-menu-tree">
-                        <li class="dropdown-tree"><a class="dropdown-tree-a" href="sub-category.html">
-                            Coffee đen đá</a></li>
-                        <li><a> Coffe Culi</a></li>
-                        <li><a> Coffe Cherry</a></li>
-                        <li><a> Coffe Moka</a></li>
-                        <li><a href="sub-category.html"> Coffe Robusta</a></li>
-                        <li><a href="sub-category.html">Coffe Espresso</a></li>
-                        <li><a href="sub-category.html">Coffe Capuchino</a></li>
-                        <li><a href="sub-category.html">Coffe Macchiato</a></li>
-                        <li><a href="sub-category.html">Coffe Latte</a></li>
-                        <li><a href="sub-category.html">Coffe Mocha</a></li>
-                        <li><a href="sub-category.html">Coffe Americano</a></li>
-                    </ul>
+  <div class="panel-heading">
+    <h4 class="panel-title"><a data-toggle="collapse" href="#collapseCategory"
+                   class="collapseWill active ">
+      <span class="pull-left"> <i class="fa fa-caret-right"></i></span> Category </a></h4>
+  </div>
+  <div id="collapseCategory" class="panel-collapse collapse in">
+    <div class="panel-body">
+
+      <% if @categories %>
+        <% @categories.each do |categories| %>
+          <ul class="nav nav-pills nav-stacked tree">
+            <li class="dropdown-tree close-tree">
+              <a class="dropdown-tree-a">
+                <% @category_child = Category.where(parent_id: categories.id)%>
+                <span class="badge pull-right"><%= @category_child.size %></span> 
+                  <%= categories.name %> 
+              </a>
+              
+              <% @category_child.each do |category_child| %>
+              <ul class="category-level-2 dropdown-menu-tree">
+                <li class="dropdown-tree">
+                  <%= link_to shop_path(category_child) do %>
+                    <%= category_child.name %>
+                  <% end %>
                 </li>
-                <li><a href="#"> <span class="badge pull-right">42</span> Trà sữa </a></li>
-                <li><a href="#"> <span class="badge pull-right">42</span> Sinh tố </a></li>
-                <li><a href="#"> <span class="badge pull-right">42</span> Nước giải khát </a></li>
-                <li><a href="#"> <span class="badge pull-right">42</span> Kem </a></li>
-            </ul>
-        </div>
+              </ul>
+              <% end %>
+            </li>
+          </ul> 
+        <% end %>
+      <% end %>
+         
     </div>
+  </div>
 </div>
 <!--/Category menu end-->
-

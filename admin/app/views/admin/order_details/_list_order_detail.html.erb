@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t ".list_order_detail" %>
+  </div>
+  <div class="panel-body">
+    <div class="wishlist-item table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>price</th>
+            <th>size</th>
+            <th>type</th>
+            <th>quantity</th>
+            <th>total</th>
+          </tr>
+        </thead>
+        <tbody id="list-order-detail">
+          <%= render partial: "order_detail", collection: @order_details %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

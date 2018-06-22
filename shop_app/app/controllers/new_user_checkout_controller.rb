@@ -1,0 +1,2 @@
+class NewUserCheckoutController < ApplicationController
+end

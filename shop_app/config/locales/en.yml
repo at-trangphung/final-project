@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  invalid:
+    password: 'invalid'
+    name: 'at least 3 characters'
+    phonenumber: 'be began 0 number and has 10 or 11 number '
+    email: 'invalid'
