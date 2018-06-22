@@ -126,7 +126,7 @@ var string =
     '<div class="clearfix"></div>' +
     '<%= form_with(scope: :comment, url: article_comments_path(@article), local: true) do |f| %>' +
       '<div>' +
-        '<textarea name="comment[content]" class="pb-cmnt-textarea"></textarea>'+
+        '<input name="comment[content]" class="pb-cmnt-textarea"></input>'+
         '<input name="comment[parent_id]" value= "'+ parent_id +'" type="hidden"></input>'+
         '<br>'+
         '<input type="submit" name="commit" value="Save" data-disable-with="Save" class= "btn btn-success green">' +

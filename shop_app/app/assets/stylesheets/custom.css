@@ -6,7 +6,8 @@
   position: inherit;
   border: 1px solid rgba(52,73,94,.44);
   padding: 1px;
-  margin-left: 15px;
+  margin: 15px 0px 0px ;
+
 }
 .img-circle.profile_img {
   width: 150px;
@@ -75,7 +76,8 @@ img {
 .pb-cmnt-textarea {
   resize: none;
   padding: 20px;
-  height: 130px;
+  margin: 5px;
+  height: 50px;
   width: 80%;
   border: 1px solid rgba(52,73,94,.44);
 }

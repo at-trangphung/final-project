@@ -5,9 +5,9 @@
     def initialize(params, current_user, order_items, total, session)
       @params       = params
       @current_user = current_user
-      @order_items = order_items
-      @total = total
-      @session = session
+      @order_items  = order_items
+      @total        = total
+      @session      = session
     end
 
     def checkout

@@ -21,5 +21,4 @@ class Admin::DashboardController < AdminController
   def destroy
    
   end
-
 end
