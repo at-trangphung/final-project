@@ -51,7 +51,7 @@
               <div class="product-price">
                 <h3 class="product-title">Price</h3>
                 <%= form.select :price, @price.map { |p| [p.price, 
-                  {:id => "price_#{p.size_id}"}] }, {}, { class: 'price-sales', onclick: 'select_size_fnc()' } %> $
+                  {:id => "price_#{p.size_id}"}] }.uniq, {}, { class: 'price-sales', onclick: 'select_size_fnc()' } %> $
               </div>
               <div class="productFilter productFilterLook2">
                 <div class="row">

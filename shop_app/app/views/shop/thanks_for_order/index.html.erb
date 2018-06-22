@@ -25,12 +25,13 @@
           <p>Customer: <%= @customer.first_name %> <%= @customer.last_name %></p>
           <p>Phone: <%= @customer.phone %> </p>
           <p>Time Shipping: <%= @transaction.delivery_time %> </p>
-          <% if @receiver %>
-            <p>Receiver: <%= @receiver["first_name"] %> <%= @receiver["last_name"] %></p>
-            <p>Address Deliver: <%= @receiver["address_deliver"] %></p>
-            <p>Phone Receiver: <%= @receiver["phone"] %></p>
+          <% if @customer.last_name != @transaction.receiver %>
+            <p>Receiver: <%= @transaction.receiver %></p>
+            <p>Address Deliver: <%= @transaction.address_deliver_rec %></p>
+            <p>Phone Receiver: <%= @transaction.phone_rec %></p>
           <% else %>
             <p>Address Deliver: <%= @customer.address_deliver %></p>
+            <p>Phone Receiver: <%= @customer.phone %></p>
           <% end %>
           <p>Comment: <%= @transaction.comment %> </p>
         </div>

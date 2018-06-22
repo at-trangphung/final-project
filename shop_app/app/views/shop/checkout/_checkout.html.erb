@@ -10,49 +10,59 @@
       <% if @service_user.current_user %>
         <%= form.fields_for :customer do |customer| %>
           <div class="col-xs-12 col-sm-6">
-            <div class="form-group required">
+            <div id="div-cus-1" class="form-group required">
               <%= customer.label :first_name, 'First Name', for: 'InputName' %>
                 <sup>*</sup>
               <%= customer.text_field :first_name, :class => 'form-control', placeholder: 'First Name', type: 'text', id: 'object_address_1', value: @service_user.current_user.first_name %>
             </div>
-            <div class="form-group required">
+            <div id="div-cus-2" class="form-group required">
               <%= customer.label :last_name, 'Last Name', for: 'InputName' %>
               <sup>*</sup>
               <%= customer.text_field :last_name, :class => 'form-control', placeholder: 'Last Name', type: 'text', id: 'object_address_2', value: @service_user.current_user.last_name %>
             </div>
-            <div class="form-group required">
+            <div id="div-cus-3" class="form-group required">
               <%= customer.label :email, 'Email', for: 'InputEmail' %>
               <sup>*</sup>
               <%= customer.email_field :email, :class => 'form-control', placeholder: 'Email', type: 'text', id: 'object_address_3', value: @service_user.current_user.email %>
             </div>
-            <div class="form-group">
+            <div id="div-cus-4" class="form-group">
               <%= customer.label :company, 'Company', for: 'InputCompany'%>
               <%= customer.text_field :company, :class => 'form-control', placeholder: 'Company', type: 'text', id: 'object_address_4', value: @service_user.current_user.company %>
             </div>
           </div>
 
           <div class="col-xs-12 col-sm-6">
-            <div class="form-group required">
+            <div id="div-cus-5" class="form-group required">
               <%= customer.label :address, 'Address', for: 'Address' %>
               <sup>*</sup>
               <%= customer.text_field :address, :class => 'form-control', placeholder: 'Address', type: 'text' , id: 'object_address_5', value: @service_user.current_user.address %>
             </div>
-            <div class="form-group required">
+            <div id="div-cus-6" class="form-group required">
               <%= customer.label :address_deliver, 'Address deliver', for: 'Address' %>
               <sup>*</sup>
               <%= customer.text_field :address_deliver, :class => 'form-control', placeholder: 'Address deliver', type: 'text', id: 'object_address_6', value: @service_user.current_user.address_deliver %>
             </div>
-            <div class="form-group required">
+            <div id="div-cus-7" class="form-group required">
               <%= customer.label :phone, 'Mobile phone', for: 'Address' %>
               <sup>*</sup>
               <%= customer.text_field :phone, :class => 'form-control', placeholder: 'Phone', min: 0, type: 'number', id: 'object_address_7', value: @service_user.current_user.phone %>
             </div>
           </div>
-          <div id="modal-cus" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
+          <div class="modal fade" id="modal-cus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Missing errors!!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div  id="myModal" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>

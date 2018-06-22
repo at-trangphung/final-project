@@ -6,11 +6,13 @@
     <div class="form-group">
       <%= form.label :first_name %>
       <%= form.text_field :first_name, :class => 'form-control', required: true, placeholder: 'Enter first name', type: 'text' %>
+      <%= msg_form_errors @user, :first_name %>
     </div>
 
     <div class="form-group">
       <%= form.label :last_name %>
       <%= form.text_field :last_name, :class => 'form-control', placeholder: 'Enter first name', type: 'text' %>
+      <%= msg_form_errors @user, :last_name %>
     </div>
 
     <div class="form-group">
@@ -30,6 +32,29 @@
       <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Password' %>
       <%= msg_form_errors @user, :password_confirmation %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address, 'Address' %>
+      <%= form.text_field :address, :class => 'form-control', placeholder: 'Address' %>
+      <%= msg_form_errors @user, :address %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address_deliver, 'Address deliver' %>
+      <%= form.text_field :address_deliver, :class => 'form-control', placeholder: 'Address deliver' %>
+      <%= msg_form_errors @user, :address_deliver %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Company, 'Company' %>
+      <%= form.text_field :company, :class => 'form-control', placeholder: 'Company' %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :phone, 'Phone' %>
+      <%= form.text_field :phone, :class => 'form-control', placeholder: 'Phone' %>
+      <%= msg_form_errors @user, :phone %>
     </div>
 
     <hr class="mb-4">

@@ -17,7 +17,6 @@ class CustomersController < BaseController
     end
 
     def find_order
-      return if @order
       @order = Transaction.find_by(id: params[:id])
     end
 
