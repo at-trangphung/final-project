@@ -48,7 +48,6 @@
           UserMailer.new_user_checkout(@new_user).deliver_now
         end
         # @transaction.send_check_order_email
-        session[:receiver] = receiver_params
         session[:transaction_id] = @transaction.id
         session[:shopping_cart] = []
       end
@@ -57,6 +56,9 @@
     def create_transaction
       @transaction = Transaction.new
       @transaction.created = Time.now
+      @transaction.receiver = receiver_params["last_name"]
+      @transaction.phone_rec = receiver_params["phone"]
+      @transaction.address_deliver_rec = receiver_params["address_deliver"]
       hours_delivery = params[:transaction][:transaction][:hours]
       minutes_delivery = params[:transaction][:transaction][:minutes]
       @transaction.comment = params[:transaction][:transaction][:comment]

@@ -25,4 +25,9 @@ class OrderServices
     array = [1,2]
     true if array.include? status
   end
+
+  def find_order
+    Transaction.find_by(id: params[:order_id])
+  end
+
 end  

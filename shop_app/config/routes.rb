@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
   root 'shop#index'
+  
+  get '/search' => 'shop#search'
+  post '/search' => 'shop#search'
+  resources :shop, only: [:index, :create, :show]
+  
   scope module: 'shop' do
     get 'thanks_for_order/index'
     get 'terms_conditions/index'
-    get '/search' => 'shop#search'
-    post '/search' => 'shop#search'
     get '/thanks_for_order' => 'thanks_for_order#index'
 
-    resources :shop, only: [:index, :create, :show]
     resources :products do 
       resources :comments_product
     end
@@ -37,12 +39,10 @@ Rails.application.routes.draw do
     get 'password_resets/show'
 
     resources :sessions, only: [:create, :destroy]
-    resources :users
+    resources :users, except: :index
     resources :account_activations, only: :edit
     resources :password_resets, only: [:new, :create, :edit, :update]
     resources :customers
   end
-  
-
 end
 

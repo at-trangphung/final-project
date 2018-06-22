@@ -1,10 +1,6 @@
 class User::UsersController < BaseController
   layout 'customer'
   before_action :get_user, only: %i[edit update destroy show]
- 
-  def index
-    @users = User.all
-  end
 
   def show
     @user = User.find(params[:id])
@@ -53,11 +49,18 @@ class User::UsersController < BaseController
 
   private
     def user_params
-      params.permit(:email, :password, :password_confirmation, :first_name, :last_name)
+      params.permit(:email, :password, :password_confirmation, :first_name, :last_name,
+                    :address, :phone, :avatar, :company, :address_deliver)
     end
 
     def permit_params
-      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :avatar, :company, :address_deliver)
+      params.require(:user).permit(:first_name, :last_name, :email, :address,
+                                   :phone, :avatar, :company, :address_deliver)
+    end
+
+    def customer_params
+      params.permit(:first_name, :last_name, :email, :address,
+                                   :phone, :company, :address_deliver)
     end
 
     def change_password_params
@@ -66,8 +69,10 @@ class User::UsersController < BaseController
 
     def sign_up
       @user = User.new(user_params)
-      if @user.save
+      @customer = Customer.new(customer_params)
+      if @user.save!
         @user.send_activation_email
+        @customer.save!
         message  = "Created account. "
         message += "Please check your email to activate your account."
         flash[:success] = message

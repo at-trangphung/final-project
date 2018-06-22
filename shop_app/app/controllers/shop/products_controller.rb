@@ -11,7 +11,7 @@ class Shop::ProductsController < BaseController
   def show
     @product = load_product
     @category = Category.find_by(id: @product.category_id)
-    @price = @product.product_options.distinct
+    @price = @product.product_options
     @sizes = @product.sizes.distinct
     @types = @product.types.distinct
     @comment = Comment.new

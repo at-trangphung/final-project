@@ -33,7 +33,7 @@ function load_steps_checkout(id_tab) {
               myModal.removeChild(modal_child);
             }
             p_modal.setAttribute("id", "p_cus_modal_"+i);
-
+            console.log(p_modal);
           } else {
             var child = document.getElementById("p_cus_"+i);
             if (child !== null) {
@@ -48,9 +48,10 @@ function load_steps_checkout(id_tab) {
           if (checkbox.checked == true) {
             object_billing.value = object_address.value;
           }
+          
+          var p_child = document.getElementById("p_cus_modal_"+i);
         }
-        var modal_child = document.getElementById("p_cus_modal_"+i);
-        if (modal_child !== null) {
+        if (p_child !== null) {
           $("#modal-cus").modal("show"); 
         }
       }
