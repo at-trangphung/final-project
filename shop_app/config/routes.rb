@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
     resources :transactions, controller: :checkout
     resources :terms_conditions, only: [:index]
+    resources :favorites, only: [:create, :destroy]
   end
 
   scope module: 'article' do
