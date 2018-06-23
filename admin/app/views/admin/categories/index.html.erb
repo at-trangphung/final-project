@@ -1,7 +1,7 @@
 <div id="page-wrapper" class="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Manage Categories</h1>
+      <h1 class="page-header">Manager Categories</h1>
     </div>
   </div>
   <div class="row">
@@ -11,13 +11,11 @@
       </div>
     </div>
   </div>
-  <div>
-    <div class="col-lg-12">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-      <%= yield %>
-    </div>
+  <div class="col-lg-12">
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
+    <%= yield %>
   </div>
   
   <%= form_tag categories_path(), method: :get do %>
@@ -39,17 +37,17 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h5> List category </h3>
+          <h5> List category </h5>
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th><%= t ".id" %></th>
-                  <th><%= t ".name" %></th>
-                  <th><%= t ".parent_id" %></th>
-                  <th><%= t ".function" %></th>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>PARENT_ID</th>
+                  <th>FUNCTION</th>
                 </tr>
               </thead>
               <tbody id="list-category">
@@ -59,7 +57,9 @@
           </div>
         </div>
       </div>
-      
+      <div class="col-lg-offset-4 col-lg-8 ">
+        <%= will_paginate(@productList, renderer: BootstrapPagination::Rails)%>
+      </div>
     </div>
   </div>
 </div>

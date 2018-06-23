@@ -1,0 +1,45 @@
+<div id="page-wrapper" class="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Manager product options</h1>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
+    <%= yield %>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel-heading">
+        <%= link_to ("add new"), new_product_option_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h5> List product options </h5>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">id</th>
+              <th class="text-center">product</th>
+              <th class="text-center">image</th>
+              <th class="text-center">product</th>
+              <th class="text-center">size</th>
+              <th class="text-center">price</th>
+              <th class="text-center">function</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "product_option", collection: @product_options %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

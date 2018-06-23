@@ -1,0 +1,27 @@
+<div id="page-wrapper" class="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Management products</h1>
+    </div>
+  </div>
+  <div>
+    <div class="col-lg-12">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel-heading">
+        <%= link_to ("add new"), new_product_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12" id="list-product">
+    <%= render "list_product" %>
+    </div>
+  </div>
+</div>

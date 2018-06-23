@@ -1,0 +1,16 @@
+<tr>
+  <td><%= size.id %></td>
+  <td><%= size.name %></td>
+  <td>
+  <%= link_to size_path(size), 
+    method: :delete,
+    data: {confirm: "Do you want detele this size"} do %>
+    <i class="pe-7s-trash"></i>
+  <% end %>
+  |
+  <%= link_to edit_size_path(size) do %>
+    <i class="pe-7s-pen"></i>
+  <% end %>
+  </td>
+</tr>
+
