@@ -1,4 +1,4 @@
-class OrderServices
+class CommentServices
   attr_reader :params, :flash
 
   def initialize(params, flash)
@@ -6,16 +6,15 @@ class OrderServices
     @flash  = flash
   end
 
-  def load_list_order
-    @orders = Transaction.all.order(created_at: :desc)
+  def load_list_comments
+    @comments = Comment.all
   end
 
-  def update_order
-    @order = Transaction.find_by(id: params[:id])
+  def update_comment
+    @comment = find_comment
     status = params[:status].to_i
-    if (check_status status) && (@order.update_attribute :status, status)
+    if (check_status status) && (@comment.update_attribute :status, status)
       flash[:success] =  "update_success"
-      @order.send_check_order_email
     else
       flash[:danger] =  "update_failed"
     end
@@ -26,8 +25,7 @@ class OrderServices
     true if array.include? status
   end
 
-  def find_order
-    Transaction.find_by(id: params[:order_id])
+  def find_comment
+    Comment.find_by(id: params[:id])
   end
-
 end  

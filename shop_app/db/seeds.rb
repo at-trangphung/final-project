@@ -21,7 +21,9 @@ Category.create!(name: "Coffee Milk", parent_id: 1, sort_order:0)#3
 Category.create!(name: "Espresso", parent_id: 1, sort_order:0)#4
 Category.create!(name: "Juice", parent_id: 2, sort_order:0)#5
 Category.create!(name: "Carbonated water", parent_id: 2, sort_order:0)#6
-
+Category.create!(name: "Soda", parent_id: 2, sort_order:0)#7
+Category.create!(name: "Yogurt", parent_id: 2, sort_order:0)#8
+Category.create!(name: "Tea", parent_id: 2, sort_order:0)#9
 
 Product.create!(category_id: 3, name:"Coffee Milk", description:"", discount:0, image_link:"coffee_sua",
   view: 0 )#1
@@ -43,9 +45,29 @@ Product.create!(category_id: 5, name:"Lemon", description:"", discount:0, image_
   view: 0 )#9
 Product.create!(category_id: 5, name:"Orange", description:"", discount:0, image_link:"orange",
   view: 0 )#10
-Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry_juice
-  ",
+Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry_juice",
   view: 0 )#11
+Product.create!(category_id: 7, name:"Soda orange", description:"", discount:0, image_link:"soda_orange",
+  view: 0 )#12
+Product.create!(category_id: 7, name:"Soda blueberries", description:"", discount:0, image_link:"soda_blueberries",
+  view: 0 )#13
+Product.create!(category_id: 8, name:"Yogurt", description:"", discount:0, image_link:"yogurt", view: 0 )
+#14
+Product.create!(category_id: 8, name:"Yogurt milk", description:"", discount:0, image_link:"milk_yogurt", view: 0 )
+#15
+Product.create!(category_id: 8, name:"Yogurt strawberry", description:"", discount:0, image_link:"strawberry_yogurt", view: 0 )
+#16
+Product.create!(category_id: 9, name:"Lipton tea", description:"", discount:0, image_link:"lipton_tea", view: 0 )
+#17
+Product.create!(category_id: 9, name:"Olong tea", description:"", discount:0, image_link:"olong_tea", view: 0 )
+#18
+Product.create!(category_id: 9, name:"Ginger tea", description:"", discount:0, image_link:"ginger_tea", view: 0 )
+#19
+Product.create!(category_id: 9, name:"Lemon tea", description:"", discount:0, image_link:"lemon_tea", view: 0 )
+#20
+Product.create!(category_id: 9, name:"Peach tea", description:"", discount:0, image_link:"peach_tea", view: 0 )
+#21
+
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 1, price:3)
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 2, price:3)
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 3, price:3)
@@ -164,6 +186,80 @@ ProductOption.create!(product_id: 11, size_id: 3 ,type_id: 1, price:1)
 ProductOption.create!(product_id: 11, size_id: 3 ,type_id: 2, price:1)
 ProductOption.create!(product_id: 11, size_id: 3 ,type_id: 3, price:1)
 ProductOption.create!(product_id: 11, size_id: 3 ,type_id: 4, price:1)
+
+ProductOption.create!(product_id: 12, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 12, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 12, size_id: 1 ,type_id: 3, price:3)
+ProductOption.create!(product_id: 12, size_id: 1 ,type_id: 4, price:3)
+ProductOption.create!(product_id: 12, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 12, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 12, size_id: 2 ,type_id: 3, price:2)
+ProductOption.create!(product_id: 12, size_id: 2 ,type_id: 4, price:2)
+ProductOption.create!(product_id: 12, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 12, size_id: 3 ,type_id: 2, price:1)
+ProductOption.create!(product_id: 12, size_id: 3 ,type_id: 3, price:1)
+ProductOption.create!(product_id: 12, size_id: 3 ,type_id: 4, price:1)
+
+ProductOption.create!(product_id: 13, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 13, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 13, size_id: 1 ,type_id: 3, price:3)
+ProductOption.create!(product_id: 13, size_id: 1 ,type_id: 4, price:3)
+ProductOption.create!(product_id: 13, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 13, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 13, size_id: 2 ,type_id: 3, price:2)
+ProductOption.create!(product_id: 13, size_id: 2 ,type_id: 4, price:2)
+ProductOption.create!(product_id: 13, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 13, size_id: 3 ,type_id: 2, price:1)
+ProductOption.create!(product_id: 13, size_id: 3 ,type_id: 3, price:1)
+ProductOption.create!(product_id: 13, size_id: 3 ,type_id: 4, price:1)
+
+ProductOption.create!(product_id: 14, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 14, size_id: 2 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 14, size_id: 3 ,type_id: 2, price:3)
+
+ProductOption.create!(product_id: 15, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 15, size_id: 2 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 15, size_id: 3 ,type_id: 2, price:3)
+
+ProductOption.create!(product_id: 16, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 16, size_id: 2 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 16, size_id: 3 ,type_id: 2, price:3)
+
+ProductOption.create!(product_id: 17, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 17, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 17, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 17, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 17, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 17, size_id: 3 ,type_id: 2, price:1)
+
+ProductOption.create!(product_id: 18, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 18, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 18, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 18, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 18, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 18, size_id: 3 ,type_id: 2, price:1)
+
+ProductOption.create!(product_id: 19, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 19, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 19, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 19, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 19, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 19, size_id: 3 ,type_id: 2, price:1)
+
+ProductOption.create!(product_id: 20, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 20, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 20, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 20, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 20, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 20, size_id: 3 ,type_id: 2, price:1)
+
+ProductOption.create!(product_id: 21, size_id: 1 ,type_id: 1, price:3)
+ProductOption.create!(product_id: 21, size_id: 1 ,type_id: 2, price:3)
+ProductOption.create!(product_id: 21, size_id: 2 ,type_id: 1, price:2)
+ProductOption.create!(product_id: 21, size_id: 2 ,type_id: 2, price:2)
+ProductOption.create!(product_id: 21, size_id: 3 ,type_id: 1, price:1)
+ProductOption.create!(product_id: 21, size_id: 3 ,type_id: 2, price:1)
+
 
 Article.create!(title:"Bí mật phía sau quầy bar của quán cafe LITTLE OWL",
 content:"Little Owl Coffee toạ lạc tại quận Denver của thành phố Colorado, Hoa Kỳ. Càng ngày càng có nhiều hành khách, khách du lịch tới tham quan Denver làm khu vực này ngày càng trở nên sôi động. Mặc dù đã có rất nhiều quán cafe lâu đời, quận Denver vẫn không có một cửa hiệu cafe nào thuộc làn sóng thứ 3 cho tới khi Seanna Forey mở Little Owl trên phố Blake.",
