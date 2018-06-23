@@ -1,0 +1,24 @@
+<tr>
+  <td><%= comment.id%></td>
+  <td><%= comment.user.last_name %></td>
+  <td><%= comment.article.title %></td>
+  <td><%= comment.content %></td>
+  <td><%= comment.day_created %></td>
+  <td><%= comment.status %></td>
+  <td>
+    <%= link_to root_path(), 
+      title: "detail" do %>
+      <i class="fa fa-info"></i>
+    <% end %>
+      |
+      <%= link_to comment_path(id: comment.id, status: 1),
+        method: :patch, title: "accept" do %>
+        <i class="fa fa-check"></i>
+      <% end %>
+      |
+      <%= link_to comment_path(id: comment.id, status: 2),
+        method: :patch, title: "reject" do %>
+        <i class="fa fa-ban"></i>
+      <% end %>
+  </td>
+</tr>

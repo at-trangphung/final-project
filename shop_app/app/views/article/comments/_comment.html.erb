@@ -53,7 +53,7 @@
           <% end %>
         </div>
       </div>  
-      <% @comment_child = Comment.where(parent_id: comment.id)%>
+      <% @comment_child = Comment.where(parent_id: comment.id, status: 1)%>
       <% @comment_child.each do |comment_child| %>
       <div id="comment-child-<%=comment.id%>" 
         style="padding: 5px;">
@@ -128,6 +128,7 @@ var string =
       '<div>' +
         '<input name="comment[content]" class="pb-cmnt-textarea"></input>'+
         '<input name="comment[parent_id]" value= "'+ parent_id +'" type="hidden"></input>'+
+        '<input name="comment[status]" value= "0" type="hidden"></input>'+
         '<br>'+
         '<input type="submit" name="commit" value="Save" data-disable-with="Save" class= "btn btn-success green">' +
       '</div>' +
