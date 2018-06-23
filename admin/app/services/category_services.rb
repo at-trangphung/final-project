@@ -35,8 +35,12 @@ class CategoryServices
 
 
   def load_list_category
-    return @categories if @categories
-    @categories = Category.all.paginate page: params[:page], per_page: 5
+    @categories =
+      if params[:search]
+        Category.search(params[:search]).paginate page: params[:page], per_page: 5
+      else
+        Category.all.paginate page: params[:page], per_page: 5
+      end 
   end
 
   def find_category

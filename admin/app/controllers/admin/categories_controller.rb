@@ -3,7 +3,6 @@ class Admin::CategoriesController < AdminController
     @categories = @service_category.load_list_category
   end
 
-
   def new
     @categories = @service_category.load_list_category
     @category   = Category.new
@@ -14,7 +13,6 @@ class Admin::CategoriesController < AdminController
     redirect_to categories_path
     
   end
-
   def edit
     @categories = @service_category.load_list_category
     @category   = @service_category.find_category
@@ -28,5 +26,9 @@ class Admin::CategoriesController < AdminController
   def destroy
     @service_category.destroy_category
     redirect_to categories_path
+  end
+
+  def search
+    @category = @service_search.search_category
   end
 end
