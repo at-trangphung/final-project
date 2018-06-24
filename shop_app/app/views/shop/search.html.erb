@@ -34,7 +34,7 @@
 
           <div class="image">
             <%= link_to product_path(product) do %>
-              <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
+              <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img', height: "100px"%>
             <% end %>
             <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
           </div>

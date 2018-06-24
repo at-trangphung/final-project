@@ -63,14 +63,6 @@ ActiveRecord::Schema.define(version: 20180623093603) do
     t.string "company"
   end
 
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "product_id"
-    t.integer "status", limit: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
     t.integer "transaction_id"

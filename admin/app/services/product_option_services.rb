@@ -53,7 +53,7 @@ class ProductOptionServices
 
   def load_list_product_option
     return if @product_options 
-    @product_options = ProductOption.all
+    @product_options = ProductOption.all.paginate(page: params[:page], per_page: 10)
   end
 
   def load_data  

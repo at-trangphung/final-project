@@ -31,9 +31,10 @@
             </i>
           <% end %>
 
-        <div class="image">
+        <div class="image" style="height: 200px; width: 260px">
           <%= link_to product_path(product) do %>
-            <%= cl_image_tag product.image_link, alt: 'img' %>
+            <%= cl_image_tag product.image_link, alt: 'img', height: "200px",
+              width: "260px"%>
           <% end %>
           <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
         </div>

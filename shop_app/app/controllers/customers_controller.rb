@@ -1,4 +1,4 @@
-class CustomersController < BaseController
+class User::CustomersController < BaseController
   layout 'customer'
   before_action :logged_in?
   before_action :find_order, only: %i[show]

@@ -47,7 +47,7 @@ Product.create!(category_id: 5, name:"Orange", description:"", discount:0, image
   view: 0 )#10
 Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry_juice",
   view: 0 )#11
-Product.create!(category_id: 7, name:"Soda orange", description:"", discount:0, image_link:"soda_orange",
+Product.create!(category_id: 7, name:"Soda lemon", description:"", discount:0, image_link:"soda_lemon",
   view: 0 )#12
 Product.create!(category_id: 7, name:"Soda blueberries", description:"", discount:0, image_link:"soda_blueberries",
   view: 0 )#13
@@ -267,17 +267,22 @@ image_link:"blog1")
 Article.create!(title:"Bí mật phía sau quầy bar của quán cafe HOUNDSTOOTH",
 content:"DALLAS, TEXAS
 Quán cafe Houndstooth được Sean Henry lấy cảm hứng từ một truyền thống lâu đời của Texas : Mọi người thích ăn thịt mới nướng, đôi khi họ phải chờ đợi hàng giờ để có thịt nướng của mình.
-“Tại những nơi tôi yêu thích, khách hàng có thể đợi tới hàng giờ, nhưng sau đó họ sẽ cắt thịt nướng ngay trước mặt bạn”, người sáng lập Houndstooth Coffee nói. “Họ sẽ hỏi bạn nếu bạn muốn phần thịt có mỡ, hoặc thịt nạc, hoặc phần vừa chín tới”. Và Henry xây dựng một không gian mở để khách hàng có thể quan sát mọi thứ. Henry tạo ra một thiết kế gắn chặt với thiên nhiên. Một lượng gỗ lớn “trôi” trên trần nhà mà Henry mô tả là những đám mây. Nó cũng cung cấp ánh sáng trắng thay thế cho mặt trời, kết hợp với những cửa sổ rộng lớn thu hút ánh sáng tự nhiên. Những cửa sổ này cũng cho một cái nhìn trực tiếp tới hàng cây bên ngoài. Henry cũng thiết kế một khu vực ngồi đợi để cho những khách hàng vội vã mua cafe mang đi – và tất nhiên khu vực này “chiếu thẳng” vào quầy bar để khách hàng có thể thấy barista biểu diễn pha chế thức uống của mình.",
+“Tại những nơi tôi yêu thích, khách hàng có thể đợi tới hàng giờ, nhưng sau đó họ sẽ cắt thịt nướng ngay trước mặt bạn”, người sáng lập Houndstooth Coffee nói. “Họ sẽ hỏi bạn nếu bạn muốn phần thịt có mỡ, hoặc thịt nạc, hoặc phần vừa chín tới”. Và Henry xây dựng một không gian mở để khách hàng có thể quan sát mọi thứ. Henry tạo ra một thiết kế gắn chặt với thiên nhiên.
+Một lượng gỗ lớn “trôi” trên trần nhà mà Henry mô tả là những đám mây. 
+Nó cũng cung cấp ánh sáng trắng thay thế cho mặt trời, kết hợp với những cửa sổ rộng lớn thu hút ánh sáng tự nhiên. Những cửa sổ này cũng cho một cái nhìn trực tiếp tới hàng cây bên ngoài. Henry cũng thiết kế một khu vực ngồi đợi để cho 
+những khách hàng vội vã mua cafe mang đi – và tất nhiên khu vực này “chiếu thẳng” vào quầy bar để khách hàng có thể thấy barista biểu diễn pha chế thức uống của mình.",
 image_link:"blog2")
 Article.create!(title:"Cách Pha Cafe Espresso Không Cần Dùng Máy",
 content:"Có thể pha espresso mà không cần dùng máy espresso không?
 Nếu bạn từng “khao khát” một tách espresso ngon lành trong không gian bình yên, dễ chịu của ngôi nhà mình, bạn chắc hẳn sẽ khao khát một chiếc máy espresso bóng bẩy bằng thép không gỉ. Với những chiếc máy đó, mức đầu tư khá cao, và bạn có thể sẽ chùn bước khi thấy giá của nó. Nhưng luôn có hy vọng dành cho bạn: Bạn hoàn toàn có thể pha espresso mà không cần một chiếc máy xa xỉ!
-Trong khi việc sử dụng một chiếc máy espresso truyền thống gần như là cách tốt nhất để tạo ra những tách espresso chuẩn mực qua bàn tay của các barista, bạn vẫn có thể tự pha ra những shot cafe vô cùng đậm đà có vị chẳng khác espresso chính hiệu là mấy. Tất cả những gì bạn cần là một vài thiết bị (có mức dưới 30$), một kỹ thuật pha đúng, một tỷ lệ cafe – nước thích hợp, và một vài công thức pha cafe đơn giản nếu bạn muốn có những tách cafe ngọt ngào hơn với sữa và các hương vị.
+Trong khi việc sử dụng một chiếc máy espresso truyền thống gần như là cách tốt nhất để tạo ra những tách espresso chuẩn mực qua bàn tay của các barista, bạn vẫn có thể tự pha ra những shot cafe vô cùng đậm đà có vị chẳng khác espresso chính hiệu là mấy. Tất cả những gì bạn cần là một vài thiết bị (có mức dưới 30$), một kỹ thuật pha đúng, một tỷ lệ cafe – nước thích hợp, 
+và một vài công thức pha cafe đơn giản nếu bạn muốn có những tách cafe ngọt ngào hơn với sữa và các hương vị.
 Cafe espresso là gì?
 Một tách espresso có 3 yếu tố tác động quan trọng nhất: Độ rang của cafe, độ mịn của bột cafe, áp suất dùng để pha cafe. Bằng cách tập trung vào 3 yếu tố này và làm tốt nhất có thể, bạn có thể chiết xuất ra một tách espresso bằng tay mà không cần dùng máy pha espresso.",
 image_link:"article_coffee_house")
 Article.create!(title:"Những điều cần biết trước khi mua máy pha cafe espresso Breville 870XL",
 content:"Bạn muốn mua máy cafe Breville 870XL ? Bạn thấy quá nhiều mức giá khác nhau ? Bạn phân vân không biết nên mua máy cafe cũ hay mới ? Bạn lo lắng máy Breville 870XL có bền không ? Công suất có đủ không ? Có cần đi học pha chế không ?…
 Việc đầu tư máy pha cafe espresso Breville 870XL hoặc các dòng máy espresso khác đã trở nên phổ biến. Cafe pha bằng máy espresso đậm đà hơn cafe pha bằng phin. Việc mua máy cũng rất dễ dàng vì có nhiều nhà cung cấp. Nên chuyện “đầu tư” không phải là một chuyện rủi ro, nó trở thành một điều bắt buộc nếu bạn muốn bán cafe lâu dài.
-Bài viết này tập trung vào các vấn đề liên quan tới máy pha cafe Breville 870XL. Đây là dòng máy cafe espresso nhỏ – mà theo Khởi Nghiệp Cafe – phù hợp nhất đối với số đông quán cafe hiện tại. Không những thế, qua bài viết này, bạn cũng hiểu hơn rất nhiều về máy espresso và có vốn liếng để “biết đường mà lựa máy cafe phù hợp”. Nó khá dài. Nhưng đây là những kiến thức cực kỳ bổ ích cho bạn. Có cả công thức pha chế để bạn thấy bạn có thể thêm vào menu những món nào. Nghĩ cho vui thì chí ít nó còn không tốn tới 8 tiếng đồng hồ như hồi xưa ta đi học mỗi ngày. Chúc bạn một ngày vui vẻ nhé !!!",
+Bài viết này tập trung vào các vấn đề liên quan tới máy pha cafe Breville 870XL. Đây là dòng máy cafe espresso nhỏ – mà theo Khởi Nghiệp Cafe – phù hợp nhất đối với số đông quán cafe hiện tại. Không những thế, qua bài viết này, bạn cũng hiểu hơn rất nhiều về máy espresso và có vốn liếng để “biết đường mà lựa máy cafe phù hợp”. Nó khá dài. 
+Nhưng đây là những kiến thức cực kỳ bổ ích cho bạn. Có cả công thức pha chế để bạn thấy bạn có thể thêm vào menu những món nào. Nghĩ cho vui thì chí ít nó còn không tốn tới 8 tiếng đồng hồ như hồi xưa ta đi học mỗi ngày. Chúc bạn một ngày vui vẻ nhé !!!",
 image_link:"ca_phe_chay")

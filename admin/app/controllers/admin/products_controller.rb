@@ -1,6 +1,8 @@
 class Admin::ProductsController < AdminController
+  before_action :load_service
+  
   def index
-    @productList = Product.all
+    @productList = @service_product.load_list_product
   end
 
   def new
@@ -30,6 +32,11 @@ class Admin::ProductsController < AdminController
   def destroy
     @service_product.destroy    
     redirect_to products_path
+  end
+
+  private
+  def load_service
+    @service_product = ProductServices.new(params, flash)
   end
 
 end

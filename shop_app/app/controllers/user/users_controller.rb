@@ -92,6 +92,6 @@ class User::UsersController < BaseController
 
       @uploads[:avatar] = Cloudinary::Uploader.upload(
         permit_params[:avatar], 
-        :public_id => permit_params[:avatar].original_filename.split('.')[0])
+        public_id: permit_params[:avatar].original_filename.split('.')[0])
     end
 end

@@ -1,5 +1,6 @@
 class Admin::UsersController < AdminController
   before_action :load_service
+  
   def index
     @users = @service_user.load_list_user
   end
