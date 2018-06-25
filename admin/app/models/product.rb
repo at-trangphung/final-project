@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   has_many :product_options
   has_many :sizes, through: :product_options
   has_many :types, through: :product_options
+
+  scope :search, ->(key){where("name LIKE ?", "%#{key}%")}
 end

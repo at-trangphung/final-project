@@ -7,19 +7,14 @@
   <td><%= l(comment.created_at, format: '%B, %d %Y')%></td>
   <td><%= comment.status %></td>
   <td>
-    <%= link_to root_path(), 
-      title: "detail" do %>
-      <i class="fa fa-info"></i>
+    <%= link_to comment_path(id: comment.id, status: 1),
+      method: :patch, title: "accept" do %>
+      <i class="fa fa-check"></i>
     <% end %>
-      |
-      <%= link_to comment_path(id: comment.id, status: 1),
-        method: :patch, title: "accept" do %>
-        <i class="fa fa-check"></i>
-      <% end %>
-      |
-      <%= link_to comment_path(id: comment.id, status: 2),
-        method: :patch, title: "reject" do %>
-        <i class="fa fa-ban"></i>
-      <% end %>
+    |
+    <%= link_to comment_path(id: comment.id, status: 2),
+      method: :patch, title: "reject" do %>
+      <i class="fa fa-ban"></i>
+    <% end %>
   </td>
 </tr>

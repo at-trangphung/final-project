@@ -9,7 +9,6 @@ class AdminController < ActionController::Base
   def get_service
     @service_article  = ArticleServices.new(params, flash)
     @service_category = CategoryServices.new(params, flash)
-    @service_product  = ProductServices.new(params, flash)
     @service_size     = SizeServices.new(params, flash)
     @service_type     = TypeServices.new(params, flash)
     @service_product_option = ProductOptionServices.new(params, flash)

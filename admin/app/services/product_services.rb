@@ -77,4 +77,13 @@ class ProductServices
       product_params[:image_link], 
       :public_id => product_params[:image_link].original_filename.split('.')[0])
   end
+
+  def load_list_product
+    @products =
+      if params[:search]
+        Product.search(params[:search]).paginate page: params[:page], per_page: 5
+      else
+        Product.all.paginate page: params[:page], per_page: 5
+      end 
+  end
 end
