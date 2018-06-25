@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :articles, through: :comments
   has_many :customers
+  has_many :favorites, dependent: :destroy
 
   def downcase_email
     self.email = email.downcase
