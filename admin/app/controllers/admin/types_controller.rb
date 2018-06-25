@@ -1,4 +1,6 @@
 class Admin::TypesController < AdminController
+  before_action :load_service
+
   def index
     @types = @service_type.load_list_type
   end
@@ -25,5 +27,10 @@ class Admin::TypesController < AdminController
   def destroy
     @service_type.destroy
     redirect_to types_path
+  end
+
+  private
+  def load_service
+    @service_type = TypeServices.new(params, flash)
   end
 end

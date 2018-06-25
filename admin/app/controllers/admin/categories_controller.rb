@@ -1,4 +1,5 @@
 class Admin::CategoriesController < AdminController
+  before_action :load_service
   def index
     @categories = @service_category.load_list_category
   end
@@ -28,7 +29,8 @@ class Admin::CategoriesController < AdminController
     redirect_to categories_path
   end
 
-  def search
-    @category = @service_search.search_category
+  private
+  def load_service
+    @service_category = CategoryServices.new(params, flash)
   end
 end

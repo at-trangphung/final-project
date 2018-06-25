@@ -1,4 +1,6 @@
 class Admin::SizesController < AdminController
+  before_action :load_service
+
   def index
     @sizes = @service_size.load_list_size
   end
@@ -26,4 +28,9 @@ class Admin::SizesController < AdminController
     @service_size.destroy_size 
     redirect_to sizes_path
   end  
+
+  private
+  def load_service
+    @service_size = SizeServices.new(params, flash)
+  end
 end
