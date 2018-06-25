@@ -1,9 +1,10 @@
 <tr>
   <td><%= comment.id%></td>
+  <td><%= comment.user.first_name %></td>
   <td><%= comment.user.last_name %></td>
   <td><%= comment.article.title %></td>
   <td><%= comment.content %></td>
-  <td><%= comment.day_created %></td>
+  <td><%= l(comment.created_at, format: '%B, %d %Y')%></td>
   <td><%= comment.status %></td>
   <td>
     <%= link_to root_path(), 
