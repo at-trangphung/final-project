@@ -1,0 +1,9 @@
+<tr>
+  <td class="text-center"> 
+    <%= cl_image_tag my_comment.product.image_link, alt: 'img', 
+    width: '70', height: '50' %>
+  </td>
+  <td><%= my_comment.product.name %></td>
+  <td><%= my_comment.content %></td>
+  <td><%= l(my_comment.created_at, format: '%B, %d %Y - %H:%M:%S') %></td>
+</tr>
