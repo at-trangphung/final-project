@@ -1,4 +1,5 @@
 class Admin::ProductOptionsController < AdminController
+  before_action :load_service
   def index
     @product_options = @service_product_option.load_list_product_option
   end
@@ -34,5 +35,10 @@ class Admin::ProductOptionsController < AdminController
     @sizes = Size.all
     @types = Type.all
     @products = Product.all
+  end
+
+  private
+  def load_service
+    @service_product_option = ProductOptionServices.new(params, flash)
   end
 end

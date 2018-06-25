@@ -34,5 +34,4 @@ class Admin::UsersController < AdminController
   def load_service
     @service_user = UserServices.new(params, flash)
   end
-
 end
