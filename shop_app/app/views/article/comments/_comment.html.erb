@@ -56,34 +56,28 @@
             <% end %>
           </div>
         </div>  
-        <% @comment_child = Comment.where(parent_id: comment.id)%>
-        <% @comment_child.each do |comment_child| %>
-        <div id="comment-child-<%=comment.id%>" 
-          style="padding: 5px;">
-          <div class="card-body">
-            <div class="row item-comment">
-              <div class="col-sm-offset-2 col-md-1 test-right" >
-                <% if comment_child.user[:avatar] %>
-                  <%= image_tag(comment_child.user.avatar.url, 
-                    class: "img-circle profile_img_comment") %> 
-                <% else %>  
-                  <%= image_tag("default-avatar.png",
-                    class: "img-circle profile_img_comment")%>  
-                <% end %>
-              </div>
-              <div class="col-md-9">
-                <div class="row">
-                  <div class="col-md-5">
-                    <p>
-                      <strong><%= comment_child.user.first_name%></strong>
-                      <strong><%= comment_child.user.last_name%></strong>
-                    </p>
-                  </div>
-                  <div class="col-md-5 text-right">
-                    <span>
-                    <%= distance_of_time_in_words(Time.now,                   comment.created_at)%>
-                    </span>
-                  </div>
+      <% @comment_child = Comment.where(parent_id: comment.id, status: 1)%>
+      <% @comment_child.each do |comment_child| %>
+      <div id="comment-child-<%=comment.id%>" 
+        style="padding: 5px;">
+        <div class="card-body">
+          <div class="row item-comment">
+            <div class="col-sm-offset-2 col-md-1 test-right" >
+              <% if comment_child.user[:avatar] %>
+                <%= image_tag(comment_child.user.avatar.url, 
+                  class: "img-circle profile_img_comment") %> 
+              <% else %>  
+                <%= image_tag("default-avatar.png",
+                  class: "img-circle profile_img_comment")%>  
+              <% end %>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-5">
+                  <p>
+                    <strong><%= comment_child.user.first_name%></strong>
+                    <strong><%= comment_child.user.last_name%></strong>
+                  </p>
                 </div>
                 <div class="col-md-10 content-comment">
                   <span>
@@ -132,6 +126,7 @@ var string =
       '<div>' +
         '<input name="comment[content]" class="pb-cmnt-textarea"></input>'+
         '<input name="comment[parent_id]" value= "'+ parent_id +'" type="hidden"></input>'+
+        '<input name="comment[status]" value= "0" type="hidden"></input>'+
         '<br>'+
         '<input type="submit" name="commit" value="Save" data-disable-with="Save" class= "btn btn-success green">' +
       '</div>' +

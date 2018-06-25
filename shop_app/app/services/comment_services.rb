@@ -35,7 +35,7 @@ class CommentServices
   end
   
   def comment_params
-    params.require(:comment).permit(:content, :parent_id)
+    params.require(:comment).permit(:content, :parent_id, :status)
     .merge(user_id: @current_user.id)
   end
 end  

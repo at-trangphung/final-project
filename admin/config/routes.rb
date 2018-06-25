@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'admin/dashboard#index'
   scope module: "admin", path: "admin" do
     resources :products, except: :show
     resources :dashboard, only: :index
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
     resources :sizes
     resources :types
     resources :product_options
+    resources :comments
   end
 end

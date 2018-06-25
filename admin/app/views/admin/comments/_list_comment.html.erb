@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <%= "List order" %>
+    <%= "List comments" %>
   </div>
   <div class="panel-body">
     <div class="wishlist-item table-responsive">
@@ -8,16 +8,16 @@
         <thead>
           <tr>
             <th class="text-center">id</th>
-            <th class="text-center">email</th>
-            <th class="text-center">customer</th>
-            <th class="text-center">time shpping</th>
-            <th class="text-center">total</th>
+            <th class="text-center">user</th>
+            <th class="text-center">article</th>
+            <th class="text-center">content</th>
+            <th class="text-center">day create</th>
             <th class="text-center">status</th>
             <th class="text-center">function</th>
           </tr>
         </thead>
-        <tbody id="list-order">
-          <%= render partial: "order", collection: @orders %>
+        <tbody>
+          <%= render partial: "comment", collection: @comments %>
         </tbody>
       </table>
     </div>

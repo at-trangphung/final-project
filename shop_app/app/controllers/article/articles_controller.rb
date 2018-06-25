@@ -9,7 +9,7 @@ class Article::ArticlesController < BaseController
 
   def show
     @article = @service_acticle.get_acticle
-    @comments = @article.comments.where(parent_id: 0)
+    @comments = @article.comments.where(parent_id: 0, status: 1)
   end
 
   private
