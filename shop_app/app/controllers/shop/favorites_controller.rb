@@ -7,10 +7,12 @@ class Shop::FavoritesController < BaseController
 
   def create
     @service_favorite.create_favorite
+    redirect_to request.referrer
   end
  
   def destroy
     @service_favorite.destroy_favorite
+    redirect_to request.referrer
   end
 
   private
