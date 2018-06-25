@@ -3,7 +3,9 @@
     <div class="card p-30">
       <div class="media">
         <div class="media-left meida media-middle">
-          <span><i class="fa fa-tag fa-3x color-primary"></i></span>
+          <%= link_to(orders_path) do %>
+            <span><i class="fa fa-tag fa-3x color-primary"></i></span>
+          <% end %>
         </div>
         <div class="media-body text-right">
           <h2><%= @total %> $</h2>
@@ -16,7 +18,9 @@
     <div class="card p-30">
       <div class="media">
         <div class="media-left meida media-middle">
+          <%= link_to(orders_path) do %>
           <span><i class="fa fa-shopping-cart fa-3x color-success"></i></span>
+          <% end %>
         </div>
         <div class="media-body text-right">
           <h2><%= @orders %></h2>
@@ -29,7 +33,9 @@
     <div class="card p-30">
       <div class="media">
         <div class="media-left meida media-middle">
-          <span><i class="fa fa-archive fa-3x color-warning"></i></span>
+          <%= link_to(products_path) do %>
+            <span><i class="fa fa-archive fa-3x color-warning"></i></span>
+          <% end %>  
         </div>
         <div class="media-body text-right">
           <h2><%= @products %></h2>
@@ -42,12 +48,32 @@
     <div class="card p-30">
       <div class="media">
         <div class="media-left meida media-middle">
-          <span><i class="fa fa-user fa-3x color-danger"></i></span>
+          <%= link_to(users_path) do %>
+            <span><i class="fa fa-user fa-3x color-danger"></i></span>
+          <% end %>
         </div>
         <div class="media-body text-right">
           <h2><%= @customers %></h2>
           <p class="m-b-0">Customer</p>
         </div>
+      </div>
+    </div>
+  </div>
+  <div id="page-wrapper" class="page-wrapper">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h3 class="page-header">New order</h3>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8" id="list-order">
+      <%= render "list_new_transactions" %>
       </div>
     </div>
   </div>

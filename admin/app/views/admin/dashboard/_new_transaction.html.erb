@@ -1,0 +1,8 @@
+<tr>
+  <td><%= new_transaction.id%></td>
+  <td><%= new_transaction.customer.email %></td>
+  <td><%= new_transaction.customer.first_name %> 
+      <%= new_transaction.customer.last_name %></td>
+  <td><%= l(new_transaction.delivery_time, format: '%B, %d %Y - %H:%M:%S') %></td>
+  <td><%= new_transaction.amount %> $</td>
+</tr>

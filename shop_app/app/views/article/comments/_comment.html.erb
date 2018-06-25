@@ -1,58 +1,61 @@
-<div  style="margin-bottom: 20px;">
+<div  style="margin: 20px 0px;">
   <div>
-    <% @comments.each do |comment|  %>
-    <div id= "comment-<%= comment.id %>">
-      <div class="row item-comment" >
-        <div class="col-md-2 text-right">
-          <% if comment.user[:avatar] %>
-            <%= image_tag( comment.user.avatar.url,
-            class: "img-circle profile_img_comment") %> 
-          <% else %>  
-            <%= image_tag("default-avatar.png", 
-              class: "img-circle profile_img_comment")%>  
-          <% end %>
-        </div>
-        <div class="col-md-10">
-          <div class="row">
-            <div class="col-md-5">
-              <p>
-                <strong><%= comment.user.first_name%></strong>
-                <strong><%= comment.user.last_name%></strong>
-              </p>
-            </div>
-            <div class="col-md-5 text-right" style="padding-right: 0px;">
-              <span>
-              <%= distance_of_time_in_words(Time.now,
-               comment.created_at) %> later
-              </span>
-            </div>
+    <% if @comments.empty? %> 
+      <p>No comment</p>
+    <% else %>
+      <% @comments.each do |comment|  %>
+      <div id= "comment-<%= comment.id %>">
+        <div class="row item-comment" >
+          <div class="col-md-2 text-right">
+            <% if comment.user[:avatar] %>
+              <%= image_tag( comment.user.avatar.url,
+              class: "img-circle profile_img_comment") %> 
+            <% else %>  
+              <%= image_tag("default-avatar.png", 
+                class: "img-circle profile_img_comment")%>  
+            <% end %>
           </div>
-          <div class="clearfix"></div>
-          <div class="col-md-10 content-comment">
-            <span>
-              <%= comment["content"] %>
-            </span>
-          </div>  
-          <% if @service_user.current_user %>  
-            <div class="row text-right">
-              <div class="col-md-10" style="padding-right: 0px;">
-                <button onClick="myFunction(<%= comment.id %>)" 
-                  id="btn-<%= comment.id %>" class="btn btn-success green btn-comment">
-                  <i class="fa fa-reply" ></i> 
-                </button>
-                <% if @service_user.current_user.email == comment.user.email%>
-                  <%= link_to  [@article, comment],
-                      method: :delete,
-                      data: {confirm: "Do you want delete" } do %>
-                    <%= content_tag :i, "",
-                        class: "fa fa-trash btn-lg btn-success green" %>
-                  <% end %>
-                <% end %>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-5">
+                <p>
+                  <strong><%= comment.user.first_name%></strong>
+                  <strong><%= comment.user.last_name%></strong>
+                </p>
+              </div>
+              <div class="col-md-5 text-right" style="padding-right: 0px;">
+                <span>
+                <%= distance_of_time_in_words(Time.now,
+                 comment.created_at) %> later
+                </span>
               </div>
             </div>
-          <% end %>
-        </div>
-      </div>  
+            <div class="clearfix"></div>
+            <div class="col-md-10 content-comment">
+              <span>
+                <%= comment["content"] %>
+              </span>
+            </div>  
+            <% if @service_user.current_user %>  
+              <div class="row text-right">
+                <div class="col-md-10" style="padding-right: 0px;">
+                  <button onClick="myFunction(<%= comment.id %>)" 
+                    id="btn-<%= comment.id %>" class="btn btn-success green btn-comment">
+                    <i class="fa fa-reply" ></i> 
+                  </button>
+                  <% if @service_user.current_user.email == comment.user.email%>
+                    <%= link_to  [@article, comment],
+                        method: :delete,
+                        data: {confirm: "Do you want delete" } do %>
+                      <%= content_tag :i, "",
+                          class: "fa fa-trash btn-lg btn-success green" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>  
       <% @comment_child = Comment.where(parent_id: comment.id, status: 1)%>
       <% @comment_child.each do |comment_child| %>
       <div id="comment-child-<%=comment.id%>" 
@@ -76,39 +79,34 @@
                     <strong><%= comment_child.user.last_name%></strong>
                   </p>
                 </div>
-                <div class="col-md-5 text-right">
+                <div class="col-md-10 content-comment">
                   <span>
-                  <%= distance_of_time_in_words(Time.now,                   comment.created_at)%>
+                    <%= comment_child["content"] %>
                   </span>
-                </div>
-              </div>
-              <div class="col-md-10 content-comment">
-                <span>
-                  <%= comment_child["content"] %>
-                </span>
-              </div>  
-              <% if @service_user.current_user %> 
-                <div class="row text-right">
-                  <div class=" col-sm-offset-5  col-md-5">
-                    <% if @service_user.current_user.email == comment_child.user.email%>
-                      <%= link_to  [@article, comment_child],
-                          method: :delete,
-                          data: {confirm: "Do you want delete" } do %>
-                        <%= content_tag :i, "", 
-                          class: "fa fa-trash btn-lg btn-success green" %>
-                      <% end %>
-                    <% end %>  
+                </div>  
+                <% if @service_user.current_user %> 
+                  <div class="row text-right">
+                    <div class=" col-sm-offset-5  col-md-5">
+                      <% if @service_user.current_user.email == comment_child.user.email%>
+                        <%= link_to  [@article, comment_child],
+                            method: :delete,
+                            data: {confirm: "Do you want delete" } do %>
+                          <%= content_tag :i, "", 
+                            class: "fa fa-trash btn-lg btn-success green" %>
+                        <% end %>
+                      <% end %>  
+                    </div>
                   </div>
-                </div>
-              <% end %>  
+                <% end %>  
+              </div>
             </div>
           </div>
         </div>
+        <% end %>
       </div>
       <% end %>
-    </div>
-  <% end %>
-</div>
+    <% end %>  
+  </div>
 </div>
 
 <script>

@@ -23,18 +23,50 @@
 
   <div class="row  categoryProduct xsResponse clearfix">
     <% @listProduct.each do |product| %>
-      <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="height: 476px;">
+      <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" 
+        style="height: 476px; display: flex;">
         <div class="product">
-            <%= link_to product_path(id: product.id),
-              method: :put, class: "add-fav tooltipHere ", style: "width: 50px;" do %>
-              <i class="fas fa-heart">
-                <span><%= product.view ? product.view : 0 %></span>
-              </i>
-            <% end %>
+            <% if @service_user.current_user %>
+          <% if @service_favorite.check_like(@service_user.current_user.id, product.id).nil? %>
+            <div class="favorite"
+              id="product_<%= product.id %>", style= "width: 50px;">
+              <%= form_with(url: favorites_path, method: :post, local: true) do |form| %>
+                <%= form.hidden_field :user_id, 
+                  value: @service_user.current_user.id %>
+                <%= form.hidden_field :product_id, value: product.id %>
+                <button type="submit">
+                  <i class="far fa-heart"></i>
+                  <span><%= product.view ? product.view : 0 %></span>
+                </button>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="favorite"
+              id="product_<%= product.id %>">
+              <%= form_with(url: favorite_path(@service_favorite.check_like(
+                @service_user.current_user.id, product.id)), method: :delete,local: true) do |form| %>
+                <%= form.hidden_field :user_id, value: @service_user.current_user.id %>
+                <%= form.hidden_field :product_id, value: product.id %>
+                <button type="submit">
+                  <i class="fas fa-heart"></i>
+                  <span><%= product.view ? product.view : 0 %></span>
+                </button>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="favorite">
+            <button type="submit" disabled>
+              <i class="fas fa-heart"></i>
+              <span><%= product.view ? product.view : 0 %></span>
+            </button>
+          </div>  
+        <% end %>
 
           <div class="image">
             <%= link_to product_path(product) do %>
-              <%= cl_image_tag product.image_link, :class => 'img-responsive', alt: 'img' %>
+              <%= cl_image_tag product.image_link, alt: 'img', height: "200px",
+              width: "262px" %>
             <% end %>
             <div class="promotion"><span class="new-product"> NEW</span><%#= product.discount%></div>
           </div>
@@ -59,17 +91,7 @@
       </div>
     <% end %>
   </div>
-  <% if @lenOfResult < 10 %>
-    <div class="row categoryFooter">
-      <div class="col-lg-offset-4 col-lg-8 ">
-        <ul class="pagination pagination">
-          <li class="prev disabled"><span>&#8592; Previous</span></li>
-          <li class="active"><span>1</span></li> 
-          <li class="next"><a>Next &#8594;</a></li>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+  
   <div class="row categoryFooter">
     <div class="col-lg-offset-4 col-lg-8 ">
       <%#= will_paginate(@productList, renderer: BootstrapPagination::Rails) %>

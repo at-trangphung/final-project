@@ -95,8 +95,8 @@ function load_steps_checkout(id_tab) {
               document.getElementById("myModal-bill").removeChild(modal_child);
             }
           }
+          var modal_child = document.getElementById("p_bill_modal_"+i);
         }
-        var modal_child = document.getElementById("p_bill_modal_"+i);
         if (modal_child !== null) {
           $("#modal-bill").modal("show"); 
         }          
