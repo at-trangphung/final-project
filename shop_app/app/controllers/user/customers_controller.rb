@@ -19,5 +19,4 @@ class User::CustomersController < BaseController
     def find_order
       @order = Transaction.find_by(id: params[:id])
     end
-
 end

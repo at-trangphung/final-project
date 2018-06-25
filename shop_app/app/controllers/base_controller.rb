@@ -12,6 +12,7 @@ class BaseController < ApplicationController
   
   def get_service
     @service_user = UserServices.new(session, cookies, params)
+    @service_favorite = FavoritesServices.new(params, @service_user.current_user)
   end
 
   def logged_in?

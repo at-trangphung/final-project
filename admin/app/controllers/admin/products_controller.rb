@@ -6,6 +6,7 @@ class Admin::ProductsController < AdminController
   end
 
   def new
+    load_data    
     @service_product.init
   end
 
@@ -16,9 +17,7 @@ class Admin::ProductsController < AdminController
   end
 
   def edit
-    @categories = Category.where(parent_id: 0)
-    @sizes      = Size.all
-    @types      = Type.all
+    load_data
     @product    = Product.includes(:category).find_by(id: params[:id])
     @service_product.edit
   end
@@ -37,6 +36,12 @@ class Admin::ProductsController < AdminController
   private
   def load_service
     @service_product = ProductServices.new(params, flash)
+  end
+
+  def load_data
+    @categories = Category.where(parent_id: 0)
+    @sizes      = Size.all
+    @types      = Type.all
   end
 
 end

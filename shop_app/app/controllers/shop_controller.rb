@@ -13,13 +13,11 @@ class ShopController < BaseController
   end
 
   def create
-    
   end
 
   def search
     @categories = list_find_category
     @listProduct = @service_shop.search_product
-    @lenOfResult = @listProduct.size
   end
 
   def show

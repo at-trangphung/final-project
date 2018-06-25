@@ -14,5 +14,8 @@
     <div class="col-lg-12" id="list-order">
     <%= render "list_comment" %>
     </div>
+    <div class="col-lg-12 text-center">
+      <%= will_paginate(@comments, renderer: BootstrapPagination::Rails)%>
+    </div>
   </div>
 </div>
