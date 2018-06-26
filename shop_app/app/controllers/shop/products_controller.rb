@@ -17,6 +17,8 @@ class Shop::ProductsController < BaseController
     @comment = Comment.new
     @comments = @product.comment_products.where(
           parent_id: 0).paginate page: params[:page], per_page: 7
+    @productSuggest = Product.where(category_id: @product.category_id)
+                             .order(view: :desc).first(3)
   end
 
   private
