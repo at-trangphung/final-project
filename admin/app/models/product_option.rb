@@ -5,5 +5,4 @@ class ProductOption < ApplicationRecord
   belongs_to :type, class_name: 'Type', foreign_key: "type_id"
 
   validates :price, presence: true, numericality: true
-
 end

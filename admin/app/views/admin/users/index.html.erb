@@ -4,7 +4,6 @@
       <h1 class="page-header">Manage users</h1>
     </div>
   </div>
-  <div>
   <div class="col-lg-12">
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
@@ -53,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-offset-4 col-lg-8 ">
+      <div class="col-lg-12 text-center">
         <%= will_paginate(@users, renderer: BootstrapPagination::Rails)%>
       </div>
     </div>

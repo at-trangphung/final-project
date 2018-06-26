@@ -7,7 +7,7 @@ class CommentServices
   end
 
   def load_list_comments
-    @comments = Comment.all
+    @comments = Comment.all.paginate(page: params[:page], per_page: 10)
   end
 
   def update_comment

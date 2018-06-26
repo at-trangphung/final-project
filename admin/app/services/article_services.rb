@@ -47,7 +47,7 @@ class ArticleServices
 
   def load_list_article
     return @articles if @articles
-    @articles = Article.all
+    @articles = Article.all.paginate(page: params[:page], per_page: 2)
   end
 
   def find_article

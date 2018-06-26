@@ -9,7 +9,6 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script> -->
 
 <% end %>
-
   <div class="container main-container headerOffset1">
     <div class="row">
       <div class="breadcrumbDiv col-lg-12">
@@ -26,8 +25,44 @@
         <div class="col-lg-6 col-md-6 col-sm-6">
           <!-- product Image and Zoom -->
           <div class="main-image col-lg-12 no-padding">
-            <%= cl_image_tag @product.image_link, alt: 'img', height: "500px",
-              width: "400px" %>
+            <%= cl_image_tag @product.image_link, alt: 'img',
+             height: "555px",width: "555px" %>
+             <% if @service_user.current_user %>
+              <% if @service_favorite.check_like(@service_user.current_user.id, @product.id).nil? %>
+                <div class="favorite"
+                  id="product_<%= @product.id %>">
+                  <%= form_with(url: favorites_path, method: :post, local: true) do |form| %>
+                    <%= form.hidden_field :user_id, 
+                      value: @service_user.current_user.id %>
+                    <%= form.hidden_field :product_id, value: @product.id %>
+                    <button type="submit">
+                      <i class="far fa-heart"></i>
+                      <span><%= @product.view ? @product.view : 0 %></span>
+                    </button>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="favorite"
+                  id="product_<%= @product.id %>">
+                  <%= form_with(url: favorite_path(@service_favorite.check_like(
+                    @service_user.current_user.id, @product.id)), method: :delete,local: true) do |form| %>
+                    <%= form.hidden_field :user_id, value: @service_user.current_user.id %>
+                    <%= form.hidden_field :product_id, value: @product.id %>
+                    <button type="submit">
+                      <i class="fas fa-heart"></i>
+                      <span><%= @product.view ? @product.view : 0 %></span>
+                    </button>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="favorite">
+                <button type="submit" disabled>
+                  <i class="fas fa-heart"></i>
+                  <span><%= @product.view ? @product.view : 0 %></span>
+                </button>
+              </div>  
+            <% end %>
           </div>
         </div>
         <!--/ left column end -->
