@@ -18,10 +18,6 @@
     <%= f.label :discount %>
     <%= f.number_field :discount, value: 0, min: 0, class: "form-control" %>
   </div>
-   <div class="form-group">
-    <%= f.label :like %>
-    <%= f.number_field :like, value: 0, min: 0, class: "form-control" %>
-  </div>
   <div class="form-group">
     <%= f.label :size_id, "Size" %>
     <%= f.select("size_id", "size_id",{}, { class:"form-control" }) do  %>
@@ -60,6 +56,6 @@
       <%= link_to "Cancel" , products_path ,class: "btn btn-primary"%>
     </div>
     <div class="col-sm-offset-4 col-sm-2">
-      <%= f.submit ("Save"),class: "btn btn-primary" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
     </div>
 <% end %>

@@ -5,7 +5,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def new
-    @categories = @service_category.load_list_category
+    @categories = @service_category.load_parent_category
     @category   = Category.new
   end
 
@@ -15,7 +15,7 @@ class Admin::CategoriesController < AdminController
     
   end
   def edit
-    @categories = @service_category.load_list_category
+    @categories = @service_category.load_parent_category
     @category   = @service_category.find_category
   end
 

@@ -16,8 +16,13 @@ class CategoryServices
   end
 
   def update_category
-    category = find_category
-    if category.update(category_params)
+    category = Category.find_by(name: category_params[:name])
+    if category_params[:parent_id].empty?
+      parent_id = 0
+    else
+      parent_id = category_params[:parent_id]
+    end
+    if category.update(name: category_params[:name], parent_id: parent_id)
       flash[:success] = "update successfully"
     end  
   end
@@ -41,6 +46,10 @@ class CategoryServices
       else
         Category.all.paginate page: params[:page], per_page: 5
       end 
+  end
+
+  def load_parent_category
+     Category.where(parent_id: 0)
   end
 
   def find_category

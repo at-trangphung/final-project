@@ -21,6 +21,7 @@ class TypeServices
   end
 
   def destroy
+    type = find_type
     if type.destroy!
       flash[:success] = "deleted successfully"
     end
