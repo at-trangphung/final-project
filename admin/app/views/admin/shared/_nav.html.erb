@@ -18,18 +18,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to(dashboard_index_path) do %>
-          <p>Account</p>
-        <% end %>
-        </li>
-        <li>
-          <a href="#">
-            <p>Log out</p>
-          </a>
-        </li>
+        <% if @service_user.current_user %>
+            <li class="hidden-xs"><%= link_to "Logout", '/admin/logout' %></li>
+          <% end %>
         <li class="separator hidden-lg"></li>
       </ul>
     </div>
+      
   </div>
 </nav>

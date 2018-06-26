@@ -1,5 +1,5 @@
 <tr>
-  <td><%= order.id%></td>
+  <td><%= order.id %></td>
   <td><%= order.customer.email %></td>
   <td><%= order.customer.first_name %> <%= order.customer.last_name %></td>
   <td><%= order.delivery_time %></td>
@@ -12,9 +12,16 @@
     <% end %>
     <%# if order.pending? %>
       |
-      <%= link_to order_path(id: order.id, status: 1),
-        method: :patch, title: "accept" do %>
-        <i class="fa fa-check"></i>
+      <% if order.status == 0 %>
+        <%= link_to order_path(id: order.id, status: 1),
+          method: :patch, title: "accept" do %>
+          <i class="fa fa-check"></i>
+        <% end %>
+      <% else %>
+        <%= link_to order_path(id: order.id, status: 1), style: 'pointer-events: none;',
+          method: :patch, title: "accept" do %>
+          <i class="fa fa-check"></i>
+        <% end %>
       <% end %>
       |
       <%= link_to order_path(id: order.id, status: 2),
