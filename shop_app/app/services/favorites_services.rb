@@ -14,6 +14,7 @@ class FavoritesServices
   end
 
   def destroy_favorite
+    binding.pry
     Favorite.find_by(user_id: params[:user_id], product_id: params[:product_id]).delete
     @product = find_product
     view = @product.view

@@ -10,6 +10,7 @@ class ShopController < BaseController
     @count_products = 0
     @total = 0
     @len = Product.all.size
+    @productSuggest = Product.all.order(view: :desc).first(3)
   end
 
   def create
