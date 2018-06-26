@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :load_service
+  
   def index
     @users = @service_user.load_list_user
   end
@@ -28,10 +28,4 @@ class Admin::UsersController < AdminController
     @service_user.destroy
     redirect_to users_path
   end
-
-  private
-  def load_service
-    @service_user = UserServices.new(params, flash)
-  end
-
 end

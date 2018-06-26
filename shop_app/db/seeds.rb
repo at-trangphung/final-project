@@ -26,46 +26,46 @@ Category.create!(name: "Yogurt", parent_id: 2, sort_order:0)#8
 Category.create!(name: "Tea", parent_id: 2, sort_order:0)#9
 
 Product.create!(category_id: 3, name:"Coffee Milk", description:"", discount:0, image_link:"coffee_sua",
-  view: 0 )#1
+  like: 0 )#1
 Product.create!(category_id: 3, name:"Coffee Milk SG", description:"", discount:0, image_link:"coffee_sua_sai_gon",
-  view: 0 )#2
+  like: 0 )#2
 Product.create!(category_id: 4, name:"Coffee latte", description:"", discount:0, image_link:"latte",
-  view: 0 )#3
+  like: 0 )#3
 Product.create!(category_id: 4, name:"Coffee matcha", description:"", discount:0, image_link:"matcha",
-  view: 0 )#4
+  like: 0 )#4
 Product.create!(category_id: 4, name:"Coffee capuccino", description:"", discount:0, image_link:"capuccino",
-  view: 0 )#5
+  like: 0 )#5
 Product.create!(category_id: 6, name:"7 up", description:"", discount:0, image_link:"7_up",
-  view: 0 )#6
+  like: 0 )#6
 Product.create!(category_id: 6, name:"Pepsi", description:"", discount:0, image_link:"pepsi",
-  view: 0 )#7
+  like: 0 )#7
 Product.create!(category_id: 6, name:"Cocacola", description:"", discount:0, image_link:"cocacola",
-  view: 0 )#8
+  like: 0 )#8
 Product.create!(category_id: 5, name:"Lemon", description:"", discount:0, image_link:"lemon",
-  view: 0 )#9
+  like: 0 )#9
 Product.create!(category_id: 5, name:"Orange", description:"", discount:0, image_link:"orange",
-  view: 0 )#10
+  like: 0 )#10
 Product.create!(category_id: 5, name:"Stawbery", description:"", discount:0, image_link:"strawberry_juice",
-  view: 0 )#11
+  like: 0 )#11
 Product.create!(category_id: 7, name:"Soda orange", description:"", discount:0, image_link:"soda_orange",
-  view: 0 )#12
+  like: 0 )#12
 Product.create!(category_id: 7, name:"Soda blueberries", description:"", discount:0, image_link:"soda_blueberries",
-  view: 0 )#13
-Product.create!(category_id: 8, name:"Yogurt", description:"", discount:0, image_link:"yogurt", view: 0 )
+  like: 0 )#13
+Product.create!(category_id: 8, name:"Yogurt", description:"", discount:0, image_link:"yogurt", like: 0 )
 #14
-Product.create!(category_id: 8, name:"Yogurt milk", description:"", discount:0, image_link:"milk_yogurt", view: 0 )
+Product.create!(category_id: 8, name:"Yogurt milk", description:"", discount:0, image_link:"milk_yogurt", like: 0 )
 #15
-Product.create!(category_id: 8, name:"Yogurt strawberry", description:"", discount:0, image_link:"strawberry_yogurt", view: 0 )
+Product.create!(category_id: 8, name:"Yogurt strawberry", description:"", discount:0, image_link:"strawberry_yogurt", like: 0 )
 #16
-Product.create!(category_id: 9, name:"Lipton tea", description:"", discount:0, image_link:"lipton_tea", view: 0 )
+Product.create!(category_id: 9, name:"Lipton tea", description:"", discount:0, image_link:"lipton_tea", like: 0 )
 #17
-Product.create!(category_id: 9, name:"Olong tea", description:"", discount:0, image_link:"olong_tea", view: 0 )
+Product.create!(category_id: 9, name:"Olong tea", description:"", discount:0, image_link:"olong_tea", like: 0 )
 #18
-Product.create!(category_id: 9, name:"Ginger tea", description:"", discount:0, image_link:"ginger_tea", view: 0 )
+Product.create!(category_id: 9, name:"Ginger tea", description:"", discount:0, image_link:"ginger_tea", like: 0 )
 #19
-Product.create!(category_id: 9, name:"Lemon tea", description:"", discount:0, image_link:"lemon_tea", view: 0 )
+Product.create!(category_id: 9, name:"Lemon tea", description:"", discount:0, image_link:"lemon_tea", like: 0 )
 #20
-Product.create!(category_id: 9, name:"Peach tea", description:"", discount:0, image_link:"peach_tea", view: 0 )
+Product.create!(category_id: 9, name:"Peach tea", description:"", discount:0, image_link:"peach_tea", like: 0 )
 #21
 
 ProductOption.create!(product_id: 1, size_id: 1 ,type_id: 1, price:3)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180623093603) do
+ActiveRecord::Schema.define(version: 20180625102718) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20180623093603) do
     t.text "description"
     t.integer "discount"
     t.string "image_link"
-    t.integer "view"
+    t.integer "like"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20180623093603) do
   end
 
   create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "customer_id"
     t.float "amount", limit: 24
     t.string "comment"
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20180623093603) do
     t.string "activation_digest"
     t.datetime "activated_at"
     t.boolean "activated", default: false
-    t.integer "role_id"
+    t.integer "role_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
