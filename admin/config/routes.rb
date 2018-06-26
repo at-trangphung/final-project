@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     resources :types
     resources :product_options
     resources :comments
+    get '/login' => 'sessions#new' 
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
   end
 end

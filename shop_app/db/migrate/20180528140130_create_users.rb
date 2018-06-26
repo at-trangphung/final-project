@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :activation_digest
       t.datetime :activated_at
       t.boolean :activated, default: false
-      t.integer :role_id
+      t.integer :role_id, default: 0
 
       t.timestamps
     end

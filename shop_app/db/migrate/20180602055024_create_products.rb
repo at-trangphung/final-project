@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.text :description
       t.integer :discount
       t.string :image_link
-      t.integer :view
+      t.integer :like, default: 0
 
       t.timestamps
     end
