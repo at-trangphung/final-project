@@ -10,10 +10,18 @@
   <td><%= user.phone %></td>
   <td><%= user.role_id %></td>
   <td>
-    <%= link_to user_path(user), method: :delete,
-      data: {confirm: "Do you want this user"} do %>
-      <i class="pe-7s-trash"></i>
+    <% if user.role_id == 1 %>
+      <%= link_to user_path(user), style: 'pointer-events: none;', method: :delete,
+        data: {confirm: "Do you want this user"} do %>
+        <i class="pe-7s-trash"></i>
+      <% end %>
+    <% else %>
+      <%= link_to user_path(user), method: :delete,
+        data: {confirm: "Do you want this user"} do %>
+        <i class="pe-7s-trash"></i>
+      <% end %>
     <% end %>
+    
     |<% if user.role_id == 0 %>
         <%= link_to user_path(id: user.id, role_id: 2),
           method: :patch, title: "accept" do %>

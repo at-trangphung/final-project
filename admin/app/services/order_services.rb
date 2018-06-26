@@ -7,7 +7,7 @@ class OrderServices
   end
 
   def load_list_order
-    @orders = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @orders = Transaction.all.order(status: :asc,created_at: :asc).paginate(page: params[:page], per_page: 5)
   end
 
   def update_order

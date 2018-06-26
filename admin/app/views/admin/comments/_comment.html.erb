@@ -7,14 +7,28 @@
   <td><%= l(comment.created_at, format: '%B, %d %Y')%></td>
   <td><%= comment.status %></td>
   <td>
-    <%= link_to comment_path(id: comment.id, status: 1),
-      method: :patch, title: "accept" do %>
-      <i class="fa fa-check"></i>
+    <% if comment.status == 1 %>
+      <%= link_to comment_path(id: comment.id, status: 1), style: 'pointer-events: none;',
+        method: :patch, title: "accept" do %>
+        <i class="fa fa-check"></i>
+      <% end %>
+    <% else %>
+      <%= link_to comment_path(id: comment.id, status: 1),
+        method: :patch, title: "accept" do %>
+        <i class="fa fa-check"></i>
+      <% end %>
     <% end %>
     |
-    <%= link_to comment_path(id: comment.id, status: 2),
-      method: :patch, title: "reject" do %>
-      <i class="fa fa-ban"></i>
+    <% if comment.status == 2 %>
+      <%= link_to comment_path(id: comment.id, status: 2), style: 'pointer-events: none;',
+        method: :patch, title: "reject" do %>
+        <i class="fa fa-ban"></i>
+      <% end %>
+    <% else %>
+      <%= link_to comment_path(id: comment.id, status: 2),
+        method: :patch, title: "reject" do %>
+        <i class="fa fa-ban"></i>
+      <% end %>
     <% end %>
   </td>
 </tr>

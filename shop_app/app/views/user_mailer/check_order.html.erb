@@ -14,11 +14,10 @@
         <div class="col-lg-7 col-center">
           <p>Customer: <%= @customer.first_name %> <%= @customer.last_name %></p>
           <p>Phone: <%= @customer.phone %> </p>
-          <p>Time Shipping: <%= @transaction.delivery_time %> </p>
+          <p>Time Shipping: <%= l( @transaction.delivery_time,format:'%H:%M:%S, %B %d %Y') %> </p>
           <% if @customer.last_name != @transaction.receiver %>
             <p>Receiver: <%= @transaction.receiver %></p>
             <p>Address Deliver: <%= @transaction.address_deliver_rec %></p>
-            <p>Phone Receiver: <%= @transaction.phone_rec %></p>
           <% else %>
             <p>Address Deliver: <%= @customer.address_deliver %></p>
             <p>Phone Receiver: <%= @customer.phone %></p>
@@ -65,8 +64,6 @@
                       <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %>$</td>
                     </tr>
                   <% end %>
-
-
               </tbody>
             </table>
           </div>

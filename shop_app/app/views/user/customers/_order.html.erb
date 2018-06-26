@@ -3,7 +3,14 @@
   <td><%= order.customer.last_name %></td>
   <td><%= order.customer.email %></td>
   <td><%= order.amount %> $</td>
-   <td><%= l(order.created, format: '%B, %d %Y') %></td>
+  <td><%= l(order.created, format: '%B, %d %Y') %></td>
+  <% if order.status == 0 %>
+    <td>Waiting</td>
+  <% elsif order.status == 1 %>
+    <td>Completed</td>
+  <% else order.status == 2 %>
+    <td>Reject</td>
+  <% end %>
   <td>
     <%= link_to customer_path(order), 
       title: "detail" do %>
