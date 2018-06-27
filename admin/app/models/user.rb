@@ -18,5 +18,6 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
+  has_many :comments, dependent: :destroy
  end
  

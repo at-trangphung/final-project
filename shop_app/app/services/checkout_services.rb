@@ -32,7 +32,6 @@
             @transaction.customer_id = @user_customer.id
             @transaction.amount = @total
           else
-            binding.pry
             @customer.save! 
             @transaction = create_transaction
             @transaction.customer_id = @customer.id

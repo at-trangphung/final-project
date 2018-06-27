@@ -22,7 +22,9 @@
             <p>Address Deliver: <%= @customer.address_deliver %></p>
             <p>Phone Receiver: <%= @customer.phone %></p>
           <% end %>
-          <p>Comment: <%= @transaction.comment %> </p>
+          <% unless @transaction.comment.blank? %>
+            <p><%= @transaction.comment %></p>
+          <% end %>
         </div>
 
         <div class="col-lg-7 col-center">

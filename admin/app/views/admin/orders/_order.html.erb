@@ -2,7 +2,7 @@
   <td><%= order.id %></td>
   <td><%= order.customer.email %></td>
   <td><%= order.customer.first_name %> <%= order.customer.last_name %></td>
-  <td><%= order.delivery_time %></td>
+  <td><%= l(order.delivery_time,format:'%H:%M:%S, %B %d %Y') %></td>
   <td><%= order.amount %> $</td>
   <td><%= order.status %></td>
   <td>

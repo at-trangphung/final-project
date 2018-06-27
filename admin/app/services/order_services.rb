@@ -14,10 +14,10 @@ class OrderServices
     @order = Transaction.find_by(id: params[:id])
     status = params[:status].to_i
     if (check_status status) && (@order.update_attribute :status, status)
-      flash[:success] =  "update_success"
+      flash[:success] =  "Transaction success!"
       @order.send_check_order_email
     else
-      flash[:danger] =  "update_failed"
+      flash[:danger] =  "Send mail failed"
     end
   end
   
