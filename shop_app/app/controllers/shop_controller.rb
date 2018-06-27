@@ -34,5 +34,6 @@ class ShopController < BaseController
 
     def load_service
       @service_shop = ShopServices.new(params)
+      @service_favorite = FavoritesServices.new(params, @service_user.current_user)
     end
 end

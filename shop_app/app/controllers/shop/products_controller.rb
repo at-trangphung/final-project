@@ -1,5 +1,6 @@
 class Shop::ProductsController < BaseController
   layout 'customer'
+  before_action :load_service
 
   def index
     @products = Product.all
@@ -24,5 +25,8 @@ class Shop::ProductsController < BaseController
   private
     def load_product
       Product.find_by(id: params[:id])
+    end
+    def load_service
+      @service_favorite = FavoritesServices.new(params, @service_user.current_user)
     end
 end
