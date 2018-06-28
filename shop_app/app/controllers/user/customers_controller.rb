@@ -6,6 +6,7 @@ class User::CustomersController < BaseController
   def index
     id = Customer.find_by(user_id: @service_user.current_user.id)
     @orders = Transaction.where(customer_id: id).order(created_at: :desc)
+              .paginate(page: params[:page], per_page: 5)
   end
 
   def show

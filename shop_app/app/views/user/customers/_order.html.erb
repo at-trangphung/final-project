@@ -1,4 +1,7 @@
+<% @orders.each_with_index do |order, index| %>
 <tr>
+  <% params[:page] = 1 if params[:page].nil? %>
+  <td><%= (params[:page].to_i - 1) * 5 + index.to_i + 1 %></td>
   <td><%= order.customer.first_name %></td>
   <td><%= order.customer.last_name %></td>
   <td><%= order.customer.email %></td>
@@ -18,3 +21,4 @@
     <% end %>
   </td>
 </tr>
+<% end %>

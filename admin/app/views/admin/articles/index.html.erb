@@ -38,7 +38,9 @@
                 </tr>
               </thead>
               <tbody>
-                <%= render partial: "article", collection: @articles %>
+                <% @id = 0 %> 
+                <%= render partial: "article", collection: @articles,
+                  local: @id %>
               </tbody>
             </table>
           </div>

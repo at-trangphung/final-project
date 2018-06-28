@@ -51,8 +51,9 @@
             </tr>
           </thead>
           <tbody>
+            <% @id = 0 %>
             <%= render partial: "product_option", 
-              collection: @product_options%>
+              collection: @product_options, local: @id %>
           </tbody>
         </table>
       </div>

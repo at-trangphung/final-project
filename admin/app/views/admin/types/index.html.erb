@@ -32,9 +32,12 @@
             </tr>
           </thead>
           <tbody>
-            <%= render partial: "type", collection: @types %>
+            <%= render partial: "type" %>
           </tbody>
         </table>
+      </div>
+      <div class="col-lg-12 text-center">
+        <%= will_paginate(@types, renderer: BootstrapPagination::Rails)%>
       </div>
     </div>
   </div>

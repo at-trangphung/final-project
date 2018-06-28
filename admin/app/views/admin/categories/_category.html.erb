@@ -1,5 +1,9 @@
-<tr class="item-<%= category[:id] %>">
-  <td><%= category.id %></td>
+<% @id = @id+1 %>
+<tr>
+  <% if params[:page].nil?%>
+    <% params[:page] = 1 %>
+  <% end %>
+  <td><%= (params[:page].to_i - 1) * 5 + @id %></td>
   <td><%= category.name %></td>
   <td><%= category.parent_id %></td>
   <td>

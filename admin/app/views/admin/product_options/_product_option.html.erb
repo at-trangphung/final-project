@@ -1,5 +1,9 @@
+<% @id = @id + 1 %>
 <tr class="text-center">
-  <td><%= product_option.id %></td>
+  <% if params[:page].nil?%>
+    <% params[:page] = 1 %>
+  <% end %>
+  <td><%= (params[:page].to_i - 1) * 10 + @id %></td>
   <td><%= product_option.product.name %></td>
   <td>
     <%= cl_image_tag(product_option.product.image_link, 

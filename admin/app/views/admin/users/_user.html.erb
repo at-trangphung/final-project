@@ -1,5 +1,8 @@
+<% @users.each_with_index do |user, index| %>
 <tr>
-  <td><%= user.id %></td>
+  <% params[:page] = 1 if params[:page].nil? %>
+
+  <td><%= (params[:page].to_i - 1) * 5 + index.to_i + 1 %></td>
   <%# if user.avatar? %>
     <%#= image_tag user.avatar.url, :size => "70x50" %>
   <%# end %>
@@ -35,3 +38,4 @@
       <% end %>
   </td>
 </tr>
+<% end %>

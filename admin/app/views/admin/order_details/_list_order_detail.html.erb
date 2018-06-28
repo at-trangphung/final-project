@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <%= t ".list_order_detail" %>
+    <h4>list_order_detail</h4>
   </div>
   <div class="panel-body">
     <div class="wishlist-item table-responsive">
@@ -17,9 +17,12 @@
           </tr>
         </thead>
         <tbody id="list-order-detail">
-          <%= render partial: "order_detail", collection: @order_details %>
+          <%= render partial: "order_detail" %>
         </tbody>
       </table>
+      <div class="col-lg-12 text-center">
+        <%= will_paginate(@order_details, renderer: BootstrapPagination::Rails)%>
+      </div>
     </div>
   </div>
 </div>
