@@ -32,6 +32,7 @@
             @transaction.customer_id = @user_customer.id
             @transaction.amount = @total
           else
+            @customer.user_id = @check_user.id
             @customer.save! 
             @transaction = create_transaction
             @transaction.customer_id = @customer.id
@@ -39,6 +40,7 @@
           end
         else
           @new_user = create_new_user
+          @customer.user_id = @new_user.id
           @customer.save! 
           @transaction = create_transaction
           @transaction.customer_id = @customer.id
