@@ -4,13 +4,14 @@ class ShopController < BaseController
   
   def index
     @categories = list_find_category
-    @productList = Product.all.paginate page: params[:page],
+    @productList = Product.where(status: "exist").paginate page: params[:page],
             per_page: 9
     @order_details = []
     @count_products = 0
     @total = 0
     @len = Product.all.size
-    @productSuggest = Product.all.order(like: :desc).first(3)
+    @productSuggest = Product.where(status: "exist")
+                            .order(like: :desc).first(3)
   end
 
   def create
@@ -23,14 +24,14 @@ class ShopController < BaseController
 
   def show
     @categories = list_find_category
-    @productByCategory = Product.where(category_id: params[:id])
+    @productByCategory = Product.where(category_id: params[:id],status: "exist")
                         .paginate page: params[:page], per_page: 9
     @lengh = Product.where(category_id: params[:id]).size
   end 
 
   private
     def list_find_category
-      Category.where(parent_id: 0)
+      Category.where(parent_id: 0, status: "exist")
     end 
 
     def load_service

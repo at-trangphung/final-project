@@ -14,7 +14,7 @@
           <ul class="nav nav-pills nav-stacked tree">
             <li class="dropdown-tree close-tree">
               <a class="dropdown-tree-a cate-f-15">
-                <% @category_child = Category.where(parent_id: categories.id)%>
+                <% @category_child = Category.where(parent_id: categories.id,status: "exist")%>
                 <span class="badge pull-right"><%= @category_child.size %></span> 
                   <%= categories.name %> 
               </a>

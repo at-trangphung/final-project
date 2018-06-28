@@ -19,7 +19,7 @@ class Admin::ProductsController < AdminController
 
   def edit
     load_data
-    @product    = Product.includes(:category).find_by(id: params[:id])
+    @product = Product.includes(:category).find_by(id: params[:id])
     @service_product.edit
   end
 

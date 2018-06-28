@@ -8,5 +8,6 @@ class Product < ApplicationRecord
   has_many :sizes, through: :product_options
   has_many :types, through: :product_options
 
-  scope :search, ->(key){where("name LIKE ?", "%#{key}%")}
+  scope :search, ->(key){where("status = ? AND name LIKE ?", 1, "%#{key}%")}
+  enum status: {not_exist: 0, exist: 1}
 end

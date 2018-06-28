@@ -28,13 +28,11 @@ class SizeServices
   end
 
   def find_size
-    return @size if @size
-    @size = Size.find_by(id: params[:id])
+    Size.find_by(id: params[:id])
   end
 
   def load_list_size
-    return @sizes if @sizes
-    @sizes = Size.all.paginate(page: params[:page], per_page: 5)
+    Size.all.paginate(page: params[:page], per_page: 5)
   end
 
   def size_params

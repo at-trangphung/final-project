@@ -12,6 +12,6 @@ class Admin::OrdersController < AdminController
 
   private
   def load_service
-    @service_order    = OrderServices.new(params, flash)
+    @service_order = OrderServices.new(params, flash)
   end
 end

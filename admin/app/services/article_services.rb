@@ -46,13 +46,11 @@ class ArticleServices
   end
 
   def load_list_article
-    return @articles if @articles
-    @articles = Article.all.paginate(page: params[:page], per_page: 2)
+    Article.all.paginate(page: params[:page], per_page: 2)
   end
 
   def find_article
-    return @article if @article
-    @article = Article.find_by(id: params[:id])
+    Article.find_by(id: params[:id])
   end
 
   def split_string

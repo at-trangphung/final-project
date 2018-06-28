@@ -18,13 +18,13 @@ class Shop::ProductsController < BaseController
     @comment = Comment.new
     @comments = @product.comment_products.where(
           parent_id: 0).paginate page: params[:page], per_page: 3
-    @productSuggest = Product.where(category_id: @product.category_id)
+    @productSuggest = Product.where(category_id: @product.category_id,status: "exist")
                              .order(like: :desc).first(3)
   end
 
   private
     def load_product
-      Product.find_by(id: params[:id])
+      Product.find_by(id: params[:id], status: "exist")
     end
 
     def load_service
