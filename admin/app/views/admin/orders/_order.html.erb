@@ -12,7 +12,7 @@
     <% end %>
     <%# if order.pending? %>
       |
-      <% if order.status == 0 %>
+      <% if order.status == 'waiting' %>
         <%= link_to order_path(id: order.id, status: 1),
           method: :patch, title: "accept" do %>
           <i class="fa fa-check"></i>
