@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :orders
   has_many :transactions, through: :orders
+  enum status: {not_exist: 0, exist: 1}
 end

@@ -28,16 +28,12 @@ class ProductOptionServices
   end
 
   def destroy_product_option
-    if product_option.destroy!
-      flash[:success] = "deleted successfully"
-    else
-      flash[:danger] = "deleted failed"
-    end
+    product_option.map{|po| po.update(status: "not_exist")}
+    flash[:success] = "deleted successfully"
   end
 
   def product_option
-    return @product_option if @product_option
-    @product_option = ProductOption.find(params[:id])
+    ProductOption.find(params[:id])
   end
 
   def product_option_params
@@ -52,8 +48,7 @@ class ProductOptionServices
   end
 
   def load_list_product_option
-    return if @product_options 
-    @product_options = ProductOption.all.paginate(page: params[:page], per_page: 10)
+    ProductOption.where(status: "exist").paginate(page: params[:page], per_page: 10)
   end
 
   def load_data  
@@ -63,7 +58,6 @@ class ProductOptionServices
   end
 
   def find_product_option
-    return if @product_option
-    @product_option = ProductOption.find_by(id: params[:id]) 
+    ProductOption.find_by(id: params[:id]) 
   end
 end

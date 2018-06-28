@@ -5,4 +5,5 @@ class ProductOption < ApplicationRecord
   belongs_to :type, class_name: 'Type', foreign_key: "type_id"
 
   validates :price, presence: true, numericality: true
+  enum status: {not_exist: 0, exist: 1}
 end
