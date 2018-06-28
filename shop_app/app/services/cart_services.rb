@@ -42,9 +42,9 @@
       end
     end
 
-    def destroy
+    def destroy_item
       session[:shopping_cart].each do |item|
-      session[:shopping_cart].delete(item) if item["product_id"] == params[:id].to_i && 
+        session[:shopping_cart].delete(item) if item["product_id"] == params[:id].to_i && 
                                               item["size"] == params[:size]
       end
     end

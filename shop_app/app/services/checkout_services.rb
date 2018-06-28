@@ -27,9 +27,16 @@
 
         if @check_user
           @user_customer = Customer.find_by(email: @check_user.email)
-          @transaction = create_transaction
-          @transaction.customer_id = @user_customer.id
-          @transaction.amount = @total
+          if @user_customer
+            @transaction = create_transaction
+            @transaction.customer_id = @user_customer.id
+            @transaction.amount = @total
+          else
+            @customer.save! 
+            @transaction = create_transaction
+            @transaction.customer_id = @customer.id
+            @transaction.amount = @total
+          end
         else
           @new_user = create_new_user
           @customer.save! 
@@ -38,7 +45,6 @@
           @transaction.amount = @total
         end
       end
-
       if @transaction.save!
         @order_items.each do |order_detail|
           order_detail.transaction_id = @transaction.id
@@ -90,7 +96,7 @@
     end
 
     def load_transaction
-      Transaction.find_by(id: session[:transaction_id])
+      Transaction.find_by(id: params[:id])
     end
 
     def load_customer

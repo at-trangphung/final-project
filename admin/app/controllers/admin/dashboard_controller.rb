@@ -4,13 +4,15 @@ class Admin::DashboardController < AdminController
     @orders       = Transaction.all.size
     @customers    = Customer.all.size
     @transactions = Transaction.where('created  BETWEEN ? AND ?', 
-                                      Time.now-(30*3600*24), Time.now).all
+                                      Time.now-(30*3600*24), Time.now)
     @total        = 0
     @transactions.each do |order|
-      @total += order.amount
+      if order.status == 1
+        @total += order.amount
+      end
     end  
     @new_transactions = Transaction.where('created  BETWEEN ? AND ?', 
-                                      Time.now-(30*3600*24), Time.now).all
+                                      Time.now-(3600*24), Time.now)
   end
 
   

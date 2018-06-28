@@ -3,6 +3,7 @@ function load_steps_checkout(id_tab) {
     var div_show  = document.getElementById('step-'+i);
     var order_show  = document.getElementById('order-step-'+i);
     var temp = true;
+    var show_modal; 
     if (i === id_tab) {
       if (id_tab === 2) {
         var checkbox = document.getElementById('cb_receiver');
@@ -33,7 +34,8 @@ function load_steps_checkout(id_tab) {
               myModal.removeChild(modal_child);
             }
             p_modal.setAttribute("id", "p_cus_modal_"+i);
-            console.log(p_modal);
+
+            show_modal = document.getElementById("p_cus_modal_"+i);
           } else {
             var child = document.getElementById("p_cus_"+i);
             if (child !== null) {
@@ -49,9 +51,8 @@ function load_steps_checkout(id_tab) {
             object_billing.value = object_address.value;
           }
           
-          var p_child = document.getElementById("p_cus_modal_"+i);
         }
-        if (p_child !== null) {
+        if (show_modal !== undefined) {
           $("#modal-cus").modal("show"); 
         }
       }
@@ -83,7 +84,8 @@ function load_steps_checkout(id_tab) {
               myModal.removeChild(modal_child);
             }
             p_modal.setAttribute("id", "p_bill_modal_"+i);
-
+            
+            show_modal = document.getElementById("p_bill_modal_"+i);
           } else {
             var child = document.getElementById("p_bill_"+i);
             if (child !== null) {
@@ -95,9 +97,8 @@ function load_steps_checkout(id_tab) {
               document.getElementById("myModal-bill").removeChild(modal_child);
             }
           }
-          var modal_child = document.getElementById("p_bill_modal_"+i);
         }
-        if (modal_child !== null) {
+        if (show_modal !== undefined) {
           $("#modal-bill").modal("show"); 
         }          
         delivery_time();

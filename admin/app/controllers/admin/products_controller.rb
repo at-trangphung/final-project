@@ -6,7 +6,8 @@ class Admin::ProductsController < AdminController
   end
 
   def new
-    load_data    
+    load_data
+    @product = Product.new    
     @service_product.init
   end
 

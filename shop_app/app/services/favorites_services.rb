@@ -9,16 +9,15 @@ class FavoritesServices
   def create_favorite
     Favorite.create!(param_favorite)
     @product = find_product
-    view = @product.view
-    @product.update!(view: view+1)
+    like = @product.like
+    @product.update!(like: like+1)
   end
 
   def destroy_favorite
-    binding.pry
     Favorite.find_by(user_id: params[:user_id], product_id: params[:product_id]).delete
     @product = find_product
-    view = @product.view
-    @product.update!(view: view-1)
+    like = @product.like
+    @product.update!(like: like-1)
   end
 
   def check_like(user_id, product_id)

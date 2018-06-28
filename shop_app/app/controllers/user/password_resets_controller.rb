@@ -30,11 +30,10 @@ class User::PasswordResetsController < BaseController
       flash[:danger] = "can't be empty"
       render 'edit'
     elsif @user.update_attributes(user_params)
-      @service_user.login!(@user)
       @user.update_attribute(:reset_digest, nil)
 
       flash[:success] = "Password has been reset."
-      redirect_to @user
+      redirect_to login_path
     else
       render 'edit'                                    
     end

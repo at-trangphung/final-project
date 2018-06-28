@@ -61,9 +61,7 @@ class ProductServices
   end
 
   def product_params
-    params.require(:product).permit(:name, :description,
-                                    :category_id, :image_link, :discount,
-                                    :view)
+    params.require(:product).permit(:name, :description, :category_id, :image_link, :discount)
   end
 
   def option_params

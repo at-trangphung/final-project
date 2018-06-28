@@ -3,20 +3,6 @@
 
 <div class="w100 productFilter clearfix">
   <p class="pull-left"> Showing <strong><%= @productByCategory.size %></strong> products </p>
-
-  <div class="pull-right ">
-    <div class="change-order pull-right">
-      <select class="form-control" name="orderby">
-        <option selected="selected">Default sorting</option>
-        <option value="popularity">Sort by popularity</option>
-        <option value="rating">Sort by average rating</option>
-        <option value="date">Sort by newness</option>
-        <option value="price">Sort by price: low to high</option>
-        <option value="price-desc">Sort by price: high to low</option>
-      </select>
-    </div>
-    <div class="change-view pull-right"><a href="#" title="Grid" class="grid-view"> <i class="fa fa-th-large"></i> </a> <a href="#" title="List" class="list-view "><i class="fa fa-th-list"></i></a></div>
-  </div>
 </div>
 
 <div class="row  categoryProduct xsResponse clearfix">
@@ -34,7 +20,7 @@
                 <%= form.hidden_field :product_id, value: product.id %>
                 <button type="submit">
                   <i class="far fa-heart"></i>
-                  <span><%= product.view ? product.view : 0 %></span>
+                  <span><%= product.like ? product.like : 0 %></span>
                 </button>
               <% end %>
             </div>
@@ -47,7 +33,7 @@
                 <%= form.hidden_field :product_id, value: product.id %>
                 <button type="submit">
                   <i class="fas fa-heart"></i>
-                  <span><%= product.view ? product.view : 0 %></span>
+                  <span><%= product.like ? product.like : 0 %></span>
                 </button>
               <% end %>
             </div>
@@ -56,7 +42,7 @@
           <div class="favorite">
             <button type="submit" disabled>
               <i class="fas fa-heart"></i>
-              <span><%= product.view ? product.view : 0 %></span>
+              <span><%= product.like ? product.like : 0 %></span>
             </button>
           </div>  
         <% end %>
