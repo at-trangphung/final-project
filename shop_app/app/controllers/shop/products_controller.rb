@@ -17,7 +17,7 @@ class Shop::ProductsController < BaseController
     @types = @product.types.distinct
     @comment = Comment.new
     @comments = @product.comment_products.where(
-          parent_id: 0).paginate page: params[:page], per_page: 7
+          parent_id: 0).paginate page: params[:page], per_page: 3
     @productSuggest = Product.where(category_id: @product.category_id)
                              .order(like: :desc).first(3)
   end

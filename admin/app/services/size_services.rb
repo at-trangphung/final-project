@@ -34,7 +34,7 @@ class SizeServices
 
   def load_list_size
     return @sizes if @sizes
-    @sizes = Size.all
+    @sizes = Size.all.paginate(page: params[:page], per_page: 5)
   end
 
   def size_params

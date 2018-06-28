@@ -1,5 +1,8 @@
+<% @types.each_with_index do |type, index| %>
 <tr>
-  <td><%= type.id %></td>
+  <% params[:page] = 1 if params[:page].nil? %>
+
+  <td><%= (params[:page].to_i - 1) * 5 + index.to_i + 1 %></td>
   <td><%= type.name %></td>
   <td>
   <%= link_to type_path(type), 
@@ -13,4 +16,4 @@
   <% end %>
   </td>
 </tr>
-
+<% end %>

@@ -34,7 +34,7 @@ class TypeServices
 
   def load_list_type
     return @types if @types
-    @types = Type.all
+    @types = Type.all.paginate(page: params[:page], per_page: 5)
   end
 
   def type_params

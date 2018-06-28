@@ -7,7 +7,10 @@ class User::CustomersController < BaseController
     if @service_user.current_user
       id = Customer.find_by(user_id: @service_user.current_user.id)
       @orders = Transaction.where(customer_id: id).order(created_at: :desc)
-    end
+              .paginate(page: params[:page], per_page: 5)
+    else
+      redirect_to login_path
+    end  
   end
 
   def show

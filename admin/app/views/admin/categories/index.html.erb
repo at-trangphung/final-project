@@ -52,14 +52,16 @@
                 </tr>
               </thead>
               <tbody id="list-category">
-                <%= render partial: "category", collection: @categories %>
+                <% @id = 0 %> 
+                <%= render partial: "category", collection: @categories,
+                  local: @id %>
               </tbody>
             </table>
           </div>
         </div>
       </div>
       <div class="col-lg-12 text-center">
-        <%= will_paginate(@productList, renderer: BootstrapPagination::Rails)%>
+        <%= will_paginate(@categories, renderer: BootstrapPagination::Rails)%>
       </div>
     </div>
   </div>

@@ -23,7 +23,8 @@ class ShopController < BaseController
 
   def show
     @categories = list_find_category
-    @productByCategory = Product.where(category_id: params[:id]).paginate page: params[:page], per_page: 9
+    @productByCategory = Product.where(category_id: params[:id])
+                        .paginate page: params[:page], per_page: 9
     @lengh = Product.where(category_id: params[:id]).size
   end 
 
