@@ -7,7 +7,7 @@ class Admin::DashboardController < AdminController
                                       Time.now-(30*3600*24), Time.now)
     @total        = 0
     @transactions.each do |order|
-      if order.status == 1
+      if order.status == 'accept'
         @total += order.amount
       end
     end  

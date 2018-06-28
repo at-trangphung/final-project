@@ -4,9 +4,13 @@ class User::CustomersController < BaseController
   before_action :find_order, only: %i[show]
  
   def index
-    id = Customer.find_by(user_id: @service_user.current_user.id)
-    @orders = Transaction.where(customer_id: id).order(created_at: :desc)
+    if @service_user.current_user
+      id = Customer.find_by(user_id: @service_user.current_user.id)
+      @orders = Transaction.where(customer_id: id).order(created_at: :desc)
               .paginate(page: params[:page], per_page: 5)
+    else
+      redirect_to login_path
+    end  
   end
 
   def show

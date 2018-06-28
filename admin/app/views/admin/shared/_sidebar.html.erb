@@ -11,7 +11,7 @@
         <% end %>
       </div>
     </div>
-    <% if @service_user.current_user.role_id == 1 %>
+    <% if @service_user.current_user.role_id == 'admin' %>
       <ul class="nav">
         <li>
           <%= link_to(dashboard_index_path) do %>

@@ -18,6 +18,7 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
+  enum role_id: {user: 0, admin: 1, author: 2}
   has_many :comments, dependent: :destroy
  end
  
