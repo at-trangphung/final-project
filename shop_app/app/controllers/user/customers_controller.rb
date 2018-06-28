@@ -9,6 +9,8 @@ class User::CustomersController < BaseController
   end
 
   def show
+    id = Customer.find_by(user_id: @service_user.current_user.id)
+    @orders = Transaction.where(customer_id: id).order(created_at: :desc)
     @order_details = @order.orders
   end
 

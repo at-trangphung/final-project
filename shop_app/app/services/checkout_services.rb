@@ -45,7 +45,6 @@
           @transaction.amount = @total
         end
       end
-
       if @transaction.save!
         @order_items.each do |order_detail|
           order_detail.transaction_id = @transaction.id

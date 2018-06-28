@@ -29,9 +29,15 @@ class CategoryServices
 
   def destroy_category
     category = find_category
-    if category.destroy!
-      flash[:success] = "deleted successfully"
+    @categories = []
+    @categories << category
+    @categories << Category.find_by(parent_id: params[:id])
+    @categories.each do |category|
+      if category != nil
+        category.destroy
+      end  
     end  
+    flash[:success] = "deleted successfully"  
   end
 
   def category_params

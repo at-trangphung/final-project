@@ -32,19 +32,18 @@
             <table style="width:100%" class="cartTable cartTableBorder">
               <tbody>
                   <tr class="CartProduct cartTableHeader">
-                    <td style="width:15%">Product</td>
-                    <td style="width:30%">Details</td>
+                    <td style="width:15%"> Product</td>
+                    <td style="width:20%">Details</td>
                     <td style="width:15%">Size</td>
                     <td style="width:15%">Quantity</td>
-                    <td style="width:25%">Total</td>
+                    <td style="width:35%">Total</td>
                   </tr>
-
                   <% @order_items.each do |order_detail| %>
                     <tr class="CartProduct">
                       <td class="CartProductThumb">
                         <div>
                             <%= link_to order_detail.product do %>
-                              <%= cl_image_tag order_detail.product.image_link, :class => 'img-responsive', alt: 'img' %>
+                              <%= cl_image_tag order_detail.product.image_link, :class => 'img-responsive', alt: 'img', width: 50, height: 50 %>
                             <% end %>
                         </div>
                       </td>
@@ -69,6 +68,7 @@
                       <td class="price"><%= order_detail.quantity.to_f * order_detail.price.to_f %>$</td>
                     </tr>
                   <% end %>
+
 
               </tbody>
             </table>
