@@ -37,7 +37,7 @@
                   <%= form.hidden_field :product_id, value: @product.id %>
                   <button type="submit">
                     <i class="far fa-heart"></i>
-                    <span><%= @product.view ? @product.view : 0 %></span>
+                    <span><%= @product.like ? @product.like : 0 %></span>
                   </button>
                 <% end %>
               </div>
@@ -50,7 +50,7 @@
                   <%= form.hidden_field :product_id, value: @product.id %>
                   <button type="submit">
                     <i class="fas fa-heart"></i>
-                    <span><%= @product.view ? @product.view : 0 %></span>
+                    <span><%= @product.like ? @product.like : 0 %></span>
                   </button>
                 <% end %>
               </div>
@@ -59,7 +59,7 @@
             <div class="favorite">
               <button type="submit" disabled>
                 <i class="fas fa-heart"></i>
-                <span><%= @product.view ? @product.view : 0 %></span>
+                <span><%= @product.like ? @product.like : 0 %></span>
               </button>
             </div>  
           <% end %>
@@ -78,49 +78,63 @@
                   data-target="#modal-review" data-toggle="modal"> Write a review</a> </span></p>
             </div>
             
-            <div class="details-description">
-              <p><%= @product.description %></p>
+            <div class="details-description cate-f-20">
+              <p><%= @product.description %> </p>
             </div>
-            <div class="productFilter productFilterLook2">
-              <div class="row">
-                <div class="col-lg-6 col-sm-6 col-xs-6">
-                  <h3 class="product-title">Size</h3>
-                  <div class="filterBox">
-                    <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, {}, { class: 'form-control', onclick: 'select_price_fnc()' } %>
+            <%= form_with scope: :cart, url: carts_path, local: true do |form| %>
+              <div class="product-price">
+                <h3 class="product-title">Price</h3>
+                <%= form.select :price, @price.map { |p| [p.price, 
+                  {:id => "price_#{p.size_id}"}] }.uniq, {}, { class: 'price-sales', onclick: 'select_size_fnc()' } %> $
+              </div>
+              <div class="productFilter productFilterLook2">
+                <div class="row">
+                  <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <h3 class="product-title">Size</h3>
+                    <div class="filterBox">
+                      <%= form.select :size, @sizes.map { |size| [size.name, {:id => "size_#{size.id}"}] }, {}, { class: 'form-control', onclick: 'select_price_fnc()' } %>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-xs-6">
-                  <h3 class="product-title">Type</h3>
-                  <div class="filterBox">
-                    <%= form.select :type, @types.map { |type| [type.name] }, {}, { class: 'form-control' } %>
+                  <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <h3 class="product-title">Type</h3>
+                    <div class="filterBox">
+                      <%= form.select :type, @types.map { |type| [type.name] }, {}, { class: 'form-control' } %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="cart-actions">
-              <div class="add to row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <%= form.hidden_field :product_id, value: @product.id %>
-                  <%= form.hidden_field :quantity, value: 1 %>
-                  <%= form.submit 'Add to Cart', class: 'btn btn-primary btn-fs' %>
+
+              <div class="cart-actions">
+                <div class="add to row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <%= form.hidden_field :product_id, value: @product.id %>
+                    <%= form.hidden_field :quantity, value: 1 %>
+                    <%= form.submit 'Add to Cart', class: 'btn btn-primary btn-fs' %>
+
+                  </div>
+                  
                 </div>
+                <div style="clear:both"></div>
               </div>
-              <div style="clear:both"></div>
+
+            <% end %>
+
+            <p> SHARE </p>
+
+            <div class="socialIcon">
+              <a target="_blank" href="http://facebook.com"><i class="fab fa-facebook-f"></i></a> 
+              <a a target="_blank" href="http://twitter.com"><i class="fab fa-twitter"></i></a>
+              <a target="_blank" href="https://plus.google.com"><i class="fab fa-google-plus-g"></i></a>
+              <a target="_blank" href="http://pinterest.com"><i class="fab fa-pinterest"></i></a>
             </div>
-          <% end %>
+          </div>
+          <!--/.product-share-->
 
-          <p> SHARE </p>
-
-          <div class="socialIcon"><a href="#"> <i class="fab fa-facebook-f"></i></a> <a href="#"> <i
-              class="fab fa-twitter"></i></a> <a href="#"> <i class="fab fa-google-plus-g"></i></a> <a
-              href="#">
-            <i class="fab fa-pinterest"></i></a></div>
       </div>
-      <!--/.product-share-->
+      <!--/ right column end -->
 
     </div>
-    <!--/ right column end -->
-    </div>
+    <!--/.row-->
     <div class="product-overview-tab" style="margin: 20px 0px;">
       <div class="container">
         <div class="row">
@@ -136,9 +150,7 @@
         </div>
       </div>
     </div>
-    <%= render "suggest_products" %>
-  </div>  
-  <div style="clear:both"></div>  
 
+    <div style="clear:both"></div>
+  </div>
 <!-- /main-container -->
-

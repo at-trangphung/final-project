@@ -65,7 +65,7 @@
   <div class="container">
     <div class="navbar-header">
       
-        <%= link_to 'Caferia Coffee', root_path, class: 'navbar-brand' %>
+        <%= link_to 'Cafeteria Coffee', root_path, class: 'navbar-brand' %>
 
         <!-- this part for mobile -->
         <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
@@ -113,11 +113,9 @@
                     <tr class="miniCartProduct">
                       <td style="width:20%" class="miniCartProductThumb">
                         <div>
-                          <a href="product-details.html"> 
-                            <%= link_to item.product do %>
+                          <%= link_to item.product do %>
                             <%= cl_image_tag item.product.image_link %>
-                            <% end %>
-                          </a>
+                          <% end %>
                         </div>
                       </td>
                       <td style="width:30%">
@@ -146,7 +144,7 @@
                         </span>
                       </td>
                       <td style="width:5%" class="delete">
-                        <%= link_to cart_path(id: item.product_id),
+                        <%= link_to cart_path(id: item.product_id, size: item.size),
                         method: :delete,
                         data: {confirm: "Do you want delete" } do %>
                         <span>x</span>

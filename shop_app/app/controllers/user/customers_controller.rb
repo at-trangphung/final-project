@@ -4,10 +4,13 @@ class User::CustomersController < BaseController
   before_action :find_order, only: %i[show]
  
   def index
-    @orders = Transaction.where(customer_id: @service_user.current_user).order(created_at: :desc)
+    id = Customer.find_by(user_id: @service_user.current_user.id)
+    @orders = Transaction.where(customer_id: id).order(created_at: :desc)
   end
 
   def show
+    id = Customer.find_by(user_id: @service_user.current_user.id)
+    @orders = Transaction.where(customer_id: id).order(created_at: :desc)
     @order_details = @order.orders
   end
 

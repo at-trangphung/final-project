@@ -438,7 +438,7 @@ ul.list-border li:hover {
 	background: #fff;
 	max-width: 960px;
 	overflow: auto;
-	width: 100%;
+	/*width: 100%;*/
 }
 
 .modal-header {

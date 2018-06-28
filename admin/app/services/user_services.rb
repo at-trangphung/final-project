@@ -42,7 +42,7 @@ class UserServices
   end
   
   def destroy
-     @user =find_user
+    user =find_user
     if user.destroy!
       flash[:success] = "deleted successfully"
     end  

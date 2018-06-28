@@ -10,7 +10,7 @@ class ShopController < BaseController
     @count_products = 0
     @total = 0
     @len = Product.all.size
-    @productSuggest = Product.all.order(view: :desc).first(3)
+    @productSuggest = Product.all.order(like: :desc).first(3)
   end
 
   def create
@@ -33,6 +33,7 @@ class ShopController < BaseController
     end 
 
     def load_service
-      @service_shop = ShopServices.new(params)
+      @service_shop     = ShopServices.new(params)
+      @service_favorite = FavoritesServices.new(params, @service_user.current_user)
     end
 end

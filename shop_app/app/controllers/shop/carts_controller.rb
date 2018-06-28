@@ -18,7 +18,7 @@ class Shop::CartsController < BaseController
   end
 
   def destroy
-    @service_cart.destroy
+    @service_cart.destroy_item
     flash[:success] = "Delete success"
     redirect_to carts_path
   end

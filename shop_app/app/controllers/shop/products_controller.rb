@@ -1,5 +1,6 @@
 class Shop::ProductsController < BaseController
   layout 'customer'
+  before_action :load_service
 
   def index
     @products = Product.all
@@ -18,11 +19,15 @@ class Shop::ProductsController < BaseController
     @comments = @product.comment_products.where(
           parent_id: 0).paginate page: params[:page], per_page: 7
     @productSuggest = Product.where(category_id: @product.category_id)
-                             .order(view: :desc).first(3)
+                             .order(like: :desc).first(3)
   end
 
   private
     def load_product
       Product.find_by(id: params[:id])
+    end
+
+    def load_service
+      @service_favorite = FavoritesServices.new(params, @service_user.current_user)
     end
 end
